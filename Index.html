@@ -1,1 +1,36 @@
-<h1>Under Construction</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<script src="/js/angular.min.js"></script>
+		<script src="/js/angular-route.min.js"></script>
+		<script src="/Angular/SpykeBytes.js"></script>
+		<script src="/Angular/MainController.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	
+	<body ng-app="SpykeBytes">
+	
+		<div class="banner">
+			<h1>SpykeBytes</h1>
+		</div>
+		
+		<div class="navigation">
+			<span class="btn-group">
+				<a href="#Blogs" class="btn btn-main">Blogs</a>
+				<a href="#Abouts" class="btn btn-main">About</a>
+				<a href="#Resume" class="btn btn-main">Resume</a>
+			</span>
+		</div>
+		
+		<div class="content">
+		
+			<div ng-view></div>
+		
+		</div>
+	
+	</body>
+	
+</html>
