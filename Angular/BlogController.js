@@ -1,3 +1,8 @@
 
-var spykeBytes = Angular.Module('SpykeBytes', []);
+
+var blogCtrl = function ($scope) {
+
+};
+
+spykeBytes.controller('BlogCtrl', ['$scope', blogCtrl ]);
 
