@@ -1,0 +1,22 @@
+﻿body {
+    width: 60em;
+    margin: auto;
+}
+
+.content {
+    padding: 4px;
+    border: dotted thin #d3d3d3;
+}
+
+.blog-preview div {
+    padding: 3px;
+    border: thin dotted #000000;
+}
+
+.blog-preview {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: thin solid #2f4f4f;
+}
