@@ -1,0 +1,38 @@
+﻿<h2>Overview:</h2>
+    Redis is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by VMware. It is often referred to as a data structure server, as keys can contain strings, hashes, lists, sets and sorted sets.
+
+    Simply put, the redis data model is a dictionary where keys are mapped to values. One of the key advantages of Redis is that it is not limited to storing strings.The session storage native to .NET stores complex objects as well, however, the ability to join between is limited to what you code out, or what is available in ADO.NET/LINQ. (LINQ is awesome by the way)
+
+    Also, the speed gained from having your session storage in memory could be invaluable. This is an alternative to hitting your relational database in order to persist user specific data between pages.
+
+Redis supports high level atomic server side operations like intersection,
+union, and difference between sets and sorting of lists, sets and sorted sets.
+
+<h2>Persistance:</h2>
+    Redis, in typical setups, holds it's dataset in RAM. This raises some eyebrows for developers concerned about losing data. Persistance is reached in a few different ways.
+
+    One method is snapshotting. At determined time intervals, the dataset is
+asynchronously transferred from memory to disk. The safest alternative is to use journaling. Journaling uses an append-only file that is written to as operations that modify the dataset in memory are processed. In order to avoid indefinite growth, Redis is able to rewrite the append-only file.
+
+<h2>Redundancy:</h2>
+    Redis supports master-slave replication. Redis slaves are writeable, which allows for inconsistencies between instances. Replication is useful for read (not write) scalability or data redundancy.
+
+<h2>Performance:</h2>
+    The nature of Redis being in-memory means that it is very, very fast. It is considered a low function, high speed database system. Naturally, the more complexity you add to any system, the more it will slow down. Redis has pub/sub, and transactions. To my knowledge, you'll have to be okay with optimistic locking. The performance jumps experienced are mainly due to Redis not needing to write immediately to disk every time a change is made.
+
+<h3>In conclusion...</h3>
+Redis can very easily be compared to memcached. People preach it's gospel as just an inter-process communcation mechanism. It is also a good caching layer.
+
+I would not recommend it as a NoSQL replacement for an RDBMS, but it would work fantastically alongside one.
+
+Also, I've been hearing a decent bit about Kyoto... I hear it's faster? I'll have to update in the future.
+
+<strong>Using Redis with VB</strong>
+<a href="http://www.codeproject.com/Articles/188927/Redis-VB-NET-Part-I-Introduction-to-Using-Redis-No" title="Redis <3 VB?" target="_blank">Using Redis w/ VB.NET</a>
+
+<strong>Using Redis with .NET</strong>
+<a href="https://github.com/ServiceStack/ServiceStack" title="Driver for .NET" target="_blank">ServiceStack</a>
+
+<strong>Other Info</strong>
+<a href="http://en.wikipedia.org/wiki/Redis" title="Good ol' wikipedia" target="_blank">http://en.wikipedia.org/wiki/Redis</a>
+<a href="http://simonwillison.net/static/2010/redis-tutorial/" title="Redis Tutorial" target="_blank">Redis Tutorial and Use Cases</a>

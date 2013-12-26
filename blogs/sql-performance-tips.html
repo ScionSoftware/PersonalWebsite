@@ -1,0 +1,78 @@
+﻿Optimizing your TSQL queries can seem quite a troublesome undertaking. Especially when you or your team have written hundreds to thousands of them. Each little inefficiency can compound on the others. I believe that the best care, is preventative care. As such, I'd like to go over some basic rules that I follow when writing queries, and maybe dig into more of the technical issues afterward.
+
+These consist mostly of what has worked for me, with documentation and supporting articles. If you find issue with any of the suggestions here, please let me know.
+<h2>Some Simple Tips</h2>
+Do not use 'SELECT *', instead specify the exact columns you need, and no more than that! The database engine will also have a much easier time optimizing your query if you are specific. Selecting extra columns adds overhead to the server, the network, and the client.
+
+Full text searches always outperform LIKE searches. As far as seek speeds go anyways. Full text searches introduce their own special kind of overhead.
+
+Using an OR is actually pretty taxing. Based on my understanding, the high level reason is that SQL server can't compile down to a linear execution path. Sometimes, depending on your needs, it can be beneficial to use UNION to tack the related sets together. You can filter out whatever you don't need. Pick your route only after analyzing which is more efficient in your scenario.
+
+<a title="Common SQL Server Mistakes" href="http://www.sql-server-performance.com/2011/union-or-sql-server-queries/">Union Versus OR Analysis</a>
+For example, if you have a search for records based on a BIT column on your table (e.g., Active) then you can join two SELECTs with a UNION and filter with ANDs
+<div style="background-color: #e0e0e0; padding-left: 15px; margin-top: -10px; font-size: x-small;">
+    <span style="font-family: 'Courier New';">
+        <span style="color: blue;">SELECT</span>
+        <span style="color: maroon;">FB</span><span style="color: silver;">.</span><span style="color: maroon;">ident</span><span style="color: silver;">,</span>
+        <span style="color: maroon;">FB</span><span style="color: silver;">.</span><span style="color: maroon;">spykebyte</span>
+        <span style="color: blue;">FROM</span>   <span style="color: maroon;">foobar</span> <span style="color: maroon;">FB</span> <span style="color: maroon;">(</span><span style="color: blue;">NOLOCK</span><span style="color: maroon;">)</span>
+        <span style="color: blue;">WHERE</span>
+        <span style="color: maroon;">FB</span><span style="color: silver;">.</span><span style="color: maroon;">active</span> <span style="color: silver;">=</span> <span style="color: black;">1</span>
+        <span style="color: blue;">AND</span> <span style="color: maroon;">@bitActive</span> <span style="color: silver;">=</span> <span style="color: black;">1</span> <span style="color: green;"><em>--This will return active, if @bitActive is 1</em></span>
+        <span style="color: blue;">UNION</span> <span style="color: blue;">ALL</span>
+        <span style="color: blue;">SELECT</span>
+        <span style="color: maroon;">FB</span><span style="color: silver;">.</span><span style="color: maroon;">ident</span><span style="color: silver;">,</span>
+        <span style="color: maroon;">FB</span><span style="color: silver;">.</span><span style="color: maroon;">spykebyte</span>
+        <span style="color: blue;">FROM</span>   <span style="color: maroon;">foobar</span> <span style="color: maroon;">FB</span> <span style="color: maroon;">(</span><span style="color: blue;">NOLOCK</span><span style="color: maroon;">)</span>
+        <span style="color: blue;">WHERE</span>
+        <span style="color: maroon;">@bitActive</span> <span style="color: silver;">=</span> <span style="color: black;">0</span> <span style="color: green;"><em>--This will return everything, if @bitActive is zero</em></span>
+    </span>
+</div>
+&nbsp;
+
+(Note: UNION ALL is also faster than UNION, as it does not have to sort the result set.)
+
+Avoid joining between columns of different data types, as conversion means overhead. Also, try to ensure you're joining on small, sorted, and indexed columns.
+
+<strong>Avoid deadlocks:</strong> Access tables consistently, in the same order. Do not ever wait for user input during a transaction. Get all of your data together before you start one. Try to keep your transactions as short as possible, avoid touching more than you need to.
+
+Sub queries can be very, very costly, so use them very sparingly (if at all). Do not use aggregates within subqueries, and if you need to call a user defined function, do so beforehand. In other words, if you have a udf that returns a particular value, set a variable before you update thousands of rows, and then you won't call the function thousands of times.
+
+Sub queries are not bad, but they can be. Ensure you understand how different amounts of data will effect execution time.
+
+<a title="Common SQL Server Mistakes" href="http://www.sqlservercentral.com/blogs/steve_jones/2010/09/29/common-sql-server-mistakes-_1320_-indexing-every-column/">Understanding-Set-based-and-Procedural-approaches</a>
+
+A special point to be made here... AVOID CURSORS (They're clunky clunky clunky)
+
+Cursors will lock all of the rows they need for a particular instance, and will not release them until it is done. Holding this causes deadlocks and performance degradations. Yes... sometimes working around a cursor is just not worth the time, but just try.
+
+You can almost always use a correlated sub query instead of a cursor, even then... there may be better alternatives.
+<h2>Temporary Tables and Table Variables:</h2>
+These are some useful buggers. Temporary tables and table variables are both ways to manage data within a certain scope. You can grab what you need, format it in the way you need to, and return whatever you need to. This sounds a bit procedural, but truly, these are valuable tools. They encourage easily readable, and maintainable code.
+
+For most intents and purposes, table variables are much faster than temporary tables. That's because variables never actually write to disk and have a very defined scope. Table variables also reduce the chance of recompilation of your code.
+
+Temporary tables write to tempdb, which means they touch disk I/O and you'll be wise to drop them at the end of your function call. They have their place though. If you are processing a lot of data, have severe limitations on memory usage, or want to do a lot of funky indexing, temporary tables are for you.
+
+<a title="Table Variables VS Temp Tables" href="http://sqlserverperformance.idera.com/uncategorized/performance-comparison-temp-tables-table-variables-sql-server/">Comparison of Table Variables and Temp Tables</a>
+<h2>Lazy Loading:</h2>
+If you have to store large object columns like NVARCHAR(MAX) or Image. Lazy loading is always an option. This boils down to having a separate table that references the main table. Only load them when you need to.
+<h2>Stored Procedures:</h2>
+<a title="Top ten quick tips, to optimize your data access in SQL" href="http://www.codeproject.com/Articles/35665/Top-10-steps-to-optimize-data-access-in-SQL-Server">Top-10 steps to optimize data access in SQL Server</a>
+
+If you're looking to optimize your data access, I'd suggest avoiding inline SQL. Move SQL from the application into the database. Using stored procedures, views, functions, and triggers will enable you to eliminate any duplicate SQL. This promotes DRY principles of programming (Don't Repeat Yourself). This also promotes writing "Set based" as opposed to "procedural based" SQL.
+
+Also, there are several settings in SQL server that you can manage on a scope by scope by scope basis. I'll possibly get into detail with these in another byte. One example of this, is within a stored procedure, if you don't need it, set NOCOUNT to on. This will ensure that sql does not return the count of rows effected by every single query you make. This is especially effective in transactions and loops as it greatly reduces network traffic.
+
+<a href="http://msdn.microsoft.com/en-us/library/ms189837.aspx" title="1, 2, 3... AH AH AH!">MSDN NoCount Article</a>
+
+<h2>Indexing:</h2>
+Indexing, is in a nutshell, a way for SQL server to catalog different common search criteria for a table. This can be compared to a library, organizing books by serial number (the primary key), genre, name, author, and so on. If these books were not organized in such a manner, and also catalogued as such, finding an individual book would be a nightmare. The librarian would have to search most of the library. This is comparable to what is called a table scan - a row by row search. This can become extremely taxing if you have hundreds of thousands, or even millions of books.
+
+When creating indexes, it is important to do so with prejudice. Not selecting any, of course means that your read speeds may be awful once any significant amount of data is being searched against. However, for each index selected, an equivalent amount of space is taken up. Every time you write to a table, the indexes must be updated, so if you've got an overload of indexes then write performance can suffer quite a bit. Ultimately, we need to find a happy medium. A best-we-can-do case.
+
+Typically, you can safely take the 3 to 5 fields you query on most often and index them. (Try not to index large fields like VARCHAR(MAX) or VARBINARY(MAX))
+
+SQL server generates an execution plan every time a query is executed. These plans can differ greatly, dependent on several variables. (Volume of data, index variation, load on server, etc) It's important to know which indexes would be used by the execution engine the most. You can set up sandboxes based on production systems and test your theories with tools such as SQL Profiler. You can take a trace file, and run it as many times as you need to.
+
+<a href="http://www.sqlservercentral.com/blogs/steve_jones/2010/09/29/common-sql-server-mistakes-1320-indexing-every-column/">http://www.sqlservercentral.com/blogs/steve_jones/2010/09/29/common-sql-server-mistakes-1320-indexing-every-column/</a>

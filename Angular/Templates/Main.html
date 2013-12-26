@@ -1,7 +1,5 @@
 
-<h3>This is the main template</h3>
-
 <div ng-repeat="blog in BlogPosts" class="blog-preview">
 	<h4>{{blog.Title}}</h4>
-	<div>{{blog.Content}}</div>
+	<div ng-include="blog.Template"></div>
 </div>
