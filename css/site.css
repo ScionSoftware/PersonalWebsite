@@ -3,6 +3,10 @@
     margin: auto;
 }
 
+.banner {
+    font-family: fantasy; 
+}
+
 .content {
     padding: 4px;
     border: dotted thin #d3d3d3;
@@ -11,6 +15,8 @@
 .blog-preview div {
     padding: 3px;
     border: thin dotted #000000;
+    max-height: 200px;
+    overflow: hidden;
 }
 
 .blog-preview {

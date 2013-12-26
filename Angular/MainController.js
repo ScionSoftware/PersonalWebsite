@@ -11,10 +11,12 @@ var mainCtrl = function ($scope) {
 	};
 	
 	$scope.BlogPosts = [
-		addTemplate('hello-world'),
-		addTemplate("an-intro-to-redis"),
-		addTemplate("middle-eastern-scapegoat"),
+		addTemplate("generate-entity-sql"),
+		addTemplate("business-analysis-paralysis"),
 		addTemplate("sql-performance-tips"),
+		addTemplate("middle-eastern-scapegoat"),
+		addTemplate("an-intro-to-redis"),
+		addTemplate('hello-world'),
 	];
 	
 };
