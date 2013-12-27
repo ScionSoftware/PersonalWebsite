@@ -14,14 +14,11 @@ h1 {
     padding-bottom: 5px;
 }
 .navigation .btn {
-    min-width: 4em;
+    width: 7em;
 }
 
 h1, h2, h3 {
     font-family: Impact, sans-serif;
-}
-
-p, span {
 }
 
 .content {

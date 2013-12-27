@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="css/site.css" rel="stylesheet" />
-		<script src="/js/angular.min.js"></script>
-		<script src="/js/angular-route.min.js"></script>
-		<script src="/Angular/SpykeBytes.js"></script>
-		<script src="/Angular/MainController.js"></script>
-		<script src="/Angular/BlogController.js"></script>
-		<script src="/Angular/AboutController.js"></script>
-		<script src="/Angular/ResumeController.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
-	
-	<body ng-app="SpykeBytes">
-	
-		<div class="banner">
-			<h1>SpykeBytes</h1>
-		</div>
-		
-		<div class="navigation">
-			<span class="btn-group">
-				<a href="#Blogs" class="btn btn-primary">Blogs</a>
-				<a href="#About" class="btn btn-primary">About</a>
-				<a href="#Resume" class="btn btn-primary">Resume</a>
-			</span>
-		</div>
-		
-		<div class="content">
-		
-			<div ng-view></div>
-		
-		</div>
-	
-	</body>
-	
+<head>
+    <title>Programmer</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/Angular/SpykeBytes.js"></script>
+    <script src="/Angular/MainController.js"></script>
+    <script src="/Angular/BlogController.js"></script>
+    <script src="/Angular/AboutController.js"></script>
+    <script src="/Angular/ResumeController.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body ng-app="SpykeBytes">
+
+    <div class="banner">
+        <h1>SpykeBytes</h1>
+    </div>
+
+    <div class="navigation">
+        <span class="btn-group">
+            <a href="#Blogs" class="btn btn-primary">Blogs</a>
+            <a href="#About" class="btn btn-primary">About</a>
+            <a href="#Resume" class="btn btn-primary">Resume</a>
+        </span>
+
+        <span class="pull-right">
+            <span class="fa-stack fa-lg">
+                <a href="http://twitter.com/SpykeBytes" target="_blank"><i class="fa fa-twitter fa-stack-2x"></i></a>
+            </span>
+            <span class="fa-stack fa-lg">
+                <a href="http://github.com/SpykeBytes" target="_blank"><i class="fa fa-stack-2x fa-square-o fa-github"></i></a>
+            </span>
+            <span class="fa-stack fa-lg">
+                <a href="http://www.linkedin.com/in/cphiggins" target="_blank"><i class="fa fa-stack-2x fa-square-o fa-linkedin"></i></a>
+            </span>
+            <span class="fa-stack fa-lg">
+                <a href="http://stackoverflow.com/users/1659016/spykebytes" target="_blank"><i class="fa fa-stack-2x fa-square-o fa-stack-overflow"></i></a>
+            </span>
+        </span>    
+    </div>
+
+    <div class="content">
+
+        <div ng-view></div>
+
+    </div>
+
+</body>
+
 </html>
