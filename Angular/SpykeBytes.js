@@ -26,9 +26,10 @@ spykeBytes.config([ '$routeProvider', function ($routeProvider) {
             controller: 'MainCtrl',
             activeTab: 'Blogs',
         });
-}]).run(['$rootScope', '$location', function ($rootScope, $location) {
+}]).run(['$rootScope', '$location', '$window', function ($rootScope, $location, $window) {
     var path = function () { return $location.path(); };
     $rootScope.$watch(path, function (newVal, oldVal) {
         $rootScope.activeTab = newVal;
+        $window.ga(['_trackPageview', newVal]);
     });
 }]);
