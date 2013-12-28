@@ -6,9 +6,13 @@ spykeBytes.config([ '$routeProvider', function ($routeProvider) {
 		templateUrl: '/angular/templates/main.html',
 		controller: 'MainCtrl',
 	})
+	.when('/Blog/:title', {
+	    templateUrl: '/angular/directives/templates/blog.html',
+	    controller: 'BlogCtrl',
+	})
 	.when('/About', {
-		templateUrl: '/angular/templates/about.html',
-		controller: 'AboutCtrl',
+	    templateUrl: '/angular/templates/about.html',
+	    controller: 'AboutCtrl',
 	})
 	.when('/Resume', {
 		templateUrl: '/angular/templates/resume.html',

@@ -1,55 +1,58 @@
-﻿I have found myself needing to write a lot of class files for Entity Framework as of late.
-
-I am a fairly lazy fellow, so I had previously written a regex to do almost what I needed.
-
-I threw together a select statement based on SQL Server 2005 schema to generate a simple class based on the table name and database schema.
-
-No guarantee that it will work on anything but 2005, but with minor modification, it should fit anyone's needs.
-
-It won't cover all cases, but it works for well over 90% of mine I think. Even so, it sets up a good template. Enjoy!
-
+﻿<p>
+    I have found myself needing to write a lot of class files for Entity Framework as of late.
+    I am a fairly lazy fellow, so I had previously written a regex to do almost what I needed.
+</p>
+<p>
+    I threw together a select statement based on SQL Server 2005 schema to generate a simple class based on the table name and database schema.
+    No guarantee that it will work on anything but 2005, but with minor modification, it should fit anyone's needs.
+    It won't cover all cases, but it works for well over 90% of mine I think. Even so, it sets up a good template. Enjoy!
+</p>
 <code>
-    <span face="Courier New" size="2">
-        <span style="color:blue;">DECLARE</span>&nbsp;<span style="color:#8000FF;">@tableName</span>&nbsp;<span style="color:black;"><i>NVARCHAR</i></span><span style="color:maroon;">(</span><span style="color:black;">500</span><span style="color:maroon;">)</span>
-        <br /><span style="color:blue;">DECLARE</span>&nbsp;<span style="color:#8000FF;">@schema</span>&nbsp;<span style="color:black;"><i>NVARCHAR</i></span><span style="color:maroon;">(</span><span style="color:black;">500</span><span style="color:maroon;">)</span>
-        <br /><span style="color:blue;">SET</span>&nbsp;<span style="color:#8000FF;">@schema</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'dbo'</span>
-        <br /><span style="color:blue;">SET</span>&nbsp;<span style="color:#8000FF;">@tableName</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'Advertiser'</span>
-
-        <br /><span style="color:blue;">SELECT</span>&nbsp;<span style="color:red;">'public&nbsp;class&nbsp;'</span>&nbsp;<span style="color:silver;">+</span>&nbsp;<span style="color:blue;">CASE</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:#FF0080;"><b>Schema_name</b></span><span style="color:maroon;">(</span><span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">schema_id</span><span style="color:maroon;">)</span>&nbsp;<span style="color:blue;">NOT</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'dbo'</span>&nbsp;<span style="color:blue;">THEN</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#FF0080;"><b>Schema_name</b></span><span style="color:maroon;">(</span><span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">schema_id</span><span style="color:maroon;">)</span>&nbsp;<span style="color:blue;">ELSE</span>&nbsp;<span style="color:red;">''</span>&nbsp;<span style="color:blue;">END</span>&nbsp;<span style="color:silver;">+</span>&nbsp;<span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">+</span>&nbsp;<span style="color:red;">'&nbsp;{&nbsp;'</span>
-        <br /><span style="color:blue;">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color:maroon;">sys</span><span style="color:silver;">.</span><span style="color:maroon;">tables</span>&nbsp;<span style="color:blue;">AS</span>&nbsp;<span style="color:maroon;">t</span>
-        <br /><span style="color:blue;">WHERE</span>&nbsp;&nbsp;<span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:#8000FF;">@tableName</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">AND</span>&nbsp;<span style="color:#FF0080;"><b>Schema_name</b></span><span style="color:maroon;">(</span><span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">schema_id</span><span style="color:maroon;">)</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:#8000FF;">@schema</span>
-        <br /><span style="color:blue;">UNION</span>&nbsp;<span style="color:blue;">ALL</span>
-        <br /><span style="color:blue;">SELECT</span>&nbsp;<span style="color:red;">'&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;'</span>&nbsp;<span style="color:silver;">
-            +
-        </span>&nbsp;<span style="color:blue;">CASE</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'%char%'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'string'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span><span style="color:red;">'text'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'string'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'bigint'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'long'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span><span style="color:red;">'tinyint'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'short'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'uniqueidentifier'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'guid'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'smalldatetime'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'DateTime'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'datetime'</span>&nbsp;<span style="color:blue;">THEN</span><span style="color:red;">'DateTime'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'%money%'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'decimal'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:red;">'bit'</span>&nbsp;<span style="color:blue;">THEN</span><span style="color:red;">'bool'</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">ELSE</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>
-        <br />&nbsp;<span style="color:blue;">END</span>&nbsp;<span style="color:silver;">+</span>
-        <br />&nbsp;<span style="color:blue;">CASE</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">WHEN</span>&nbsp;<span style="color:maroon;">c</span><span style="color:silver;">.</span><span style="color:maroon;">is_nullable</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:black;">1</span>&nbsp;<span style="color:blue;">AND</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:blue;">NOT</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'%char%'</span>&nbsp;<span style="color:blue;">AND</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:blue;">NOT</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'text'</span>&nbsp;<span style="color:blue;">THEN</span>&nbsp;<span style="color:red;">'?&nbsp;'</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">ELSE</span>&nbsp;<span style="color:red;">'&nbsp;'</span>
-        <br />&nbsp;<span style="color:blue;">END</span>&nbsp;<span style="color:silver;">+</span>&nbsp;<span style="color:maroon;">c</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">+</span>&nbsp;<span style="color:red;">'&nbsp;{&nbsp;get;&nbsp;set;&nbsp;}'</span>
-        <br /><span style="color:blue;">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color:maroon;">sys</span><span style="color:silver;">.</span><span style="color:maroon;">tables</span>&nbsp;<span style="color:blue;">AS</span>&nbsp;<span style="color:maroon;">t</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">JOIN</span>&nbsp;<span style="color:maroon;">sys</span><span style="color:silver;">.</span><span style="color:maroon;">columns</span>&nbsp;<span style="color:maroon;">c</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">ON</span>&nbsp;<span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">object_id</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:maroon;">c</span><span style="color:silver;">.</span><span style="color:maroon;">object_id</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">JOIN</span>&nbsp;<span style="color:maroon;">sys</span><span style="color:silver;">.</span><span style="color:maroon;">types</span>&nbsp;<span style="color:maroon;">ty</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">ON</span>&nbsp;<span style="color:maroon;">c</span><span style="color:silver;">.</span><span style="color:maroon;">system_type_id</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">system_type_id</span>
-        <br /><span style="color:blue;">WHERE</span>&nbsp;&nbsp;<span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:#8000FF;">@tableName</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">AND</span>&nbsp;<span style="color:#FF0080;"><b>Schema_name</b></span><span style="color:maroon;">(</span><span style="color:maroon;">t</span><span style="color:silver;">.</span><span style="color:maroon;">schema_id</span><span style="color:maroon;">)</span>&nbsp;<span style="color:silver;">=</span>&nbsp;<span style="color:#8000FF;">@schema</span>
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">AND</span>&nbsp;<span style="color:maroon;">ty</span><span style="color:silver;">.</span><span style="color:maroon;">name</span>&nbsp;<span style="color:blue;">NOT</span>&nbsp;<span style="color:blue;">LIKE</span>&nbsp;<span style="color:red;">'sysname'</span>
-        <br /><span style="color:blue;">UNION</span>&nbsp;<span style="color:blue;">ALL</span>
-
-        <br /><span style="color:blue;">SELECT</span>&nbsp;<span style="color:red;">'}'</span>&nbsp;
+    <span>
+        DECLARE @tableName NVARCHAR(500)
+        <br />DECLARE @schema NVARCHAR(500)
+        <br />SET @schema = 'dbo'
+        <br />SET @tableName = 'Advertiser'
+        <br />SELECT 'public class ' +
+        <span>
+            CASE
+            <span>WHEN Schema_name(t.schema_id) NOT LIKE 'dbo' THEN Schema_name(t.schema_id) </span>
+            <span>ELSE '' </span>
+            END + t.name + ' { '
+        </span>
+        FROM sys.tables AS t
+        <br />WHERE t.name = @tableName
+        <span>AND Schema_name(t.schema_id) = @schema</span>
+        UNION ALL
+        <br />SELECT '    public '  +
+        <span>
+            CASE
+            <span>WHEN ty.name LIKE '%char%' THEN 'string'</span>
+            <span>WHEN ty.name ='text' THEN 'string'</span>
+            <span>WHEN ty.name = 'bigint' THEN 'long'</span>
+            <span>WHEN ty.name ='tinyint' THEN 'short'</span>
+            <span>WHEN ty.name = 'uniqueidentifier' THEN 'guid'</span>
+            <span>WHEN ty.name = 'smalldatetime' THEN 'DateTime'</span>
+            <span>WHEN ty.name = 'datetime' THEN'DateTime'</span>
+            <span>WHEN ty.name LIKE '%money%' THEN 'decimal'</span>
+            <span>WHEN ty.name = 'bit' THEN 'bool'</span>
+            <span>ELSE ty.name</span>
+            END +
+        </span>
+        <span>
+            CASE
+            <span>WHEN c.is_nullable = 1 AND ty.name NOT LIKE '%char%' AND ty.name NOT LIKE 'text' THEN '? '</span>
+            <span>ELSE ' '</span>
+            END + c.name + ' { get; set; }'
+        </span>
+        FROM sys.tables AS t
+        <br />JOIN sys.columns c
+        <span>ON t.object_id = c.object_id </span>
+        <span>ON c.system_type_id = ty.system_type_id</span>
+        WHERE t.name = @tableName
+        <span>AND Schema_name(t.schema_id) = @schema</span>
+        <span>AND ty.name NOT LIKE 'sysname'</span>
+        UNION ALL
+        <br />SELECT '}'
     </span>
 </code>

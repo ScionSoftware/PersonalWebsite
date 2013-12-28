@@ -1,2 +1,58 @@
 
-<h1>Resume</h1>
+<style>
+    .resume {
+        padding: 10px;
+    }
+
+        .resume #skills {
+            display: inline-block;
+            float: left;
+            width: 20%;
+            padding-left: 4px;
+        }
+
+        .resume #jobs {
+            border-left: thin dotted #000000;
+            border-bottom: thin dotted #000000;
+            display: inline-block;
+            float: left;
+            padding: 6px;
+            width: 75%;
+        }
+
+    #jobs .job {
+        margin-bottom: 8px;
+    }
+
+        #jobs .job div label {
+            display: inline-block;
+        }
+
+        #jobs .job div span {
+            float: right;
+        }
+</style>
+
+<div class="resume row">
+    <div id="skills">
+        <h3>Skills</h3>
+        <ul>
+            <li ng-repeat="skill in resume.skills">
+                {{skill}}
+            </li>
+        </ul>
+    </div>
+
+    <div id="jobs">
+        <h3>Experience</h3>
+        <ul class="list-unstyled">
+            <li class="job" ng-repeat="job in resume.jobs">
+                <div>
+                    <label>{{job.title + ' - ' + job.company}}</label>
+                    <span>{{job.startDate}} to {{job.endDate}}</span>
+                </div>
+                <span ng-repeat="duty in job.duties">{{duty + '; '}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

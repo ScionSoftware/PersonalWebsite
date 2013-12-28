@@ -1,5 +1,6 @@
 
 <div ng-repeat="blog in BlogPosts" class="blog-preview">
-	<h3>{{blog.Title}}</h3>
+    <h3 style="display:inline-block;">{{blog.Title}}</h3>
+    <a href="#Blog/{{blog.Title}}" class="btn btn-success btn-xs pull-right">Read more</a>
 	<div ng-include="blog.Template"></div>
 </div>
