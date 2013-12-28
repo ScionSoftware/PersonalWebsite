@@ -3,15 +3,14 @@ PersonalWebsite
 
   Blog and activity tracker based in angular.js
   
-  Mobile friendly career based static personal website.
+  Career based static personal website.
   
   Includes blogs, bio, and contact information.
   
 
 TODO:
 
-*    Set up blog templates
-*    Set up resume template
-*    Set up individual blog pages
-*    Link social media accounts
-*    Track GitHub repositories
+*    Get custom bootstrap theme, consider switching to foundation
+*    Set up projects template
+*    Set up RSS feed, maybe with feedburner
+*    Change blog template to directive
