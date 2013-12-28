@@ -26,9 +26,9 @@
 
     <div class="navigation">
         <span class="btn-group">
-            <a href="#Blogs" class="btn btn-primary">Blogs</a>
-            <a href="#About" class="btn btn-primary">About</a>
-            <a href="#Resume" class="btn btn-primary">Resume</a>
+            <a href="#Blogs" ng-class="{ active: activeTab == '/Blogs' }" class="btn btn-primary">Blogs</a>
+            <a href="#About" ng-class="{ active: activeTab == '/About' }" class="btn btn-primary">About</a>
+            <a href="#Resume" ng-class="{ active: activeTab == '/Resume' }" class="btn btn-primary">Resume</a>
         </span>
 
         <span class="navbar-right">
