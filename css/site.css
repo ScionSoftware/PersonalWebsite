@@ -1,15 +1,45 @@
 ﻿body {
     width: 60em;
     margin: auto;
+    background-color: #A6D785;
+}
+
+.banner {
+    position: relative;
+}
+
+    .banner h1 {
+        display: inline-block;
+    }
+
+    .banner small {
+        position: absolute;
+        bottom: 8px;
+        right: 15px;
+    }
+
+.navbar-right i {
+    color: #000;
+}
+
+    .navbar-right i:hover,
+    .navbar-right i:focus,
+    .navbar-right i:active {
+        color: #2F4F2F;
+    }
+
+.content {
+    padding: 5px;
+    border: solid medium #BCED91;
+    margin-bottom: 8px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #ffffff;
 }
 
 h1 {
     padding-top: 8px;
     font-size: 5em;
-}
-
-.banner {
-    height: 6em;
 }
 
 .navigation {
@@ -20,13 +50,8 @@ h1 {
         width: 7em;
     }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5 {
     font-family: Impact, sans-serif;
-}
-
-.content {
-    padding: 4px;
-    border: dotted thin #d3d3d3;
 }
 
 .blog-preview div {
@@ -69,7 +94,3 @@ code > span {
                 padding-left: 3px;
                 border-left: thin dotted #c0c0c0;
             }
-
-.navbar-right i {
-    color: #428bca;
-}
