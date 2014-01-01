@@ -9,14 +9,24 @@
 }
 
     .banner h1 {
-        display: inline-block;
+        color: #222;
+        text-shadow: 2px 5px 3px #555;
     }
 
-    .banner small {
+    .banner span {
         position: absolute;
-        bottom: 8px;
-        right: 15px;
+        right: 10px;
+        bottom: 0px;
+        font-style: italic;
+        font-weight: 600; 
     }
+
+        .banner span img {
+            width: 80px;
+            height: auto;
+            margin: auto;
+            display: block;
+        }
 
 .navbar-right i {
     color: #000;
@@ -54,6 +64,10 @@ h1, h2, h3, h4, h5 {
     font-family: Impact, sans-serif;
 }
 
+.btn-block {
+  border-color: #222;
+}
+
 .blog-preview div {
     padding: 3px;
     border: thin dotted #000000;
@@ -65,6 +79,8 @@ h1, h2, h3, h4, h5 {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
     padding: 5px;
     border: thin solid #2f4f4f;
 }
