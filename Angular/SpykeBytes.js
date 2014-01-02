@@ -30,6 +30,6 @@ spykeBytes.config([ '$routeProvider', function ($routeProvider) {
     var path = function () { return $location.path(); };
     $rootScope.$watch(path, function (newVal, oldVal) {
         $rootScope.activeTab = newVal;
-        $window._gaq.push(['_trackPageview', newVal]);
+        $window._trackPageView(newVal);
     });
 }]);
