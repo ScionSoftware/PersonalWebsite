@@ -39,7 +39,8 @@
     }
 
 .content {
-    padding: 5px;
+    padding: 7px;
+    padding-left: 10px;
     border: solid medium #BCED91;
     margin-bottom: 8px;
     -ms-border-radius: 3px;
@@ -83,6 +84,11 @@ h1, h2, h3, h4, h5 {
     border-radius: 3px;
     padding: 5px;
     border: thin solid #2f4f4f;
+}
+
+
+.blog-entry h5.date {
+    text-align: right;
 }
 
 code span {

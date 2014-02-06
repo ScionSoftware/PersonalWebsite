@@ -10,6 +10,7 @@ var mainCtrl = function ($scope) {
 	};
 	
 	$scope.blogPosts = [
+		addTemplate("chess-sharp-beta"),
 		addTemplate("generate-entity-sql"),
 		addTemplate("business-analysis-paralysis"),
 		addTemplate("computer-science-terms-1"),

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SpykeBytes">
 
 <head>
-    <title>Programmer</title>
+    <title ng-bind="'SpykeBytes' + title">SpykeBytes</title>
 
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
@@ -30,15 +30,15 @@
         ga('create', 'UA-46796330-1', 'spykebytes.me');
         ga('send', 'pageview');
 
-        var _trackPageView = function(pageName) {
+        var _trackPageView = function (pageName) {
             ga('send', pageName);
         };
 
     </script>
 </head>
 
-<body ng-app="SpykeBytes">
-  
+<body>
+
     <div class="banner">
         <h1>SpykeBytes</h1>
         <span>
@@ -67,7 +67,7 @@
             <span class="fa-stack fa-lg">
                 <a href="http://stackoverflow.com/users/1659016/spykebytes" target="_blank"><i class="fa fa-stack-2x fa-stack-overflow"></i></a>
             </span>
-        </span>    
+        </span>
     </div>
 
     <div class="content">

@@ -2,6 +2,7 @@
 
 var blogCtrl = function ($scope, $routeParams) {
     $scope.title = $routeParams.title;
+    $scope.title = ' - ' + title;
     $scope.template = '/blogs/' + $scope.title + '.html';
 };
 

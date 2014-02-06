@@ -2,6 +2,7 @@
 
 var resumeCtrl = function ($scope) {
 
+    $scope.title = ' - Resume';
     $scope.resume = { skills: [], jobs: [], projects: [], groups: [] };
 
     var resume = $scope.resume;
