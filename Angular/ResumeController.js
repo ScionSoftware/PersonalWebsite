@@ -1,5 +1,4 @@
 
-
 var resumeCtrl = function ($scope) {
 
     $scope.title = ' - Resume';
@@ -32,7 +31,7 @@ var resumeCtrl = function ($scope) {
     var setupJob = function (company, title, startDate, endDate) {
         return { company: company, title: title, startDate: startDate, endDate: endDate };
     };
-    var localEdge = setupJob('LocalEdge', 'Programmer I', 'December ‘12', 'Present');
+    var localEdge = setupJob('LocalEdge', 'Programmer I', "December '12", 'Present');
     localEdge.duties = [
         'Clean and optimize existing C#, JavaScript, and TSQL code base',
         'Concurrent programming with features from .NET 3.5 to 4.5',
@@ -43,7 +42,7 @@ var resumeCtrl = function ($scope) {
         'Write unit tests for all application rewrites',
         'Interface with services provided by search engines'
     ];
-    var algonquin = setupJob('Algonquin Studios, Inc.', 'Developer I', 'August ‘11', 'December ‘12');
+    var algonquin = setupJob('Algonquin Studios, Inc.', 'Developer I', "August '11", "December '12");
     algonquin.duties = [
 	    'Develop on multiple simultaneous projects with strict deadlines',
 	    'Execute detailed testing procedures and maintain technical documents',
@@ -52,14 +51,14 @@ var resumeCtrl = function ($scope) {
 	    'Deploy projects and patches to production and staging environments',
 	    'Optimize new and existing SQL queries and procedures to reduce overhead'
     ];
-    var laptopTechnican = setupJob('Technology Services, Alfred State', 'Laptop Technician', 'August ‘10', 'May ‘11');
+    var laptopTechnican = setupJob('Technology Services, Alfred State', 'Laptop Technician', "August '10","May '11");
     laptopTechnican.duties = [
 	    'Configured and deployed client and student laptops',
         'Analyzed and resolved hardware/software problems',
         'Researched and developed more efficient work practices',
         'Created and updated pre-boot environment disks'
     ];
-    var residentAssistant = setupJob('Residence Life, Alfred State', 'Resident Assistant', 'August ‘08', 'May ‘09');
+    var residentAssistant = setupJob('Residence Life, Alfred State', 'Resident Assistant', "August '08", "May '09");
     residentAssistant.duties = [
 	    'Provided paraprofessional advising to undergraduate students',
         'Operated within a close-quarters living environment',
