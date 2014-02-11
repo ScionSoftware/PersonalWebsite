@@ -21,6 +21,11 @@ spykeBytes.config([ '$routeProvider', function ($routeProvider) {
             controller: 'ResumeCtrl',
             activeTab: 'Resume',
         })
+        .when('/Reading', {
+            templateUrl: '/angular/templates/reading.html',
+            controller: 'ReadingCtrl',
+            activeTab: 'Reading',
+        })
         .otherwise({
             templateUrl: '/angular/templates/main.html',
             controller: 'MainCtrl',

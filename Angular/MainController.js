@@ -1,25 +1,8 @@
 
 
-var mainCtrl = function ($scope) {
-
-	var addTemplate = function (templateTitle) {
-	    return {
-	        Title: templateTitle,
-	        Template: '/blogs/' + templateTitle + '.html'
-	    };
-	};
+var mainCtrl = function ($scope, blogApi) {
 	
-	$scope.blogPosts = [
-		addTemplate("chess-sharp-beta"),
-		addTemplate("generate-entity-sql"),
-		addTemplate("business-analysis-paralysis"),
-		addTemplate("computer-science-terms-1"),
-		addTemplate("sql-performance-tips"),
-		addTemplate("middle-eastern-scapegoat"),
-		addTemplate("too-little-butter-too-much-bread"),
-		addTemplate("an-intro-to-redis"),
-		addTemplate('hello-world'),
-	];
+    $scope.blogPosts = blogApi.getBlogs();
 
 	$scope.displayed = [];
 
@@ -35,4 +18,4 @@ var mainCtrl = function ($scope) {
 	$scope.showMoreBlogs();
 };
 
-spykeBytes.controller('MainCtrl', ['$scope', mainCtrl ]);
+spykeBytes.controller('MainCtrl', ['$scope', 'blogApi', mainCtrl ]);

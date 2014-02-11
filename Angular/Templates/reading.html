@@ -1,0 +1,48 @@
+<style>
+    img {
+        height: 100px;
+        width: auto;
+    }
+
+    .reading {
+        border: thin black solid;
+        padding: 6px;
+        clear: both;
+        height: 115px;
+        width: 85%;
+        margin: auto;
+        margin-top: 4px;
+    }
+
+        .reading img {
+            float: left;
+        }
+
+        .reading div {
+            float: left;
+            padding: 5px;
+            display: inline-block;
+            max-width: 85%;
+        }
+
+        .reading h4 {
+            padding: 0;
+            margin: 0;
+            margin-bottom: 3px;
+        }
+
+        .reading p {
+            font-size: .9em;
+        }
+
+        .reading a {
+            padding: 5px;
+        }
+        .reading img:hover {
+            border: medium inset #222;
+        }
+</style>
+
+<div ng-repeat="reading in readings">
+    <div ng-include="reading.path" class="reading" />
+</div>

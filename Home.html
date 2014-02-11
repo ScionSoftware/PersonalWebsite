@@ -6,12 +6,17 @@
 
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
-    <script src="/angular/SpykeBytes.min.js"></script>
-    <!--<script src="/angular/SpykeBytes.js"></script>
-        <script src="/angular/MainController.js"></script>
-        <script src="/angular/BlogController.js"></script>
-        <script src="/angular/AboutController.js"></script>
-        <script src="/angular/ResumeController.js"></script>-->
+    <!--<script src="/angular/SpykeBytes.min.js"></script>-->
+
+    <script src="/angular/SpykeBytes.js"></script>
+    <script src="angular/services/BlogService.js"></script>
+    <script src="angular/services/ReadingService.js"></script>
+    <script src="/angular/MainController.js"></script>
+    <script src="/angular/BlogController.js"></script>
+    <script src="/angular/AboutController.js"></script>
+    <script src="/angular/ResumeController.js"></script>
+    <script src="/angular/ReadingController.js"></script>
+
     <!--198.199.90.151-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -49,9 +54,10 @@
 
     <div class="navigation">
         <span class="btn-group">
-            <a href="/#/Blogs" ng-class="{ active: activeTab == '/Blogs' }" class="btn btn-primary">Blogs</a>
+            <a href="/#/Blogs" ng-class="{ active: !activeTab  || activeTab == '/Blogs' }" class="btn btn-primary">Blogs</a>
             <a href="/#/About" ng-class="{ active: activeTab == '/About' }" class="btn btn-primary">About</a>
             <a href="/#/Resume" ng-class="{ active: activeTab == '/Resume' }" class="btn btn-primary">Resume</a>
+            <a href="/#/Reading" ng-class="{ active: activeTab == '/Reading' }" class="btn btn-primary">Reading</a>
         </span>
 
         <span class="navbar-right">
