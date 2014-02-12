@@ -25,12 +25,18 @@ var resumeCtrl = function ($scope) {
         'Ninject',
         'TSQL', 'SSMS',
         'Regex',
-        'SVN', 'Git', 'Mercurial'
+        'SVN', 'Git', 'Mercurial',
+        'Azure'
     ];
 
     var setupJob = function (company, title, startDate, endDate) {
         return { company: company, title: title, startDate: startDate, endDate: endDate };
     };
+    var liazon = setupJob('Liazon', 'Software Engineer', "February '14", 'Present');
+    liazon.duties = [
+        'Convert existing razor views to angular',
+        'Work on service oriented architecture initiative',
+    ];
     var localEdge = setupJob('LocalEdge', 'Programmer I', "December '12", 'Present');
     localEdge.duties = [
         'Clean and optimize existing C#, JavaScript, and TSQL code base',
@@ -67,6 +73,7 @@ var resumeCtrl = function ($scope) {
         'Developed and refined mediation and conflict resolution skills'
     ];
 
+    resume.jobs.push(liazon);
     resume.jobs.push(localEdge);
     resume.jobs.push(algonquin);
     resume.jobs.push(laptopTechnican);
