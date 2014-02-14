@@ -15,28 +15,34 @@
         <br />DECLARE @schema NVARCHAR(500)
         <br />SET @schema = 'dbo'
         <br />SET @tableName = 'Advertiser'
-        <br />SELECT 'public class ' +
-        <span>
-            CASE
-            <span>WHEN Schema_name(t.schema_id) NOT LIKE 'dbo' THEN Schema_name(t.schema_id) </span>
-            <span>ELSE '' </span>
-            END + t.name + ' { '
+        <br />
+        <br />SELECT '[Table("' + @tableName + '")]' UNION ALL
+        <br />
+        <br />SELECT 'public class ' + 
+        <span>CASE 
+        	<span>WHEN SCHEMA_NAME(t.schema_id) NOT LIKE 'dbo' </span>
+        	<span>THEN SCHEMA_NAME(t.schema_id) ELSE '' END 
+        		<span>+ t.name + ' : IEntity { '</span>
+        	</span>
         </span>
-        FROM sys.tables AS t
+        FROM sys.tables AS t 
         <br />WHERE t.name = @tableName
-        <span>AND Schema_name(t.schema_id) = @schema</span>
+                <span>AND Schema_name(t.schema_id) = @schema</span>
         UNION ALL
         <br />SELECT '    public '  +
         <span>
             CASE
             <span>WHEN ty.name LIKE '%char%' THEN 'string'</span>
-            <span>WHEN ty.name ='text' THEN 'string'</span>
-            <span>WHEN ty.name = 'bigint' THEN 'long'</span>
-            <span>WHEN ty.name ='tinyint' THEN 'short'</span>
-            <span>WHEN ty.name = 'uniqueidentifier' THEN 'guid'</span>
-            <span>WHEN ty.name = 'smalldatetime' THEN 'DateTime'</span>
-            <span>WHEN ty.name = 'datetime' THEN'DateTime'</span>
-            <span>WHEN ty.name LIKE '%money%' THEN 'decimal'</span>
+            <span>WHEN ty.name = 'text' THEN 'string' </span>
+			<span>WHEN ty.name = 'bigint' THEN 'long' </span>
+			<span>WHEN ty.name = 'tinyint' THEN 'short' </span>
+			<span>WHEN ty.name = 'numeric' THEN 'decimal' </span>
+			<span>WHEN ty.name = 'smallint' THEN 'short' </span>
+			<span>WHEN ty.name = 'uniqueidentifier' THEN 'guid' </span>
+			<span>WHEN ty.name = 'smalldatetime' THEN 'DateTime' </span>
+			<span>WHEN ty.name = 'datetime' THEN 'DateTime' </span>
+			<span>WHEN ty.name LIKE '%money%' THEN 'decimal' </span>
+			<span>WHEN ty.name LIKE '%binary%' THEN 'byte[]' </span>
             <span>WHEN ty.name = 'bit' THEN 'bool'</span>
             <span>ELSE ty.name</span>
             END +
