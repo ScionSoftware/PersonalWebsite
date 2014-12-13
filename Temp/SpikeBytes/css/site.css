@@ -1,0 +1,143 @@
+﻿body {
+    background-color: #A6D785;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    border-top: black medium solid;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.header-section {
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+.header-content {
+    width: 62em;
+    margin: auto;
+}
+
+.banner {
+    position: relative;
+}
+
+    .banner h1 {
+        color: #222;
+        -ms-text-shadow: 2px 5px 3px #555;
+        text-shadow: 2px 5px 3px #555;
+    }
+
+.banner span {
+        position: absolute;
+        right: 10px;
+        bottom: 0px;
+        font-style: italic;
+        font-weight: 600;
+    }
+
+        .banner span img {
+            width: 80px;
+            height: auto;
+            margin: auto;
+            display: block;
+        }
+
+.navbar-right i {
+    color: #000;
+}
+
+    .navbar-right i:hover,
+    .navbar-right i:focus,
+    .navbar-right i:active {
+        color: #2F4F2F;
+    }
+
+.content-section {
+    background-color: #FFFFFF;
+}
+
+.content {
+    width: 60em;
+    margin: auto;
+    padding: 7px;
+    padding-left: 10px;
+    border: solid #BCED91;
+    border-width: 4px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border-top: none;
+    border-bottom: none;
+}
+
+h1 {
+    padding-top: 8px;
+    font-size: 5em;
+}
+
+.navigation {
+    padding-bottom: 5px;
+}
+
+    .navigation .btn {
+        width: 7em;
+    }
+
+h1, h2, h3, h4, h5 {
+    font-family: Impact, sans-serif;
+}
+
+.btn-block {
+    border-color: #222;
+}
+
+.blog-preview div {
+    padding: 3px;
+    border: thin dotted #000000;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.blog-preview {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    padding: 5px;
+    border: thin solid #2f4f4f;
+}
+
+
+.blog-entry h5.date {
+    text-align: right;
+}
+
+code span {
+    display: block;
+}
+
+code > span {
+    margin-left: 3px;
+}
+
+    code > span > span {
+        margin-left: 10px;
+        padding-left: 3px;
+        border-left: thin dotted #c0c0c0;
+    }
+
+        code > span > span > span {
+            margin-left: 10px;
+            padding-left: 3px;
+            border-left: thin dotted #c0c0c0;
+        }
+
+            code > span > span > span > span {
+                margin-left: 10px;
+                padding-left: 3px;
+                border-left: thin dotted #c0c0c0;
+            }

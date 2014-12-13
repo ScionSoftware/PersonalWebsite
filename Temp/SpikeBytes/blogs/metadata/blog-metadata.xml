@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Blog>
+  <Entry Name="chess-sharp-beta"></Entry>
+  <Entry Name="generate-entity-sql"></Entry>
+  <Entry Name="business-analysis-paralysis"></Entry>
+  <Entry Name="computer-science-terms-1"></Entry>
+  <Entry Name="sql-performance-tips"></Entry>
+  <Entry Name="middle-eastern-scapegoat"></Entry>
+  <Entry Name="too-little-butter-too-much-bread"></Entry>
+  <Entry Name="an-intro-to-redis"></Entry>
+  <Entry Name="hello-world"></Entry>
+</Blog>
