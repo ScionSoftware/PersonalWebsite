@@ -128,10 +128,6 @@
     <Content Include="Angular\services\ReadingService.js" />
     <Content Include="Angular\SpikeBytes.js" />
     <Content Include="Angular\SpikeBytes.min.js" />
-    <Content Include="Angular\Templates\About.html" />
-    <Content Include="Angular\Templates\Main.html" />
-    <Content Include="Angular\Templates\reading.html" />
-    <Content Include="Angular\Templates\Resume.html" />
     <Content Include="blogs\an-intro-to-redis.html" />
     <Content Include="blogs\business-analysis-paralysis.html" />
     <Content Include="blogs\chess-sharp-beta.html" />
@@ -204,6 +200,7 @@
     <Content Include="Scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Angular\Templates\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>

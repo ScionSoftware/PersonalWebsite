@@ -13,20 +13,44 @@ var resumeCtrl = function ($scope) {
     var testing = ['NUnit', 'Moq', 'jasmine', 'mocha', 'zombie.js'];
     var source = ['Git', 'SVN', 'Mercurial'];
     var misc = ['Ninject', 'Regex', 'Mercurial'];
-    
+
     resume.skills = [
-        'C#', 'Visual Basic', 'IIS',
-        'javascript', 'jQuery',
+        'C#',
+        'VB',
+        'JavaScript',
+        'jQuery',
+        'Bootstrap',
         'AngularJS',
-        'Web Forms', 'MVC',
-        'Entity Framework', 'Dapper', 'ADO.NET',
-        'jasmine, mocha',
-        'NUnit, Moq',
+        'Web Forms',
+        'Windows Forms',
+        'MVC',
+        'WebAPI',
+        'NServiceBus',
+        'Entity Framework',
+        'Dapper',
+        'ADO.NET',
+        'jasmine',
+        'mocha',
+        'NUnit',
+        'Moq',
         'Ninject',
-        'TSQL', 'SSMS',
-        'Regex',
-        'SVN', 'Git', 'Mercurial',
-        'Azure'
+        'Castle Windsor',
+        'TSQL',
+        'SSMS',
+        'Visual Studio',
+        'Sql Server',
+        'MongoDb',
+        'RavenDb',
+        'Redis',
+        'SVN',
+        'TFS',
+        'Git',
+        'Mercurial',
+        'Azure',
+        'Regular Expressions',
+        'NuGet',
+        'Excel',
+        'IIS'
     ];
 
     var setupJob = function (company, title, startDate, endDate) {
@@ -34,10 +58,16 @@ var resumeCtrl = function ($scope) {
     };
     var liazon = setupJob('Liazon', 'Software Engineer', "February '14", 'Present');
     liazon.duties = [
-        'Convert existing razor views to angular',
-        'Work on service oriented architecture initiative'
+        'Part of the architecture and scalability team',
+        'Utilize WebAPI and NServiceBus to implement Service Oriented Architecture',
+        'Architect APIs and Single Page Applications with AngularJS',
+        'Write a central configuration service for shared data and service discovery',
+        'Train others on client side architecture and clean code',
+        'Requirements analysis and architecture for large scale initiatives',
+        'Presentations and classes on various technologies and paradigms',
+        'Setup and configure NuGet and Extensions repository'
     ];
-    var localEdge = setupJob('LocalEdge', 'Programmer I', "December '12", 'Present');
+    var localEdge = setupJob('LocalEdge', 'Programmer I', "December '12", "March '14");
     localEdge.duties = [
         'Clean and optimize existing C#, JavaScript, and TSQL code base',
         'Concurrent programming with features from .NET 3.5 to 4.5',
@@ -57,7 +87,7 @@ var resumeCtrl = function ($scope) {
 	    'Deploy projects and patches to production and staging environments',
 	    'Optimize new and existing SQL queries and procedures to reduce overhead'
     ];
-    var laptopTechnican = setupJob('Technology Services, Alfred State', 'Laptop Technician', "August '10","May '11");
+    var laptopTechnican = setupJob('Technology Services, Alfred State', 'Laptop Technician', "August '10", "May '11");
     laptopTechnican.duties = [
 	    'Configured and deployed client and student laptops',
         'Analyzed and resolved hardware/software problems',

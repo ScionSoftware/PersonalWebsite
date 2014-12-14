@@ -14,6 +14,11 @@
             padding-left: 4px;
         }
 
+        .boxed-list-items li {
+            border: .08em solid #dddddd;
+            margin: 1px;
+        }
+
         .resume #jobs {
             border-left: thin dotted #000000;
             border-bottom: thin dotted #000000;
@@ -39,7 +44,7 @@
 <div class="resume row" ng-controller="ResumeCtrl" >
     <div id="skills">
         <h3>Skills</h3>
-        <ul>
+        <ul class="list-inline boxed-list-items">
             <li ng-repeat="skill in resume.skills">
                 {{skill}}
             </li>
