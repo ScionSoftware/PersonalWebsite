@@ -1,9 +1,15 @@
 ﻿body {
-    background-color: #A6D785;
+    background-color: #000000;
     margin: 0;
     padding: 0;
     padding-bottom: 10px;
-    border-top: black medium solid;
+
+    background-image: url('/img/banner.png');
+    background-repeat: no-repeat;
+    background-size: 960px 215px;
+    -moz-background-position-x: center;
+    -o-background-position-x: center;
+    background-position-x: center;
 }
 
 html {
@@ -23,6 +29,7 @@ html {
 
 .banner {
     position: relative;
+    height: 170px;
 }
 
     .banner h1 {
@@ -45,19 +52,26 @@ html {
             margin: auto;
             display: block;
         }
-
-.navbar-right i {
-    color: #000;
+        
+.navbar-left {
+    z-index: 9999;
+    margin-top: -3px;
 }
 
-    .navbar-right i:hover,
-    .navbar-right i:focus,
-    .navbar-right i:active {
+.fa-stack  i {
+    z-index: 9999;
+    color: #FFF;
+    margin-top: 3px;
+}
+
+    .fa-stack i:hover,
+    .fa-stack i:focus,
+    .fa-stack i:active {
         color: #2F4F2F;
     }
 
 .content-section {
-    background-color: #FFFFFF;
+    /*background-color: #FFFFFF;*/
 }
 
 .content {
@@ -71,6 +85,8 @@ html {
     background-color: #ffffff;
     border-top: none;
     border-bottom: none;
+
+    opacity: 0.85;
 }
 
 h1 {
@@ -95,8 +111,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .blog-preview div {
-    padding: 3px;
-    border: thin dotted #000000;
+    padding: 4px;
+    /*border: thin dotted #000000;*/
     max-height: 200px;
     overflow: hidden;
 }
@@ -107,7 +123,7 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 5px;
     -ms-border-radius: 3px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 6px;
     border: thin solid #2f4f4f;
 }
 
