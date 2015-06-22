@@ -122,6 +122,7 @@
     <Content Include="Angular\BlogController.js" />
     <Content Include="Angular\Directives\Templates\Blog.html" />
     <Content Include="Angular\MainController.js" />
+    <Content Include="Angular\MenuController.js" />
     <Content Include="Angular\ReadingController.js" />
     <Content Include="Angular\ResumeController.js" />
     <Content Include="Angular\services\BlogService.js" />

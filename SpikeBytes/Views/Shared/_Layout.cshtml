@@ -17,7 +17,8 @@
     <script src="/angular/AboutController.js"></script>
     <script src="/angular/ResumeController.js"></script>
     <script src="/angular/ReadingController.js"></script>
-    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="/Angular/MenuController.js"></script>
+    <script src="/Scripts/jquery-2.1.1.js"></script>
 
     <!--198.199.90.151-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/css/site.css" rel="stylesheet" />
-    <link href="~/css/media-styles.css" rel="stylesheet" />
+    <link href="/css/media-styles.css" rel="stylesheet" />
 
     <script>
         //(function (i, s, o, g, r, a, m) {
@@ -35,7 +36,7 @@
         //    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         //})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        //ga('create', 'UA-46796330-1', 'Spikebytes.me');
+        //ga('create', 'UA-46796330-1', 'spykebytes.me');
         //ga('send', 'pageview');
 
         //var _trackPageView = function (pageName) {
@@ -98,40 +99,56 @@
             </div>
 
             <div class="mobile-navigation mobile">
-                <ul>
-                    <li class="list-title">Navigate</li>
-                    <li>
+                <ul class="navigation-hamburger hamburger" ng-controller="Menu" ng-mouseout="handleMouseOut()" ng-mouseover="cancelMouseOut()">
+                    <li class="burger-button" ng-click="toggleMenu()">
+                        <h4>Navigate</h4>
+                        <i class="fa fa-align-justify fa-2x"></i>
+                    </li>
+                    <li ng-hide="!showMenu">
                         <ul>
-                            <li><a href="/" id="homeTab" class="btn btn-primary">Blog</a></li>
-                            <li><a href="/About" id="aboutTab" class="btn btn-primary">About</a></li>
-                            <li><a href="/Resume" id="resumeTab" class="btn btn-primary">Resume</a></li>
-                            <li><a href="/Reading" id="readingTab" class="btn btn-primary">Reading</a></li>
+                            <li><a href="/">Blog</a></li>
+                            <li><a href="/About">About</a></li>
+                            <li><a href="/Resume">Resume</a></li>
+                            <li><a href="/Reading">Reading</a></li>
                         </ul>
                     </li>
-                    <li class="list-title">Get in touch</li>
-                    <li>
-                        <span class="fa-stack fa-lg">
-                            <a href="http://github.com/SpykeBytes" target="_blank"><i class="fa fa-stack-2x fa-github"></i></a>
-                        </span>
-                        <span class="fa-stack fa-lg">
-                            <a href="http://twitter.com/SpykeBytes" target="_blank"><i class="fa fa-twitter fa-stack-2x"></i></a>
-                        </span>
-                        <span class="fa-stack fa-lg">
-                            <a href="http://www.linkedin.com/in/cphiggins" target="_blank"><i class="fa fa-stack-2x fa-linkedin"></i></a>
-                        </span>
-                        <span class="fa-stack fa-lg">
-                            <a href="http://stackoverflow.com/users/1659016/Spykebytes" target="_blank"><i class="fa fa-stack-2x fa-stack-overflow"></i></a>
-                        </span>
+                </ul>
+                <ul class="contact-hamburger hamburger" ng-controller="Menu" ng-mouseout="handleMouseOut()" ng-mouseover="cancelMouseOut()">
+                    <li class="burger-button" ng-click="toggleMenu()">
+                        <h4>Follow me</h4> 
+                        <i class="fa fa-align-justify fa-2x"></i>
+                    </li>
+                    <li ng-hide="!showMenu">
+                        <div class="fa-lg">
+                            <a href="http://github.com/SpykeBytes" target="_blank">
+                                <i class="fa fa-github fa-2x"></i> Github
+                            </a>
+                        </div>
+                        <div class="fa-lg">
+                            <a href="http://twitter.com/SpykeBytes" target="_blank">
+                                <i class="fa fa-twitter fa-2x"></i> Twitter
+                            </a>
+                        </div>
+                        <div class="fa-lg">
+                            <a href="http://www.linkedin.com/in/cphiggins" target="_blank">
+                                <i class="fa fa-linkedin fa-2x"></i> LinkedIn
+                            </a>
+                        </div>
+                        <div class="fa-lg">
+                            <a href="http://stackoverflow.com/users/1659016/Spykebytes" target="_blank">
+                                <i class="fa fa-stack-overflow fa-2x"></i> <span class="overflow-text">StackOverflow</span>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>
 
             <div class="banner">
                 @*                <h1>SpikeBytes</h1>
-                <span>
-                    <img src="/img/abstractgalaxy.png" />
-                    <small>Spaced out programmer</small>
-                </span>*@
+                    <span>
+                        <img src="/img/abstractgalaxy.png" />
+                        <small>Spaced out programmer</small>
+                    </span>*@
             </div>
         </div>
     </div>
