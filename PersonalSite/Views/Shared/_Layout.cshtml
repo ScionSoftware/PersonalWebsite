@@ -7,11 +7,12 @@
 
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
-    <script src="/Scripts/angular-touch.min.js"></script>
+    <script src="/js/angular-touch.min.js"></script>
 
     <script src="/angular/SpikeBytes.js"></script>
     <script src="/angular/services/BlogService.js"></script>
     <script src="/angular/services/ReadingService.js"></script>
+    <script src="/angular/directives/hnTap.js"></script>
     <script src="/angular/MainController.js"></script>
     <script src="/angular/BlogController.js"></script>
     <script src="/angular/AboutController.js"></script>
@@ -74,33 +75,9 @@
                 </span>
             </div>
 
-            <div class="transitional-navigation transitional">
-                <div class="btn-group navbar-center">
-                    <a href="/" id="homeTab" class="btn btn-primary">Blog</a>
-                    <a href="/About" id="aboutTab" class="btn btn-primary">About</a>
-                    <a href="/Resume" id="resumeTab" class="btn btn-primary">Resume</a>
-                    <a href="/Reading" id="readingTab" class="btn btn-primary">Reading</a>
-                </div>
-
-                <div class="navbar-center">
-                    <span class="fa-stack fa-lg">
-                        <a href="http://github.com/SpykeBytes" target="_blank"><i class="fa fa-stack-2x fa-github"></i></a>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <a href="http://twitter.com/SpykeBytes" target="_blank"><i class="fa fa-twitter fa-stack-2x"></i></a>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <a href="http://www.linkedin.com/in/cphiggins" target="_blank"><i class="fa fa-stack-2x fa-linkedin"></i></a>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <a href="http://stackoverflow.com/users/1659016/Spykebytes" target="_blank"><i class="fa fa-stack-2x fa-stack-overflow"></i></a>
-                    </span>
-                </div>
-            </div>
-
             <div class="mobile-navigation mobile">
                 <ul class="navigation-hamburger hamburger" ng-controller="Menu" ng-mouseout="handleMouseOut()" ng-mouseover="cancelMouseOut()">
-                    <li class="burger-button" ng-click="toggleMenu()">
+                    <li class="burger-button" hn-tap="toggleMenu()">
                         <h4>Navigate</h4>
                         <i class="fa fa-align-justify fa-2x"></i>
                     </li>
@@ -114,7 +91,7 @@
                     </li>
                 </ul>
                 <ul class="contact-hamburger hamburger" ng-controller="Menu" ng-mouseout="handleMouseOut()" ng-mouseover="cancelMouseOut()">
-                    <li class="burger-button" ng-click="toggleMenu()">
+                    <li class="burger-button" hn-tap="toggleMenu()">
                         <h4>Follow me</h4> 
                         <i class="fa fa-align-justify fa-2x"></i>
                     </li>

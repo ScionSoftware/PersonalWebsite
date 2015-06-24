@@ -6,20 +6,21 @@
     display: none;
 }
 
-    img {
-        max-width: 95%;
-    }
-
-@media (max-width: 57em) {
-  .navigation, .header-content, .content-section {
-      width: 100%;
-  }  
-  .content {
-      width: 98%;
-  }
+img {
+    max-width: 95%;
 }
 
-@media (max-width: 47em) {
+@media (max-width: 57em) {
+    .navigation, .header-content, .content-section {
+        width: 100%;
+    }
+
+    .content {
+        width: 98%;
+    }
+}
+
+/*@media (max-width: 47em) {
     .desktop, .mobile {
         display: none;
     }
@@ -36,15 +37,17 @@
     .navbar-center {
         margin: auto;
     }
-}
+}*/
 
-@media (max-width: 44em) {
+@media (max-width: 47em) {
     .desktop, .transitional {
         display: none;
     }
+
     .mobile {
         display: initial;
     }
+
     .content-section {
         margin-top: -30px;
     }
@@ -73,11 +76,11 @@
     width: 100%;
 }
 
-.mobile-navigation .navigation-hamburger a {
-    font-weight: 800;
-    padding-left: 15px;
-    padding-top: 15px;
-}
+    .mobile-navigation .navigation-hamburger a {
+        font-weight: 800;
+        padding-left: 15px;
+        padding-top: 15px;
+    }
 
 .mobile-navigation .contact-hamburger {
     position: absolute;
@@ -93,38 +96,38 @@
     padding: 6px;
 }
 
-.mobile-navigation .burger-button h4 {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
+    .mobile-navigation .burger-button h4 {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
 
-.mobile-navigation .burger-button:hover {
-    color: #ffffff;
-    background-color: #111111;
-}
+    .mobile-navigation .burger-button:hover {
+        color: #ffffff;
+        background-color: #111111;
+    }
 
 .mobile-navigation li {
     width: 100%;
     padding: 0;
     margin: 0;
-    height: 50px;
+    height: 47px;
 }
 
-.mobile-navigation li a {
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    display: block;
-    text-decoration: none;
-    color: #000000;
-    background-color: #008080;
-}
+    .mobile-navigation li a {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        display: block;
+        text-decoration: none;
+        color: #000000;
+        background-color: #008080;
+    }
 
-.mobile-navigation li a:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
+        .mobile-navigation li a:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
 
 span.overflow-text {
     font-size: .8em;
@@ -136,6 +139,20 @@ span.overflow-text {
     display: block;
 }
 
-.mobile-navigation .navigation-hamburger div a {
-    display: block;
+    .mobile-navigation .navigation-hamburger div a {
+        display: block;
+    }
+
+.burger-button {
+    vertical-align: middle;
+}
+
+.navigation-hamburger .burger-button {
+}
+.navigation-hamburger .burger-button h4, .navigation-hamburger .burger-button i {
+}
+.contact-hamburger .burger-button {
+}
+.contact-hamburger .burger-button h4, .contact-hamburger .burger-button i {
+    
 }
