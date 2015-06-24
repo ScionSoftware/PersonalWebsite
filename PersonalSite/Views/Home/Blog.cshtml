@@ -4,4 +4,9 @@
     ViewBag.Title = Model.Name;
 }
 
+@section PageBanner {
+    <br/>
+    <h2 style="color: #fff; position: absolute; bottom: 15px;">@Model.Name</h2>
+}
+
 @Html.Raw(Model.Content)

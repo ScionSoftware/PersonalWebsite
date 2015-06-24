@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Name="automate-or-you-are-not-professional"></Entry>
   <Entry Name="chess-sharp-beta"></Entry>
   <Entry Name="generate-entity-sql"></Entry>
   <Entry Name="business-analysis-paralysis"></Entry>

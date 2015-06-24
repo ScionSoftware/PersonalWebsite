@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="Angular\AboutController.js" />
     <Content Include="Angular\BlogController.js" />
+    <Content Include="Angular\Directives\hnTap.js" />
     <Content Include="Angular\Directives\Templates\Blog.html" />
     <Content Include="Angular\MainController.js" />
     <Content Include="Angular\MenuController.js" />
@@ -119,6 +120,8 @@
     <Content Include="blogs\computer-science-terms-1.html" />
     <Content Include="blogs\generate-entity-sql.html" />
     <Content Include="blogs\hello-world.html" />
+    <Content Include="blogs\automate-or-you-are-not-professional.html" />
+    <Content Include="blogs\in-progress\take-in-what-makes-you-stronger.html" />
     <Content Include="blogs\metadata\blog-metadata.xml" />
     <Content Include="blogs\middle-eastern-scapegoat.html" />
     <Content Include="blogs\sql-performance-tips.html" />
@@ -200,8 +203,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="js\angular-route.min.js.map" />
+    <Content Include="js\angular-touch.js" />
+    <Content Include="js\angular-touch.min.js" />
     <Content Include="js\angular.min.js.map" />
     <Content Include="README.md" />
+    <Content Include="js\angular-touch.min.js.map" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />
@@ -293,7 +299,6 @@
   <ItemGroup>
     <Folder Include="Angular\Templates\" />
     <Folder Include="App_Data\" />
-    <Folder Include="blogs\in-progress\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
