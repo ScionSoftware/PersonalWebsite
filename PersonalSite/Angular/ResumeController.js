@@ -17,6 +17,8 @@ var resumeCtrl = function ($scope) {
     resume.skills = [
         'C#',
         'VB',
+        'Node.js',
+        'Express',
         'JavaScript',
         'jQuery',
         'Bootstrap',
@@ -56,7 +58,20 @@ var resumeCtrl = function ($scope) {
     var setupJob = function (company, title, startDate, endDate) {
         return { company: company, title: title, startDate: startDate, endDate: endDate };
     };
-    var liazon = setupJob('Liazon', 'Software Engineer', "February '14", 'Present');
+    var paylocity = setupJob('Paylocity', 'Software Engineer', "January '15", 'Present');
+    paylocity.duties = [
+        'Implement new import features with proprietary framework',
+        'Utilize MVC, Web API, jQuery, and Entity Framework',
+        'Architect web services, web service clients, and nuget packages',
+        'Write unit tests, integration tests, and dynamic codebase tests'
+    ];
+    var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", 'Present');
+    layerframe.duties = [
+        'Utilize angular, node, mongodb, express, parse and mixpanel',
+        'Write, maintain, and enhance sales tools for large clients',
+        'Write tools to limit or remove manual work for project managers'
+    ];
+    var liazon = setupJob('Liazon', 'Software Engineer', "February '14", "January '15");
     liazon.duties = [
         'Part of the architecture and scalability team',
         'Utilize WebAPI and NServiceBus to implement Service Oriented Architecture',
@@ -103,6 +118,8 @@ var resumeCtrl = function ($scope) {
         'Developed and refined mediation and conflict resolution skills'
     ];
 
+    resume.jobs.push(paylocity);
+    resume.jobs.push(layerframe);
     resume.jobs.push(liazon);
     resume.jobs.push(localEdge);
     resume.jobs.push(algonquin);
