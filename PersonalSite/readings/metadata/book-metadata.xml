@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Book>
+  <Entry Name="implementing-domain-driven-design"></Entry>
+  <Entry Name="being-geek"></Entry>
+  <Entry Name="clean-code"></Entry>
+  <Entry Name="csharp-in-depth"></Entry>
+  <Entry Name="why-a-students-work-for-c-students"></Entry>
+  <Entry Name="the-new-kingmakers"></Entry>
+  <Entry Name="the-pragmatic-programmer"></Entry>
+  <Entry Name="algorithms-in-a-nutshell"></Entry>
+  <Entry Name="mastering-regular-expressions"></Entry>
+  <Entry Name="effective-programming-more-than-writing-code"></Entry>
+  <Entry Name="javascript-the-good-parts"></Entry>
+</Book>

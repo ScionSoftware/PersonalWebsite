@@ -16,6 +16,12 @@ namespace SpikeBytes.Controllers
         public string Content { get; set; }
     }
 
+    public class BookViewModel
+    {
+        public string Name { get; set; }
+        public string Content { get; set; }
+    }
+
     public class HomeViewModel
     {
         public BlogMetadataViewModel[] Metadatas { get; set; }
@@ -52,6 +58,36 @@ namespace SpikeBytes.Controllers
             var content = System.IO.File.ReadAllText(potentialEntry);
 
             return content;
+        }
+        private string GetBookContent(string name)
+        {
+            var blogDirectory = Server.MapPath("~/readings");
+
+            var potentialEntry = blogDirectory + "\\" + name + ".html";
+
+            if (!System.IO.File.Exists(potentialEntry))
+                return null;
+
+            var content = System.IO.File.ReadAllText(potentialEntry);
+
+            return content;
+        }
+
+        private List<BookViewModel> GetOrderedBooks()
+        {
+            var metadataDirectory = Server.MapPath("~/readings/metadata");
+
+            var metadataPath = metadataDirectory + "/book-metadata.xml";
+
+            var blogMetaData = XElement.Load(metadataPath);
+
+            var entries = blogMetaData.Elements("Entry").Select(n =>
+                new BookViewModel()
+                {
+                    Name = n.Attribute("Name").Value,
+                    Content = GetBookContent(n.Attribute("Name").Value)
+                }).ToList();
+            return entries;
         }
 
         [HttpGet]
@@ -137,7 +173,8 @@ namespace SpikeBytes.Controllers
         [HttpGet]
         public ActionResult Reading()
         {
-            return View();
+            var model = GetOrderedBooks();
+            return View(model);
         }
 
     }
