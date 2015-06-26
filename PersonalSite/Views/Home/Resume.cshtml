@@ -2,44 +2,7 @@
     ViewBag.Title = "Resume";
 }
 
-<style>
-    .resume {
-        padding: 10px;
-    }
-
-        .resume #skills {
-            display: inline-block;
-            float: left;
-            width: 20%;
-            padding-left: 4px;
-        }
-
-        .boxed-list-items li {
-            border: .08em solid #dddddd;
-            margin: 1px;
-        }
-
-        .resume #jobs {
-            border-left: thin dotted #000000;
-            border-bottom: thin dotted #000000;
-            display: inline-block;
-            float: left;
-            padding: 6px;
-            width: 75%;
-        }
-
-    #jobs .job {
-        margin-bottom: 8px;
-    }
-
-        #jobs .job div label {
-            display: inline-block;
-        }
-
-        #jobs .job div span {
-            float: right;
-        }
-</style>
+<link href="/css/resume-styles.css" rel="stylesheet" />
 
 <div class="resume row" ng-controller="ResumeCtrl" >
     <div id="skills">
