@@ -1,5 +1,4 @@
-﻿@model SpikeBytes.Controllers.HomeViewModel
-
+﻿@model PersonalSite.Models.HomeViewModel
 @{
     ViewBag.Title = "Index";
 
@@ -28,7 +27,11 @@
 
             <a href="/Blog/@preview.Name" class="btn btn-success btn-xs pull-right">Read more</a>
 
-            <div>@Html.Raw(preview.Content)</div>
+            <h5 class="date">@preview.PublishedDisplay</h5>
+
+            <div>
+                @Html.Raw(preview.Content)
+            </div>
 
         </div>
     }
@@ -38,6 +41,8 @@
         <h3 style="display: inline-block;">{{blog.Name}}</h3>
 
         <a href="/Blog/{{blog.Name}}" class="btn btn-success btn-xs pull-right">Read more</a>
+
+        <h5 class="date">{{blog.PublishedDisplay}}</h5>
 
         <div ng-bind-html="blog.Content | unsafe"></div>
 
@@ -50,7 +55,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#homeTab').addClass('active');
     });
 

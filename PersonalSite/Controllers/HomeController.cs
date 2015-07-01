@@ -1,47 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using PersonalSite.Models;
 
-namespace SpikeBytes.Controllers
+namespace PersonalSite.Controllers
 {
-    public class BlogMetadataViewModel
-    {
-        public string Name { get; set; }
-    }
-
-    public class BlogViewModel
-    {
-        public string Name { get; set; }
-        public string Content { get; set; }
-    }
-
-    public class BookViewModel
-    {
-        public string Name { get; set; }
-        public string Content { get; set; }
-    }
-
-    public class HomeViewModel
-    {
-        public BlogMetadataViewModel[] Metadatas { get; set; }
-        public BlogViewModel[] Previews { get; set; }
-    }
-
     public class HomeController : Controller
     {
-        private const int previewGroupAmount = 3;
+        private const int PreviewGroupAmount = 3;
 
         [HttpGet]
         public JsonResult PreviewsByIndex(int index)
         {
             var entries = GetOrderedBlogMetadata();
 
-            var toSkip = previewGroupAmount*index;
+            var toSkip = PreviewGroupAmount*index;
 
-            var previewsToRetrieve = entries.Skip(toSkip).Take(previewGroupAmount);
+            var previewsToRetrieve = entries.Skip(toSkip).Take(PreviewGroupAmount);
 
-            var previews = previewsToRetrieve.Select(i => new BlogViewModel() { Name = i.Name, Content = GetBlogContent(i.Name) });
+            var previews = 
+                previewsToRetrieve
+                .Select(i => new BlogViewModel()
+                {
+                    Name = i.Name, 
+                    Published = i.Published,
+                    Content = GetBlogContent(i.Name)
+                });
 
             return Json(previews, JsonRequestBehavior.AllowGet);
         }
@@ -100,7 +86,7 @@ namespace SpikeBytes.Controllers
             var model = new HomeViewModel()
             {
                 Metadatas = entries,
-                Previews = previews.ToArray()
+                Previews = previews.ToArray(),
             };
 
             return View(model);
@@ -117,7 +103,11 @@ namespace SpikeBytes.Controllers
                 var content = GetBlogContent(entry.Name);
 
                 if (content != null)
-                    previews.Add(new BlogViewModel() {Content = content, Name = entry.Name});
+                    previews.Add(new BlogViewModel()
+                    {
+                        Content = content, Name = entry.Name,
+                        Published = entry.Published
+                    });
 
                 if (amount < 1)
                     break;
@@ -136,8 +126,12 @@ namespace SpikeBytes.Controllers
             var entries = blogMetaData.Elements("Entry").Select(n =>
                 new BlogMetadataViewModel()
                 {
-                    Name = n.Attribute("Name").Value
-                }).ToArray();
+                    Name = n.Attribute("Name").Value,
+                    Published = DateTime.Parse(n.Attribute("Published").Value)
+                })
+                .Where(i => i.Published <= DateTime.Now)
+                .ToArray();
+
             return entries;
         }
 
@@ -149,10 +143,15 @@ namespace SpikeBytes.Controllers
             if (content == null)
                 return RedirectToAction("Index");
 
+            var entry = 
+                GetOrderedBlogMetadata()
+                .Single(i => i.Name == name);
+
             var model = new BlogViewModel()
             {
                 Content = content,
-                Name = name
+                Name = name,
+                Published = entry.Published
             };
 
             return View(model);

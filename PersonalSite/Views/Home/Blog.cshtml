@@ -1,4 +1,4 @@
-﻿@model SpikeBytes.Controllers.BlogViewModel
+﻿@model PersonalSite.Models.BlogViewModel
 
 @{
     ViewBag.Title = Model.Name;
@@ -7,5 +7,7 @@
 @section PageBanner {
     <h2 style="color: #fff; position: absolute; top: 40px;">@Model.Name</h2>
 }
+
+<h5 class="date">@Model.PublishedDisplay</h5>
 
 @Html.Raw(Model.Content)
