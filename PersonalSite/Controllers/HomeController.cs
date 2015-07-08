@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 using System.Xml.Linq;
 using PersonalSite.Models;
 
@@ -16,15 +17,15 @@ namespace PersonalSite.Controllers
         {
             var entries = GetOrderedBlogMetadata();
 
-            var toSkip = PreviewGroupAmount*index;
+            var toSkip = PreviewGroupAmount * index;
 
             var previewsToRetrieve = entries.Skip(toSkip).Take(PreviewGroupAmount);
 
-            var previews = 
+            var previews =
                 previewsToRetrieve
                 .Select(i => new BlogViewModel()
                 {
-                    Name = i.Name, 
+                    Name = i.Name,
                     Published = i.Published,
                     Content = GetBlogContent(i.Name)
                 });
@@ -105,7 +106,8 @@ namespace PersonalSite.Controllers
                 if (content != null)
                     previews.Add(new BlogViewModel()
                     {
-                        Content = content, Name = entry.Name,
+                        Content = content,
+                        Name = entry.Name,
                         Published = entry.Published
                     });
 
@@ -138,18 +140,23 @@ namespace PersonalSite.Controllers
         [HttpGet]
         public ActionResult Blog(string name)
         {
-            var content = GetBlogContent(name);
-
-            if (content == null)
-                return RedirectToAction("Index");
-
-            var entry = 
+            var entry =
                 GetOrderedBlogMetadata()
-                .Single(i => i.Name == name);
+                .SingleOrDefault(i => i.Name == name);
+
+            if (entry == null)
+            {
+                return View(new BlogViewModel()
+                {
+                    Name = "there-seems-to-be-nothing-here",
+                    Published = DateTime.Now.Date,
+                    Content = GetBlogContent("_404_blog"),
+                });
+            }
 
             var model = new BlogViewModel()
             {
-                Content = content,
+                Content = GetBlogContent(name),
                 Name = name,
                 Published = entry.Published
             };

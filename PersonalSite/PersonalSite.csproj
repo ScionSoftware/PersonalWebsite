@@ -122,6 +122,7 @@
     <Content Include="blogs\business-analysis-paralysis.html" />
     <Content Include="blogs\chess-sharp-beta.html" />
     <Content Include="blogs\computer-science-terms-1.html" />
+    <Content Include="blogs\_404_blog.html" />
     <Content Include="blogs\generate-entity-sql.html" />
     <Content Include="blogs\hello-world.html" />
     <Content Include="blogs\automate-or-you-are-not-professional.html" />
