@@ -2,7 +2,8 @@
 var readingApiInstance = function ($http) {
 
     return {
-        getReadings: function (playerId) {
+        getReadings: function () {
+
             var readings = [];
             var addReading = function (path) {
                 readings.push({
@@ -21,20 +22,9 @@ var readingApiInstance = function ($http) {
             addReading('/readings/mastering-regular-expressions.html');
             addReading('/readings/effective-programming-more-than-writing-code.html');
             addReading('/readings/javascript-the-good-parts.html');
+
             return readings;
-        },
-        //getGame: function (gameId, onSuccess, onFailure) {
-        //    $http({
-        //        method: 'GET',
-        //        url: '/ChessApi/GetGame/' + gameId
-        //    })
-        //        .success(function (data) {
-        //            onSuccess(data);
-        //        })
-        //        .error(function (data) {
-        //            onFailure(data);
-        //        });
-        //},
+        }
     };
 };
 

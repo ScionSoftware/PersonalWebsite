@@ -219,10 +219,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="img\books\the-software-craftsman.jpg" />
     <Content Include="js\angular-route.min.js.map" />
     <Content Include="js\angular-touch.js" />
     <Content Include="js\angular-touch.min.js" />
     <Content Include="js\angular.min.js.map" />
+    <Content Include="readings\the-software-craftsman.html" />
     <Content Include="readings\metadata\book-metadata.xml" />
     <Content Include="README.md" />
     <Content Include="js\angular-touch.min.js.map" />

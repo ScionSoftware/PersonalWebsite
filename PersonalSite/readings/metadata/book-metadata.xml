@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Book>
+  <Entry Name="the-software-craftsman"></Entry>
   <Entry Name="implementing-domain-driven-design"></Entry>
   <Entry Name="being-geek"></Entry>
   <Entry Name="clean-code"></Entry>
