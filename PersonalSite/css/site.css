@@ -70,13 +70,12 @@ html {
         color: #2F4F2F;
     }
 
-.content-section {
-    /*background-color: #FFFFFF;*/
-}
-
 .content {
     width: 60em;
     margin: auto;
+}
+
+.main-content {
     padding: 7px;
     padding-left: 10px;
     border: solid #BCED91;
@@ -85,7 +84,6 @@ html {
     background-color: #ffffff;
     border-top: none;
     border-bottom: none;
-
     opacity: 0.85;
 }
 
