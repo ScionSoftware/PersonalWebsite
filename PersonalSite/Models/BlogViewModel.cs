@@ -24,5 +24,7 @@ namespace PersonalSite.Models
         public string Content { get; set; }
 
         public string PublishedDisplay { get; private set; }
+
+        public bool IsPreviewOnly { get; set; }
     }
 }

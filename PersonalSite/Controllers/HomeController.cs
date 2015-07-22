@@ -42,6 +42,34 @@ namespace PersonalSite.Controllers
         }
 
         [HttpGet]
+        public ActionResult PreviewBackdoor(string name)
+        {
+            var entry =
+                GetOrderedBlogMetadata(allowPreview: true)
+                .SingleOrDefault(i => i.Name == name);
+
+            if (entry == null)
+            {
+                return View(new BlogViewModel()
+                {
+                    Name = "there-seems-to-be-nothing-here",
+                    Published = DateTime.Now.Date,
+                    Content = GetBlogContent("_404_blog"),
+                });
+            }
+
+            var model = new BlogViewModel()
+            {
+                Content = GetBlogContent(name),
+                Name = name,
+                Published = entry.Published,
+                IsPreviewOnly = true,
+            };
+
+            return View("Blog", model);
+        }
+
+        [HttpGet]
         public ActionResult About()
         {
             return View();
@@ -165,7 +193,7 @@ namespace PersonalSite.Controllers
             return previews;
         }
 
-        private BlogMetadataViewModel[] GetOrderedBlogMetadata()
+        private BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false)
         {
             var metadataDirectory = Server.MapPath("~/blogs/metadata");
 
@@ -173,14 +201,15 @@ namespace PersonalSite.Controllers
 
             var blogMetaData = XElement.Load(metadataPath);
 
-            var entries = blogMetaData.Elements("Entry").Select(n =>
-                new BlogMetadataViewModel()
-                {
-                    Name = n.Attribute("Name").Value,
-                    Published = DateTime.Parse(n.Attribute("Published").Value)
-                })
-                .Where(i => i.Published <= DateTime.Now)
-                .ToArray();
+            var entries =
+                blogMetaData.Elements("Entry").Select(n =>
+                    new BlogMetadataViewModel()
+                    {
+                        Name = n.Attribute("Name").Value,
+                        Published = DateTime.Parse(n.Attribute("Published").Value)
+                    })
+                    .Where(i => i.Published <= DateTime.Now || allowPreview)
+                    .ToArray();
 
             return entries;
         }

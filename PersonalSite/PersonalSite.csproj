@@ -129,6 +129,7 @@
     <Content Include="blogs\business-analysis-paralysis.html" />
     <Content Include="blogs\chess-sharp-beta.html" />
     <Content Include="blogs\computer-science-terms-1.html" />
+    <Content Include="blogs\write-tests-by-playing-chess.html" />
     <Content Include="blogs\scrum-is-not-our-saviour.html" />
     <Content Include="blogs\turnover-is-good-for-innovation.html" />
     <Content Include="blogs\_404_blog.html" />
@@ -221,6 +222,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="img\books\the-software-craftsman.jpg" />
+    <Content Include="img\chess-test-case-files.png" />
+    <Content Include="img\test-generator.png" />
+    <Content Include="img\test-results-with-preview.png" />
     <Content Include="js\angular-route.min.js.map" />
     <Content Include="js\angular-touch.js" />
     <Content Include="js\angular-touch.min.js" />
