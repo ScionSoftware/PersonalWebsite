@@ -129,6 +129,7 @@
     <Content Include="blogs\business-analysis-paralysis.html" />
     <Content Include="blogs\chess-sharp-beta.html" />
     <Content Include="blogs\computer-science-terms-1.html" />
+    <Content Include="blogs\scion-software-llc.html" />
     <Content Include="blogs\write-tests-by-playing-chess.html" />
     <Content Include="blogs\scrum-is-not-our-saviour.html" />
     <Content Include="blogs\turnover-is-good-for-innovation.html" />
