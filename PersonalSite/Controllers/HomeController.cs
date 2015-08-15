@@ -50,7 +50,7 @@ namespace PersonalSite.Controllers
 
             if (entry == null)
             {
-                return View(new BlogViewModel()
+                return View("Blog", new BlogViewModel()
                 {
                     Name = "there-seems-to-be-nothing-here",
                     Published = DateTime.Now.Date,

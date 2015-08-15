@@ -3,7 +3,7 @@
 <html lang="en" ng-app="SpikeBytes">
 
 <head>
-    <title>Higgins Ninja</title>
+    <title>@(ViewBag.Title ?? "Higgins Ninja" + ViewBag.Addendum)</title>
 
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
@@ -94,7 +94,7 @@
                     </li>
                     <li ng-hide="!showMenu">
                         <div class="fa-lg">
-                            <a href="http://github.com/SpykeBytes" target="_blank">
+                            <a href="http://github.com/ScionSoftware" target="_blank">
                                 <i class="fa fa-github fa-2x"></i>Github
                             </a>
                         </div>

@@ -129,6 +129,8 @@
     <Content Include="blogs\business-analysis-paralysis.html" />
     <Content Include="blogs\chess-sharp-beta.html" />
     <Content Include="blogs\computer-science-terms-1.html" />
+    <Content Include="blogs\husband-dad-programmer.html" />
+    <Content Include="blogs\why-you-should-teach-programming.html" />
     <Content Include="blogs\scion-software-llc.html" />
     <Content Include="blogs\write-tests-by-playing-chess.html" />
     <Content Include="blogs\scrum-is-not-our-saviour.html" />
@@ -137,7 +139,6 @@
     <Content Include="blogs\generate-entity-sql.html" />
     <Content Include="blogs\hello-world.html" />
     <Content Include="blogs\automate-or-you-are-not-professional.html" />
-    <Content Include="blogs\in-progress\dont-dismiss-it-if-you-dont-know-it.html" />
     <Content Include="blogs\take-in-what-makes-you-stronger.html" />
     <Content Include="blogs\metadata\blog-metadata.xml">
       <SubType>Designer</SubType>
@@ -224,6 +225,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="img\books\the-software-craftsman.jpg" />
     <Content Include="img\chess-test-case-files.png" />
+    <Content Include="img\learning-pyramid.jpg" />
     <Content Include="img\test-generator.png" />
     <Content Include="img\test-results-with-preview.png" />
     <Content Include="js\angular-route.min.js.map" />
@@ -331,6 +333,7 @@
     <Folder Include="Angular\Templates\" />
     <Folder Include="App_Data\" />
     <Folder Include="blogs\archived\" />
+    <Folder Include="blogs\in-progress\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
