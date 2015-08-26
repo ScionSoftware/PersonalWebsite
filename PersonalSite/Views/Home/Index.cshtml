@@ -1,6 +1,6 @@
 ﻿@model PersonalSite.Models.HomeViewModel
 @{
-    ViewBag.Addendum = ": Blog";
+    ViewBag.Title = "Home";
 
     string archiveNames = "";
 
@@ -17,38 +17,87 @@
     archiveNames = (archiveNames + "#").Replace(",#", "");
 }
 
+<style>
+    .post {
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    .post-header h2 {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .post-share {
+        margin-bottom: 25px;
+    }
+
+    .preview-interstitial-ad {
+        margin-bottom: 25px;
+    }
+
+</style>
+
 <div ng-controller="MainCtrl" ng-init="archiveNameString = '@Html.Raw(archiveNames)'">
 
     @foreach (var preview in Model.Previews)
     {
-        <div class="blog-preview">
+        var shareUrl = ScionSoftware.Globals.MasterUrl + "/blog/" + preview.Name;
+        <article class="post">
+            <div class="post-header">
+                <h2><span>
+                    <a href="/Blog/@(preview.Name)">@preview.Name</a>
+                </span></h2>
+                <span class="date">@preview.PublishedDisplay</span>
+            </div>
 
-            <h3 style="display: inline-block;">@preview.Name</h3>
-
-            <a href="/Blog/@(preview.Name)" class="btn btn-success btn-xs pull-right">Read more</a>
-
-            <h5 class="date">@preview.PublishedDisplay</h5>
-
-            <div>
+            <div style="display: block;">
                 @Html.Raw(preview.Content)
             </div>
 
-        </div>
+            <div ss-social-share ss-url="@shareUrl" ss-title="@preview.Title"></div>
+        </article>
     }
 
-    <div ng-repeat="blog in displayed" class="blog-preview">
+    <div ng-repeat-start="blog in displayed"
+        ng-if="$index % 2 === 0"
+        class="preview-interstitial-ad">
 
-        <h3 style="display: inline-block;">{{blog.Name}}</h3>
-
-        <a href="/Blog/{{blog.Name}}" class="btn btn-success btn-xs pull-right">Read more</a>
-
-        <h5 class="date">{{blog.PublishedDisplay}}</h5>
-
-        <div ng-bind-html="blog.Content | unsafe"></div>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Blog Preview Interstitial -->
+        <ins class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-9074449405350285"
+            data-ad-slot="5088821253"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
     </div>
 
-    <div ng-hide="displayed.length === archiveNames.length">
+    <article class="post" ng-repeat-end>
+        <div class="post-header">
+            <h2>
+                <span>
+                    <a ng-href="/Blog/{{blog.Name}}">{{blog.Name}}</a>
+                </span>
+            </h2>
+            <span class="date">{{blog.PublishedDisplay}}</span>
+        </div>
+
+        <div style="display: block;">
+            <div ng-bind-html="blog.Content | unsafe"></div>
+        </div>
+
+        <div ss-social-share
+             ss-url="@(ScionSoftware.Globals.MasterUrl + "/blog/"){{blog.Name}}"
+             ss-title="{{blog.Title}}">
+        </div>
+    </article>
+
+
+    <div ng-hide="displayed.length === archiveNames.length" style="margin-bottom: 20px;">
         <button class="btn btn-block btn-info" ng-click="showMoreBlogs()">More</button>
     </div>
 </div>

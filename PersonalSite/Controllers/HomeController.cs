@@ -12,7 +12,7 @@ namespace PersonalSite.Controllers
     [MasterUrlRedirect]
     public class HomeController : Controller
     {
-        private const int PreviewGroupAmount = 3;
+        private const int PreviewGroupAmount = 2;
 
         [HttpGet]
         public ActionResult Blog(string name)
@@ -114,7 +114,7 @@ namespace PersonalSite.Controllers
         {
             var entries = GetOrderedBlogMetadata();
 
-            var previews = GetContentForBlogNames(entries, 3);
+            var previews = GetContentForBlogNames(entries, PreviewGroupAmount);
 
             var model = new HomeViewModel()
             {

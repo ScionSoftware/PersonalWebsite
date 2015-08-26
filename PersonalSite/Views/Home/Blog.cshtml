@@ -4,12 +4,28 @@
 }
 
 @section PageBanner {
-    <h2 style="color: #fff; position: absolute; top: 40px;">@Model.Name</h2>
+    <div class="post-header">
+        <h2><span>
+            <a href="/Blog/@(Model.Name)">@Model.Name</a>
+        </span></h2>
+        <span class="date">@Model.PublishedDisplay</span>
+    </div>
+
 }
 
-<h5 class="date">@Model.PublishedDisplay</h5>
+@*<h5 class="date">@Model.PublishedDisplay</h5>*@
+<article class="post">
 
-@Html.Raw(Model.Content)
+    <div style="display: block;">
+        @Html.Raw(Model.Content)
+    </div>
+
+    <div ss-social-share
+         ss-url="@(Request.Url.AbsoluteUri)"
+         ss-title="@(Model.Title)">
+    </div>
+
+</article>
 
 @if (!Model.IsPreviewOnly)
 {
@@ -17,7 +33,7 @@
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'higginsninja';
+        var disqus_shortname = 'scionsoftware';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
@@ -25,15 +41,7 @@
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-
-        var firstVisit = true;
-        $(window).scroll(function () {
-            if (firstVisit) {
-                window.scrollTo(0, 0);
-                firstVisit = false;
-            }
-        });
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-    
+
 }

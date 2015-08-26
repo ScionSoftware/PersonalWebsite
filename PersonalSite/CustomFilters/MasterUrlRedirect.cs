@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Text.RegularExpressions;
+﻿using System.Web.Mvc;
 using System.Linq;
 
 namespace PersonalSite.CustomFilters
@@ -10,19 +8,26 @@ namespace PersonalSite.CustomFilters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var requestUrl = filterContext.RequestContext.HttpContext.Request.Url;
-
+            var masterUrl = "scionsoftware.com";
+            
             var redirectPatterns = new[]
             {
                 "spykebytes.me",
                 "spykebytes.com",
-                "www.higginsninja"
+                "higginsninja.",
+                "www.scionsoftware",
+                "scionsoftware.co",
+                "scionsoftware.us",
+                "scionsoftware.net"
             };
 
-            var shouldRedirect = redirectPatterns.Any(i => requestUrl.Host.Contains(i));
+            var shouldRedirect =
+                redirectPatterns.Any(i => requestUrl.Host.Contains(i))
+                && !requestUrl.Host.Contains(masterUrl);
 
             if (shouldRedirect)
             {
-                var redirectUrl = "http://higginsninja.net" + requestUrl.PathAndQuery;
+                var redirectUrl = "http://" + masterUrl + requestUrl.PathAndQuery;
 
                 filterContext.Result = new RedirectResult(redirectUrl, permanent: true);
             }
