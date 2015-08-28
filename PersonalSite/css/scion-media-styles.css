@@ -18,21 +18,38 @@ img {
     max-width: 95%;
 }
 
+.show-on-mobile {
+    display: none !important;
+}
+
 @media (max-width: 1200px) {
     .desktop-max {
         display: none;
     }
 
-    .mobile, .transitional-max {
-        display: initial;
+    .show-on-mobile, .mobile, .transitional-max {
+        display: initial !important;
     }
+
+    #navigation .widget ul li:after {
+        padding-left: 2px;
+    }
+
+    .menu li {
+        margin-right: 2px;
+        padding: 0px;
+    }
+
+        .menu li:last-child {
+            margin-right: 0px;
+        }
 }
 
 @media (max-width: 600px) {
     .transitional-max {
         display: none;
     }
-
+    
     .mobile {
         display: initial;
     }
@@ -42,27 +59,28 @@ img {
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 447px) {
     .mobile-hide {
         display: none;
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 390px) {
+
     h1.title {
-        margin-top: -10px;
+        margin-top: -4px;
+    }
+    
+    #navigation .widget ul li:after {
+        padding-left: 2px;
     }
 
-    #navigation .widget ul li:after {
-        padding-left: 3px;
+    #navigation .container {
+        padding-right: 3px;
+        padding-left: 7px;
     }
 
     .menu li {
-        margin-right: 5px;
-        padding-left: 0px;
+        margin-right: 0px;
     }
-
-        .menu li:last-child {
-            margin-right: 0px;
-        }
 }

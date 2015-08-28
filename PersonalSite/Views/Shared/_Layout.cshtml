@@ -26,14 +26,19 @@
     <script src="/angular/SpikeBytes.js"></script>
     <script src="/angular/services/BlogService.js"></script>
     <script src="/angular/services/ReadingService.js"></script>
-    <script src="/angular/directives/hnTap.js"></script>
-    <script src="/angular/directives/ssSocialShare.js"></script>
     <script src="/angular/MainController.js"></script>
     <script src="/angular/BlogController.js"></script>
     <script src="/angular/AboutController.js"></script>
     <script src="/angular/ResumeController.js"></script>
     <script src="/angular/ReadingController.js"></script>
     <script src="/Angular/MenuController.js"></script>
+    <script src="/Angular/BlogArchiveController.js"></script>
+
+
+    <script src="/angular/directives/hnTap.js"></script>
+    <script src="/angular/directives/ssSocialShare.js"></script>
+    <script src="/angular/directives/ssBlogArchive.js"></script>
+
     <script src="/Scripts/jquery-2.1.1.js"></script>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
@@ -88,8 +93,9 @@
                     <ul class="menu">
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
-                        <li><a href="/reading">Reading</a></li>
+                        <li><a href="/reading">Books</a></li>
                         <li><a href="/resume">Resume</a></li>
+                        <li class="show-on-mobile"><a href="/archive">Archive</a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +103,7 @@
                 <div class="widget HTML" id="HTML10">
                     <span class="menu-item-styles transitional-max">Follow me:
                     </span>
-                    <a href="http://github.com/ScionSoftware" target="_blank">
+                    <a href="http://github.com/colin-higgins" target="_blank">
                         <i class="fa fa-github"></i>
                     </a>
                     <a href="http://twitter.com/SpykeBytes" target="_blank">
@@ -150,7 +156,7 @@
             </div>
         </div>
 
-        <div class="section desktop-max" id="sidebar">
+        <div class="section desktop-max sidebar">
             <div class="widget Text" id="Text1">
                 <h2 class="title"><span>About me</span></h2>
                 <div class="widget-content">
@@ -177,6 +183,18 @@
             </div>
 
         </div>
+
+        @if (ViewBag.HideArchive != false)
+        {
+            <div class="section desktop-max sidebar">
+                <div class="widget Text">
+                    <h2 class="title"><span>Archives</span></h2>
+                    <div class="widget-content">
+                        <div ss-blog-archive></div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 
 

@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Xml.Linq;
 using PersonalSite.Models;
 using PersonalSite.CustomFilters;
+using System.Globalization;
+using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace PersonalSite.Controllers
 {
@@ -76,6 +79,12 @@ namespace PersonalSite.Controllers
         }
 
         [HttpGet]
+        public ActionResult Archive()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Resume()
         {
             return View();
@@ -110,6 +119,86 @@ namespace PersonalSite.Controllers
         }
 
         [HttpGet]
+        public JsonResult GetArchives()
+        {
+            var entries = GetOrderedBlogMetadata();
+
+            var archives = new List<YearArchiveViewModel>();
+            var mfi = new DateTimeFormatInfo();
+
+            foreach (var entry in entries)
+            {
+                var yearItem = archives.SingleOrDefault(i => i.Year == entry.Published.Year);
+
+                if (yearItem == null)
+                {
+                    yearItem = new YearArchiveViewModel()
+                    {
+                        Year = entry.Published.Year,
+                        Text = entry.Published.Year.ToString(),
+                        Months = new List<MonthArchiveViewModel>()
+                    };
+
+                    archives.Add(yearItem);
+                }
+
+                var monthItem = yearItem.Months.SingleOrDefault(i => i.Month == entry.Published.Month);
+
+                if (monthItem == null)
+                {
+                    monthItem = new MonthArchiveViewModel()
+                    {
+                        Month = entry.Published.Month,
+                        Text = mfi.GetMonthName(entry.Published.Month),
+                        Articles = new List<BlogMetadataViewModel>()
+                    };
+
+                    yearItem.Months.Add(monthItem);
+                }
+
+                monthItem.Articles.Add(entry);
+            }
+
+            return Json(archives, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult RSS()
+        {
+            var entries = GetOrderedBlogMetadata(withDescription: true);
+
+            var rssItems = entries.Select(i => new RssFeedViewModel()
+            {
+                Title = i.Title,
+                Link = ScionSoftware.Globals.MasterBlogUrl + i.Name,
+                Description = i.Description,
+                PubDate = i.Published.RssFormat()
+            });
+
+            //TODO: use XElement
+            const string template = @"
+    <item>
+        <title>{0}</title>
+        <link>{1}</link>
+        <description>{2}</description>
+        <pubDate>{3}</pubDate>
+    </item>";
+
+            var items = "";
+
+            foreach (var rssItem in rssItems)
+            {
+                items = items + string.Format(template, rssItem.Title, rssItem.Link, rssItem.Description, rssItem.PubDate);
+            }
+
+            var rssXml = GetRssBase().ToString();
+
+            rssXml = rssXml.Replace("<items></items>", items);
+
+            return Content(rssXml, "text/xml");
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
             var entries = GetOrderedBlogMetadata();
@@ -138,6 +227,7 @@ namespace PersonalSite.Controllers
 
             return content;
         }
+
         private string GetBookContent(string name)
         {
             var blogDirectory = Server.MapPath("~/readings");
@@ -190,10 +280,22 @@ namespace PersonalSite.Controllers
                 if (amount < 1)
                     break;
             }
+
             return previews;
         }
 
-        private BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false)
+        private XElement GetRssBase()
+        {
+            var directory = Server.MapPath("~/blogs/metadata");
+
+            var path = directory + "/rss-base.xml";
+
+            var rssBase = XElement.Load(path);
+
+            return rssBase;
+        }
+
+        private BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false, bool withDescription = false)
         {
             var metadataDirectory = Server.MapPath("~/blogs/metadata");
 
@@ -206,7 +308,8 @@ namespace PersonalSite.Controllers
                     new BlogMetadataViewModel()
                     {
                         Name = n.Attribute("Name").Value,
-                        Published = DateTime.Parse(n.Attribute("Published").Value)
+                        Published = DateTime.Parse(n.Attribute("Published").Value),
+                        Description = withDescription ? Regex.Replace(n.Element("Description").Value, @"\s+", " ") : null
                     })
                     .Where(i => i.Published <= DateTime.Now || allowPreview)
                     .ToArray();

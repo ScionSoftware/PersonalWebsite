@@ -1,0 +1,26 @@
+<div>
+    <div class="btn-group" style="float: right;" ng-if="!keepExpanded">
+        <button class="btn btn-info btn-xs" ng-click="setAll(true)">Show</button>
+        <button class="btn btn-info btn-xs" ng-click="setAll(false)">Hide</button>
+
+    </div>
+    <ul>
+        <li ng-repeat="year in years">
+            <div style="cursor: pointer;" ng-click="toggleItem(year)">
+                <i class="fa" ng-class="{ 'fa-hand-o-right': !year.open, 'fa-hand-o-down': year.open }"></i>&nbsp;{{year.Text}}
+            </div>
+            <ul ng-show="year.open">
+                <li style="margin-left: 12px;" ng-repeat="month in year.Months">
+                    <div style="cursor: pointer;" ng-click="toggleItem(month)">
+                        <i class="fa" ng-class="{ 'fa-hand-o-right': !month.open, 'fa-hand-o-down': month.open }"></i>&nbsp;{{month.Text}}
+                    </div>
+                    <ul ng-show="month.open">
+                        <li style="margin-left: 8px; padding: 0; line-height: 18px;" ng-repeat="article in month.Articles">
+                            <a ng-href="/blog/{{article.Name}}">{{article.Title}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
