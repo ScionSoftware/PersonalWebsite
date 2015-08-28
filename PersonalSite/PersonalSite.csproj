@@ -265,16 +265,13 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\bx-slider.css" />
-    <Content Include="css\minimal-pagination.css" />
     <Content Include="css\resume-styles.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
-    <Content Include="css\media-styles.css" />
     <Content Include="css\scion-media-styles.css" />
     <Content Include="css\scion-theme.css" />
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
-    <Content Include="css\theme-xpose.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -408,6 +405,7 @@
   <ItemGroup>
     <Folder Include="Angular\Templates\" />
     <Folder Include="App_Data\" />
+    <Folder Include="App_Start\" />
     <Folder Include="blogs\2012\" />
     <Folder Include="blogs\2013\" />
     <Folder Include="blogs\2014\" />
