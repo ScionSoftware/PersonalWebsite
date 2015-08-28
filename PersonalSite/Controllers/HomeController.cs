@@ -1,14 +1,15 @@
-﻿using System;
+﻿using PersonalSite.CustomFilters;
+using PersonalSite.DataAccess;
+using PersonalSite.Models;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.UI;
-using System.Xml.Linq;
-using PersonalSite.Models;
-using PersonalSite.CustomFilters;
-using System.Globalization;
 using System.Xml;
-using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace PersonalSite.Controllers
 {
@@ -16,12 +17,22 @@ namespace PersonalSite.Controllers
     public class HomeController : Controller
     {
         private const int PreviewGroupAmount = 2;
+        private static BookAccessor _bookAccessor;
+        private static BlogAccessor _blogAccessor;
+        private static RssAccessor _rssAccessor;
+
+        public HomeController()
+        {
+            _bookAccessor = new BookAccessor();
+            _blogAccessor = new BlogAccessor();
+            _rssAccessor = new RssAccessor(_blogAccessor);
+        }
 
         [HttpGet]
         public ActionResult Blog(string name)
         {
             var entry =
-                GetOrderedBlogMetadata()
+                _blogAccessor.GetOrderedBlogMetadata()
                 .SingleOrDefault(i => i.Name == name);
 
             if (entry == null)
@@ -30,13 +41,13 @@ namespace PersonalSite.Controllers
                 {
                     Name = "there-seems-to-be-nothing-here",
                     Published = DateTime.Now.Date,
-                    Content = GetBlogContent("_404_blog"),
+                    Content = _blogAccessor.GetBlogContent("_404_blog"),
                 });
             }
 
             var model = new BlogViewModel()
             {
-                Content = GetBlogContent(name),
+                Content = _blogAccessor.GetBlogContent(name),
                 Name = name,
                 Published = entry.Published
             };
@@ -48,7 +59,7 @@ namespace PersonalSite.Controllers
         public ActionResult PreviewBackdoor(string name)
         {
             var entry =
-                GetOrderedBlogMetadata(allowPreview: true)
+                _blogAccessor.GetOrderedBlogMetadata(allowPreview: true)
                 .SingleOrDefault(i => i.Name == name);
 
             if (entry == null)
@@ -57,13 +68,13 @@ namespace PersonalSite.Controllers
                 {
                     Name = "there-seems-to-be-nothing-here",
                     Published = DateTime.Now.Date,
-                    Content = GetBlogContent("_404_blog"),
+                    Content = _blogAccessor.GetBlogContent("_404_blog"),
                 });
             }
 
             var model = new BlogViewModel()
             {
-                Content = GetBlogContent(name),
+                Content = _blogAccessor.GetBlogContent(name),
                 Name = name,
                 Published = entry.Published,
                 IsPreviewOnly = true,
@@ -93,14 +104,14 @@ namespace PersonalSite.Controllers
         [HttpGet]
         public ActionResult Reading()
         {
-            var model = GetOrderedBooks();
+            var model = _bookAccessor.GetOrderedBooks();
             return View(model);
         }
 
         [HttpGet]
         public JsonResult PreviewsByIndex(int index)
         {
-            var entries = GetOrderedBlogMetadata();
+            var entries = _blogAccessor.GetOrderedBlogMetadata();
 
             var toSkip = PreviewGroupAmount * index;
 
@@ -112,7 +123,7 @@ namespace PersonalSite.Controllers
                 {
                     Name = i.Name,
                     Published = i.Published,
-                    Content = GetBlogContent(i.Name)
+                    Content = _blogAccessor.GetBlogContent(i.Name)
                 });
 
             return Json(previews, JsonRequestBehavior.AllowGet);
@@ -121,43 +132,7 @@ namespace PersonalSite.Controllers
         [HttpGet]
         public JsonResult GetArchives()
         {
-            var entries = GetOrderedBlogMetadata();
-
-            var archives = new List<YearArchiveViewModel>();
-            var mfi = new DateTimeFormatInfo();
-
-            foreach (var entry in entries)
-            {
-                var yearItem = archives.SingleOrDefault(i => i.Year == entry.Published.Year);
-
-                if (yearItem == null)
-                {
-                    yearItem = new YearArchiveViewModel()
-                    {
-                        Year = entry.Published.Year,
-                        Text = entry.Published.Year.ToString(),
-                        Months = new List<MonthArchiveViewModel>()
-                    };
-
-                    archives.Add(yearItem);
-                }
-
-                var monthItem = yearItem.Months.SingleOrDefault(i => i.Month == entry.Published.Month);
-
-                if (monthItem == null)
-                {
-                    monthItem = new MonthArchiveViewModel()
-                    {
-                        Month = entry.Published.Month,
-                        Text = mfi.GetMonthName(entry.Published.Month),
-                        Articles = new List<BlogMetadataViewModel>()
-                    };
-
-                    yearItem.Months.Add(monthItem);
-                }
-
-                monthItem.Articles.Add(entry);
-            }
+            var archives = _blogAccessor.GetArchives();
 
             return Json(archives, JsonRequestBehavior.AllowGet);
         }
@@ -165,35 +140,7 @@ namespace PersonalSite.Controllers
         [HttpGet]
         public ActionResult RSS()
         {
-            var entries = GetOrderedBlogMetadata(withDescription: true);
-
-            var rssItems = entries.Select(i => new RssFeedViewModel()
-            {
-                Title = i.Title,
-                Link = ScionSoftware.Globals.MasterBlogUrl + i.Name,
-                Description = i.Description,
-                PubDate = i.Published.RssFormat()
-            });
-
-            //TODO: use XElement
-            const string template = @"
-    <item>
-        <title>{0}</title>
-        <link>{1}</link>
-        <description>{2}</description>
-        <pubDate>{3}</pubDate>
-    </item>";
-
-            var items = "";
-
-            foreach (var rssItem in rssItems)
-            {
-                items = items + string.Format(template, rssItem.Title, rssItem.Link, rssItem.Description, rssItem.PubDate);
-            }
-
-            var rssXml = GetRssBase().ToString();
-
-            rssXml = rssXml.Replace("<items></items>", items);
+            var rssXml = _rssAccessor.GetRssAsText();
 
             return Content(rssXml, "text/xml");
         }
@@ -201,9 +148,9 @@ namespace PersonalSite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var entries = GetOrderedBlogMetadata();
+            var entries = _blogAccessor.GetOrderedBlogMetadata();
 
-            var previews = GetContentForBlogNames(entries, PreviewGroupAmount);
+            var previews = _blogAccessor.GetContentForBlogNames(entries, PreviewGroupAmount);
 
             var model = new HomeViewModel()
             {
@@ -212,109 +159,6 @@ namespace PersonalSite.Controllers
             };
 
             return View(model);
-        }
-
-        private string GetBlogContent(string name)
-        {
-            var blogDirectory = Server.MapPath("~/blogs");
-
-            var potentialEntry = blogDirectory + "\\" + name + ".html";
-
-            if (!System.IO.File.Exists(potentialEntry))
-                return null;
-
-            var content = System.IO.File.ReadAllText(potentialEntry);
-
-            return content;
-        }
-
-        private string GetBookContent(string name)
-        {
-            var blogDirectory = Server.MapPath("~/readings");
-
-            var potentialEntry = blogDirectory + "\\" + name + ".html";
-
-            if (!System.IO.File.Exists(potentialEntry))
-                return null;
-
-            var content = System.IO.File.ReadAllText(potentialEntry);
-
-            return content;
-        }
-
-        private List<BookViewModel> GetOrderedBooks()
-        {
-            var metadataDirectory = Server.MapPath("~/readings/metadata");
-
-            var metadataPath = metadataDirectory + "/book-metadata.xml";
-
-            var blogMetaData = XElement.Load(metadataPath);
-
-            var entries = blogMetaData.Elements("Entry").Select(n =>
-                new BookViewModel()
-                {
-                    Name = n.Attribute("Name").Value,
-                    Content = GetBookContent(n.Attribute("Name").Value)
-                }).ToList();
-            return entries;
-        }
-
-        private List<BlogViewModel> GetContentForBlogNames(IEnumerable<BlogMetadataViewModel> entries, int amount)
-        {
-            var previews = new List<BlogViewModel>();
-
-            foreach (var entry in entries)
-            {
-                amount--;
-
-                var content = GetBlogContent(entry.Name);
-
-                if (content != null)
-                    previews.Add(new BlogViewModel()
-                    {
-                        Content = content,
-                        Name = entry.Name,
-                        Published = entry.Published
-                    });
-
-                if (amount < 1)
-                    break;
-            }
-
-            return previews;
-        }
-
-        private XElement GetRssBase()
-        {
-            var directory = Server.MapPath("~/blogs/metadata");
-
-            var path = directory + "/rss-base.xml";
-
-            var rssBase = XElement.Load(path);
-
-            return rssBase;
-        }
-
-        private BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false, bool withDescription = false)
-        {
-            var metadataDirectory = Server.MapPath("~/blogs/metadata");
-
-            var metadataPath = metadataDirectory + "/blog-metadata.xml";
-
-            var blogMetaData = XElement.Load(metadataPath);
-
-            var entries =
-                blogMetaData.Elements("Entry").Select(n =>
-                    new BlogMetadataViewModel()
-                    {
-                        Name = n.Attribute("Name").Value,
-                        Published = DateTime.Parse(n.Attribute("Published").Value),
-                        Description = withDescription ? Regex.Replace(n.Element("Description").Value, @"\s+", " ") : null
-                    })
-                    .Where(i => i.Published <= DateTime.Now || allowPreview)
-                    .ToArray();
-
-            return entries;
         }
     }
 }

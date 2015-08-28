@@ -102,6 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomFilters\MasterUrlRedirect.cs" />
+    <Compile Include="DataAccess\BookAccessor.cs" />
+    <Compile Include="DataAccess\BlogAccessor.cs" />
+    <Compile Include="DataAccess\AccessorBase.cs" />
+    <Compile Include="DataAccess\RssAccessor.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Models\BlogMetadataViewModel.cs" />

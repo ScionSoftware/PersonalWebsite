@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PersonalSite.CustomFilters
+namespace PersonalSite.Extensions
 {
     public static class DateTimeExtensions
     {
