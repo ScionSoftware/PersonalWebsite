@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using Portal_Web;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Web;
 using System.Web.Mvc;
@@ -37,6 +38,8 @@ namespace PersonalSite
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            BundleConfig.Register();
         }
     }
 }
