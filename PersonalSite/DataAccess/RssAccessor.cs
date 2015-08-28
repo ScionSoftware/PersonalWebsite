@@ -1,6 +1,7 @@
 ﻿using PersonalSite.Extensions;
 using PersonalSite.Models;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace PersonalSite.DataAccess
 {
@@ -11,6 +12,17 @@ namespace PersonalSite.DataAccess
         public RssAccessor(BlogAccessor blogAccessor)
         {
             _blogAccessor = blogAccessor;
+        }
+
+        private XElement GetRssBase()
+        {
+            var directory = FilePath("~/blogs/metadata");
+
+            var path = directory + "\\rss-base.xml";
+
+            var rssBase = XElement.Load(path);
+
+            return rssBase;
         }
 
         public string GetRssAsText()
@@ -41,7 +53,7 @@ namespace PersonalSite.DataAccess
                 items = items + string.Format(template, rssItem.Title, rssItem.Link, rssItem.Description, rssItem.PubDate);
             }
 
-            var rssXml = _blogAccessor.GetRssBase().ToString();
+            var rssXml = GetRssBase().ToString();
 
             rssXml = rssXml.Replace("<items></items>", items);
 

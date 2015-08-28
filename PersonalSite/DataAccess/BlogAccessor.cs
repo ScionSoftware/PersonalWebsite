@@ -49,17 +49,6 @@ namespace PersonalSite.DataAccess
             return previews;
         }
 
-        public XElement GetRssBase()
-        {
-            var directory = FilePath("~/blogs/metadata");
-
-            var path = directory + "\\rss-base.xml";
-
-            var rssBase = XElement.Load(path);
-
-            return rssBase;
-        }
-
         public BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false, bool withDescription = false)
         {
             var metadataDirectory = FilePath("~/blogs/metadata");
