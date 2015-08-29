@@ -135,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\AboutController.js" />
-    <Content Include="Angular\BlogController.js" />
     <Content Include="Angular\BlogArchiveController.js" />
     <Content Include="Angular\Directives\ssBlogArchive.js" />
     <Content Include="Angular\Directives\hnTap.js" />
@@ -148,9 +147,7 @@
     <Content Include="Angular\ReadingController.js" />
     <Content Include="Angular\ResumeController.js" />
     <Content Include="Angular\services\BlogService.js" />
-    <Content Include="Angular\services\ReadingService.js" />
     <Content Include="Angular\SpikeBytes.js" />
-    <Content Include="Angular\SpikeBytes.min.js" />
     <Content Include="assets\blueprint-css\ie.css" />
     <Content Include="assets\blueprint-css\plugins\buttons\icons\cross.png" />
     <Content Include="assets\blueprint-css\plugins\buttons\icons\key.png" />

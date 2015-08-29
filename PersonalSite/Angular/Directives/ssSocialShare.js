@@ -1,14 +1,16 @@
-var ssSocialShare = function () {
-    return {
-        templateUrl: '/Angular/Directives/Templates/ssSocialShare.html',
-        scope: {
-            ssUrl: '@',
-            ssTitle: '@'
-        },
-        link: function postLink(scope, element, attrs) {
+(function (ng) {
+    'use strict';
 
-        }
+    var ssSocialShare = function () {
+        return {
+            templateUrl: '/Angular/Directives/Templates/ssSocialShare.html',
+            scope: {
+                ssUrl: '@',
+                ssTitle: '@'
+            }
+        };
     };
-};
 
-spikeBytes.directive('ssSocialShare', [ssSocialShare]);
+    ng.module('SpikeBytes').directive('ssSocialShare', [ssSocialShare]);
+
+}(angular));

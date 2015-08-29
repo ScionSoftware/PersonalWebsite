@@ -1,42 +1,39 @@
+(function (ng) {
+    'use strict';
 
+    var mainCtrl = function ($scope, blogApi) {
 
-var mainCtrl = function ($scope, blogApi) {
+        $scope.displayed = $scope.displayed || [];
+        $scope.previewGroup = 1;
+        $scope.previewGroupMaximum = null;
 
-    $scope.displayed = $scope.displayed || [];
-    $scope.previewGroup = 1;
-    $scope.previewGroupMaximum = null;
+        $scope.showMoreBlogs = function () {
 
-    $scope.test = function() {
-        console.log('wooo');
-    };
-
-    $scope.showMoreBlogs = function () {
-
-        if ($scope.outOfPreviews) {
-            return;
-        }
-
-        var attachToDisplayed = function (previews) {
-
-            if (!previews || previews.length === 0) {
-                $scope.outOfPreviews = true;
+            if ($scope.outOfPreviews) {
+                return;
             }
 
-            for (var i = 0; i < previews.length; i++) {
-                $scope.displayed.push(previews[i]);
-            }
+            var attachToDisplayed = function (previews) {
+
+                if (!previews || previews.length === 0) {
+                    $scope.outOfPreviews = true;
+                }
+
+                for (var i = 0; i < previews.length; i++) {
+                    $scope.displayed.push(previews[i]);
+                }
+            };
+
+            var onFailure = function () {
+                throw new Error('Blog retrieval failed for preview group ' + $scope.previewGroup);
+            };
+
+            blogApi
+                .getPreviewsByGroupIndex($scope.previewGroup++)
+                .then(attachToDisplayed);
         };
-
-        var onFailure = function () {
-
-            throw new Error('Blog retrieval failed for preview group ' + $scope.previewGroup);
-        };
-
-        blogApi
-            .getPreviewsByGroupIndex($scope.previewGroup++)
-            .then(attachToDisplayed);
-
     };
-};
 
-spikeBytes.controller('MainCtrl', ['$scope', 'blogApi', mainCtrl]);
+    ng.module('SpikeBytes').controller('MainCtrl', ['$scope', 'blogApi', mainCtrl]);
+
+}(angular));

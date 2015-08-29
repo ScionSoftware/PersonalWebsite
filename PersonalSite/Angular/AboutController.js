@@ -1,8 +1,10 @@
+(function (ng) {
+    'use strict';
 
+    var aboutCtrl = function ($scope) {
+        $scope.title = ' - About';
+    };
 
-var aboutCtrl = function ($scope) {
-    $scope.title = ' - About';
+    ng.module('SpikeBytes').controller('AboutCtrl', ['$scope', aboutCtrl]);
 
-};
-
-spikeBytes.controller('AboutCtrl', ['$scope', aboutCtrl ]);
+}(angular));

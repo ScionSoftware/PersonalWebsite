@@ -1,13 +1,17 @@
+(function (ng) {
+    'use strict';
 
-var readingCtrl = function ($scope, readingApi) {
+    var readingCtrl = function ($scope, readingApi) {
 
-    $scope.title = ' - Reading';
+        $scope.title = ' - Reading';
 
-    var populateReadings = function () {
-        $scope.readings = readingApi.getReadings();
+        var populateReadings = function () {
+            $scope.readings = readingApi.getReadings();
+        };
+
+        populateReadings();
     };
-    
-    populateReadings();
-};
 
-spikeBytes.controller('ReadingCtrl', ['$scope', 'readingApi', readingCtrl]);
+    ng.module('SpikeBytes').controller('ReadingCtrl', ['$scope', 'readingApi', readingCtrl]);
+
+}(angular));

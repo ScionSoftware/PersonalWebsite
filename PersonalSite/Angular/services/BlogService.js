@@ -1,45 +1,54 @@
-spikeBytes.filter('unsafe', ['$sce', function ($sce) { return $sce.trustAsHtml; }]);
+(function (ng) {
+    'use strict';
 
-var blogApiInstance = function ($http, $q) {
+    ng.module('SpikeBytes')
+        .filter('unsafe', ['$sce',
+            function ($sce) {
+                return $sce.trustAsHtml;
+            }]);
 
-    return {
-        getPreviews: function (blogNames) {
+    var blogApiInstance = function ($http, $q) {
 
-            var nameParameter = blogNames.join(',');
+        return {
+            getPreviews: function (blogNames) {
 
-            var deferred = $q.defer();
+                var nameParameter = blogNames.join(',');
 
-            $http({
-                method: 'GET',
-                url: '/Previews?names=' + nameParameter
-            })
-                .success(function (previews) {
-                    deferred.resolve(previews);
+                var deferred = $q.defer();
+
+                $http({
+                    method: 'GET',
+                    url: '/Previews?names=' + nameParameter
                 })
-                .error(function (data) {
-                    deferred.reject(data);
-                });
+                    .success(function (previews) {
+                        deferred.resolve(previews);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
 
-            return deferred.promise;
-        },
-        getPreviewsByGroupIndex: function (groupIndex) {
+                return deferred.promise;
+            },
+            getPreviewsByGroupIndex: function (groupIndex) {
 
-            var deferred = $q.defer();
+                var deferred = $q.defer();
 
-            $http({
-                method: 'GET',
-                url: '/PreviewsByIndex?index=' + groupIndex
-            })
-                .success(function (previews) {
-                    deferred.resolve(previews);
+                $http({
+                    method: 'GET',
+                    url: '/PreviewsByIndex?index=' + groupIndex
                 })
-                .error(function (data) {
-                    deferred.reject(data);
-                });
+                    .success(function (previews) {
+                        deferred.resolve(previews);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
 
-            return deferred.promise;
-        }
+                return deferred.promise;
+            }
+        };
     };
-};
 
-spikeBytes.factory('blogApi', ['$http', '$q', blogApiInstance]);
+    ng.module('SpikeBytes').factory('blogApi', ['$http', '$q', blogApiInstance]);
+
+}(angular));

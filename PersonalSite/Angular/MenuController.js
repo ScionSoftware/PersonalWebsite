@@ -1,3 +1,5 @@
+(function (ng) {
+    'use strict';
 
 var dropdownMenuCtrl = function ($scope, $timeout) {
 
@@ -22,4 +24,6 @@ var dropdownMenuCtrl = function ($scope, $timeout) {
     };
 };
 
-spikeBytes.controller('Menu', ['$scope', '$timeout', dropdownMenuCtrl]);
+ng.module('SpikeBytes').controller('Menu', ['$scope', '$timeout', dropdownMenuCtrl]);
+
+}(angular));

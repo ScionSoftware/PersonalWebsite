@@ -18,24 +18,20 @@ namespace Portal_Web
         /// <param name="bundles"></param>
         private static void RegisterBundles(BundleCollection bundles)
         {
-            var javascriptBundle = new ScriptBundle("~/javascript-bundle")
+            var javascriptBundle = new ScriptBundle("~/bundle-javascript")
             .Include(
                 "~/js/angular.min.js",
                 "~/js/angular-route.min.js",
                 "~/js/angular-touch.min.js",
-                "~/angular/SpikeBytes.js",
-                "~/angular/services/BlogService.js",
-                "~/angular/services/ReadingService.js",
-                "~/angular/MainController.js",
-                "~/angular/BlogController.js",
-                "~/angular/AboutController.js",
-                "~/angular/ResumeController.js",
-                "~/angular/ReadingController.js",
+                "~/Angular/SpikeBytes.js",
+                "~/Angular/Services/BlogService.js",
+                "~/Angular/MainController.js",
                 "~/Angular/MenuController.js",
+                "~/Angular/ResumeController.js",
                 "~/Angular/BlogArchiveController.js",
-                "~/angular/directives/hnTap.js",
-                "~/angular/directives/ssSocialShare.js",
-                "~/angular/directives/ssBlogArchive.js",
+                "~/Angular/directives/hnTap.js",
+                "~/Angular/directives/ssSocialShare.js",
+                "~/Angular/directives/ssBlogArchive.js",
                 "~/Scripts/jquery-2.1.1.js"
             );
 
@@ -44,16 +40,7 @@ namespace Portal_Web
             //   .Include(
             //   "~/Content/css/reset.css",
             //   "~/Content/css/grid.css",
-            //   "~/Content/css/general.css",
-            //   "~/Content/css/styles.css",
-            //   "~/Content/css/menu.css",
-            //   "~/Content/css/buttons.css",
-            //   "~/Content/css/forms.css",
-            //   "~/Content/css/tables.css",
-            //   "~/Content/css/visualize.css",
-            //   "~/Content/css/colorbox.css",
-            //   "~/Content/css/prettyPhoto.css",
-            //   "~/Content/css/jqueryui-timepicker.css"
+            //   "~/Content/css/general.css"ss"
             //   );
 
             bundles.Add(javascriptBundle);
