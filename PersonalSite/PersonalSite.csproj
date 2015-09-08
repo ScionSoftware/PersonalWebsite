@@ -152,6 +152,7 @@
     <Content Include="blogs\2013\business-analysis-paralysis.html" />
     <Content Include="blogs\2014\chess-sharp-beta.html" />
     <Content Include="blogs\2013\computer-science-terms-1.html" />
+    <Content Include="blogs\2015\interests-are-malleable-habits.html" />
     <Content Include="blogs\2015\saving-form-state-with-angular-js.html" />
     <Content Include="blogs\2015\everything-is-ok-angular-has-an-upgrade-path.html" />
     <Content Include="blogs\2015\how-to-switch-from-web-forms-to-mvc-professionally.html" />

@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-09-09" Name="interests-are-malleable-habits">
+    <Description>
+      Here I talk about how budgeting your time to make the 
+      practices which are actually valuable a habit leads 
+      to fulfillment and happiness.
+    </Description>
+  </Entry>
   <Entry Published="2015-09-03" Name="saving-form-state-with-angular-js">
     <Description>
       An answer to a question on stack overflow.
