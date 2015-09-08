@@ -42,7 +42,7 @@
 
     @foreach (var preview in Model.Previews)
     {
-        var shareUrl = ScionSoftware.Globals.MasterUrl + "/blog/" + preview.Name;
+        var shareUrl = ScionSoftware.Globals.MasterBlogUrl + preview.Name;
         <article class="post">
             <div class="post-header">
                 <h2><span>
@@ -91,7 +91,7 @@
         </div>
 
         <div ss-social-share
-             ss-url="@(ScionSoftware.Globals.MasterUrl + "/blog/"){{blog.Name}}"
+             ss-url="@(ScionSoftware.Globals.MasterBlogUrl){{blog.Name}}"
              ss-title="{{blog.Title}}">
         </div>
     </article>

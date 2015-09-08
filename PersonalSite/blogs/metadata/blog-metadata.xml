@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-09-03" Name="saving-form-state-with-angular-js">
+    <Description>
+      An answer to a question on stack overflow.
+      Take a snapshot of a users form with local storage or cookies on every change.
+    </Description>
+  </Entry>
   <Entry Published="2015-09-02" Name="how-to-switch-from-web-forms-to-mvc-professionally">
     <Description>
-      It is easy to feel like your skills are irrelevant in our field. 
+      It is easy to feel like your skills are irrelevant in our field.
       Here I detail some possibilities for switching into another job with a fresh set of skills.
     </Description>
   </Entry>

@@ -5,21 +5,39 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.IO;
 
 namespace PersonalSite.DataAccess
 {
     public class BlogAccessor : AccessorBase
     {
+        private List<BlogMetadataViewModel> _cachedMetadata = null;
+
+        public string GetBlog404()
+        {
+            var blogDirectory = FilePath("~/blogs/");
+
+            var potentialEntry = blogDirectory + "\\_404_blog.html";
+
+            var content = File.ReadAllText(potentialEntry);
+
+            return content;
+        }
+
         public string GetBlogContent(string name)
         {
-            var blogDirectory = FilePath("~/blogs");
+            var metadatum = GetOrderedBlogMetadata();
+
+            var metadata = metadatum.Single(i => i.Name == name);
+
+            var blogDirectory = FilePath("~/blogs/" + metadata.Published.Year + "/");
 
             var potentialEntry = blogDirectory + "\\" + name + ".html";
 
-            if (!System.IO.File.Exists(potentialEntry))
+            if (!File.Exists(potentialEntry))
                 return null;
 
-            var content = System.IO.File.ReadAllText(potentialEntry);
+            var content = File.ReadAllText(potentialEntry);
 
             return content;
         }
@@ -49,8 +67,13 @@ namespace PersonalSite.DataAccess
             return previews;
         }
 
-        public BlogMetadataViewModel[] GetOrderedBlogMetadata(bool allowPreview = false, bool withDescription = false)
+        public List<BlogMetadataViewModel> GetOrderedBlogMetadata(bool allowPreview = false, bool withDescription = false)
         {
+            if (_cachedMetadata != null)
+            {
+                return _cachedMetadata;
+            }
+
             var metadataDirectory = FilePath("~/blogs/metadata");
 
             var metadataPath = metadataDirectory + "\\blog-metadata.xml";
@@ -66,7 +89,9 @@ namespace PersonalSite.DataAccess
                         Description = withDescription ? Regex.Replace(n.Element("Description").Value, @"\s+", " ") : null
                     })
                     .Where(i => i.Published <= DateTime.Now || allowPreview)
-                    .ToArray();
+                    .ToList();
+
+            _cachedMetadata = entries;
 
             return entries;
         }

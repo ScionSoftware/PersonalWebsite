@@ -2,7 +2,7 @@
 
 //[assembly: WebActivator.PreApplicationStartMethod(typeof(Portal_Web.BundleConfig), "Register")]
 
-namespace Portal_Web
+namespace PersonalSite
 {
     public static class BundleConfig
     {
@@ -18,22 +18,20 @@ namespace Portal_Web
         /// <param name="bundles"></param>
         private static void RegisterBundles(BundleCollection bundles)
         {
-            var javascriptBundle = new ScriptBundle("~/bundle-javascript")
-            .Include(
-                "~/js/angular.min.js",
-                "~/js/angular-route.min.js",
-                "~/js/angular-touch.min.js",
-                "~/Angular/SpikeBytes.js",
-                "~/Angular/Services/BlogService.js",
-                "~/Angular/MainController.js",
-                "~/Angular/MenuController.js",
-                "~/Angular/ResumeController.js",
-                "~/Angular/BlogArchiveController.js",
-                "~/Angular/directives/hnTap.js",
-                "~/Angular/directives/ssSocialShare.js",
-                "~/Angular/directives/ssBlogArchive.js",
+            var javascript = new ScriptBundle("~/bundle-javascript");
+
+            javascript.Include(
+                "~/js/angular.js",
+                "~/js/angular-route.js",
+                "~/js/angular-touch.js",
                 "~/Scripts/jquery-2.1.1.js"
             );
+
+            IncludeModules(javascript);
+            IncludeApplication(javascript);
+            IncludeExamples(javascript);
+
+            bundles.Add(javascript);
 
             //var cssBundle =
             //    new StyleBundle("~/bundles/css")
@@ -43,15 +41,42 @@ namespace Portal_Web
             //   "~/Content/css/general.css"ss"
             //   );
 
-            bundles.Add(javascriptBundle);
             //bundles.Add(cssBundle);
 
-            // Uncomment this to force the Bundling and Minification, 
-            // otherwise Web.config debug="true" will be used to determine weather to minify
+            // Uncomment this to force the Bundling and Minification locally
 
             //**************************************//
             //BundleTable.EnableOptimizations = true;
             //**************************************//
+        }
+
+        private static void IncludeModules(ScriptBundle javascript)
+        {
+            javascript.Include(
+                "~/js/examples/save-state/angular-local-storage.js"
+            );
+        }
+
+        private static void IncludeApplication(ScriptBundle javascript)
+        {
+            javascript.Include(
+                "~/Angular/SpikeBytes.js",
+                "~/Angular/Services/BlogService.js",
+                "~/Angular/MainController.js",
+                "~/Angular/MenuController.js",
+                "~/Angular/ResumeController.js",
+                "~/Angular/BlogArchiveController.js",
+                "~/Angular/directives/hnTap.js",
+                "~/Angular/directives/ssSocialShare.js",
+                "~/Angular/directives/ssBlogArchive.js"
+            );
+        }
+
+        private static void IncludeExamples(ScriptBundle javascript)
+        {
+            javascript.Include(
+                "~/js/examples/save-state/saveStateController.js"
+            );
         }
     }
 }

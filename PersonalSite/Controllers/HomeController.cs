@@ -41,7 +41,7 @@ namespace PersonalSite.Controllers
                 {
                     Name = "there-seems-to-be-nothing-here",
                     Published = DateTime.Now.Date,
-                    Content = _blogAccessor.GetBlogContent("_404_blog"),
+                    Content = _blogAccessor.GetBlog404(),
                 });
             }
 
@@ -68,7 +68,7 @@ namespace PersonalSite.Controllers
                 {
                     Name = "there-seems-to-be-nothing-here",
                     Published = DateTime.Now.Date,
-                    Content = _blogAccessor.GetBlogContent("_404_blog"),
+                    Content = _blogAccessor.GetBlog404(),
                 });
             }
 
@@ -154,7 +154,7 @@ namespace PersonalSite.Controllers
 
             var model = new HomeViewModel()
             {
-                Metadatas = entries,
+                Metadatas = entries.ToArray(),
                 Previews = previews.ToArray(),
             };
 

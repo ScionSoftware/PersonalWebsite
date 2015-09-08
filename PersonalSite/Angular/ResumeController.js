@@ -65,7 +65,9 @@
             'Implement new import features with proprietary framework',
             'Utilize MVC, Web API, jQuery, and Entity Framework',
             'Architect web services, web service clients, and nuget packages',
-            'Write unit tests, integration tests, and dynamic codebase tests'
+            'Write unit tests, integration tests, and dynamic codebase tests',
+            'Use AngularJS to create detailed and configurable automation to setup companies',
+            'Refactor code for decoupling, cohesion and testability'
         ];
 
         var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", 'Present');

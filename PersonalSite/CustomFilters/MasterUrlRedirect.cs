@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Linq;
+using ScionSoftware;
 
 namespace PersonalSite.CustomFilters
 {
@@ -8,26 +9,26 @@ namespace PersonalSite.CustomFilters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var requestUrl = filterContext.RequestContext.HttpContext.Request.Url;
-            var masterUrl = "scionsoftware.com";
             
             var redirectPatterns = new[]
             {
                 "spykebytes.me",
                 "spykebytes.com",
                 "higginsninja.",
-                "www.scionsoftware",
                 "scionsoftware.co",
                 "scionsoftware.us",
                 "scionsoftware.net"
             };
 
+            var hasWww = requestUrl.Host.Contains("www.");
+
             var shouldRedirect =
                 redirectPatterns.Any(i => requestUrl.Host.Contains(i))
-                && !requestUrl.Host.Contains(masterUrl);
+                && !requestUrl.Host.Contains(Globals.MasterUrlWithoutProtocol);
 
-            if (shouldRedirect)
+            if (shouldRedirect || hasWww)
             {
-                var redirectUrl = "http://" + masterUrl + requestUrl.PathAndQuery;
+                var redirectUrl = Globals.MasterUrl + requestUrl.PathAndQuery;
 
                 filterContext.Result = new RedirectResult(redirectUrl, permanent: true);
             }
