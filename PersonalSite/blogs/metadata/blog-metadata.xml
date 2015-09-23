@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-09-23" Name="attend-a-conference-outside-your-stack">
+    <Description>
+      Developers tend to avoid exceptions. 
+      Usually they mean something bad has happened.
+      They deserve due attention as valuable tools in debugging and logging.
+    </Description>
+  </Entry>
   <Entry Published="2015-09-16" Name="exceptions-are-friends-not-food">
     <Description>
       Developers tend to avoid exceptions. 
       Usually they mean something bad has happened.
-      They deserve due attention as valuable tools in debugging and logging/
+      They deserve due attention as valuable tools in debugging and logging.
     </Description>
   </Entry>
   <Entry Published="2015-09-09" Name="interests-are-malleable-habits">
