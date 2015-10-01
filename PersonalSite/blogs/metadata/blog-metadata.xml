@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-09-30" Name="on-shaming-microsoft-developers">
+    <Description>
+      There is a lot of shame associated with being a .NET developer in the industry.
+      Attending agnostic conferences and meetups has shown me how biased we can be.
+    </Description>
+  </Entry>
   <Entry Published="2015-09-23" Name="attend-a-conference-outside-your-stack">
     <Description>
       Developers tend to avoid exceptions. 

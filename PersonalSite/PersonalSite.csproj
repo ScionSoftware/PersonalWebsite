@@ -152,6 +152,8 @@
     <Content Include="blogs\2013\business-analysis-paralysis.html" />
     <Content Include="blogs\2014\chess-sharp-beta.html" />
     <Content Include="blogs\2013\computer-science-terms-1.html" />
+    <Content Include="blogs\2015\attend-a-conference-outside-your-stack.html" />
+    <Content Include="blogs\2015\on-shaming-microsoft-developers.html" />
     <Content Include="blogs\2015\exceptions-are-friends-not-food.html" />
     <Content Include="blogs\2015\interests-are-malleable-habits.html" />
     <Content Include="blogs\2015\saving-form-state-with-angular-js.html" />
