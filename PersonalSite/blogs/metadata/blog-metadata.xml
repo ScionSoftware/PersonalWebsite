@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-10-21" Name="cool-is-a-stupid-metric-for-tech">
+    <Description>
+      Choosing technology by it's cool factor is a stupid thing to do.
+      Whether it's choosing what technologies to build your business on or scale it out.
+      Whether you're looking to score your first job or switch to new technologies.
+    </Description>
+  </Entry>
+    <Entry Published="2015-10-07" Name="build-your-skillset-mindfully">
+    <Description>
+      Many of us are skills drifters. 
+      We go through our tasks at our day jobs and pick up skills as new work demands.
+      We are at the mercy of the currents.
+    </Description>
+  </Entry>
   <Entry Published="2015-09-30" Name="on-shaming-microsoft-developers">
     <Description>
       There is a lot of shame associated with being a .NET developer in the industry.
