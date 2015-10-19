@@ -59,7 +59,17 @@
             return { company: company, title: title, startDate: startDate, endDate: endDate };
         };
 
-        var paylocity = setupJob('Paylocity', 'Software Engineer', "January '15", 'Present');
+        var particular = setupJob('Particular Software', 'Software Engineer', "September '15", 'Present');
+
+        particular.duties = [
+            'Work in open source software',
+            'Work on the NServiceBus core',
+            'Provide support for users of the Particular platform',
+            'Write tests and automation',
+            'Generate content'
+        ];
+
+        var paylocity = setupJob('Paylocity', 'Software Engineer', "January '15", "September '15");
 
         paylocity.duties = [
             'Implement new import features with proprietary framework',
@@ -70,7 +80,7 @@
             'Refactor code for decoupling, cohesion and testability'
         ];
 
-        var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", 'Present');
+        var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", "August '15");
 
         layerframe.duties = [
             'Utilize angular, node, mongodb, express, parse and mixpanel',
@@ -134,6 +144,7 @@
             'Developed and refined mediation and conflict resolution skills'
         ];
 
+        resume.jobs.push(particular);
         resume.jobs.push(paylocity);
         resume.jobs.push(layerframe);
         resume.jobs.push(liazon);
