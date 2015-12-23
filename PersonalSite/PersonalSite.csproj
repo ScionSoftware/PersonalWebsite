@@ -282,6 +282,7 @@
     <Content Include="img\social\twitter.png" />
     <Content Include="img\test-generator.png" />
     <Content Include="img\test-results-with-preview.png" />
+    <Content Include="img\web-with-assembly.jpg" />
     <Content Include="js\angular-route.min.js.map" />
     <Content Include="js\angular-touch.js" />
     <Content Include="js\angular-touch.min.js" />

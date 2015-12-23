@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-10-21" Name="cool-is-a-stupid-metric-for-tech">
+    <Description>
+      Choosing technology by it's cool factor is a stupid thing to do.
+      Whether it's choosing what technologies to build your business on or scale it out.
+      Whether you're looking to score your first job or switch to new technologies.
+    </Description>
+  </Entry>
   <Entry Published="2015-10-18" Name="be-the-dumbest-person-in-the-room">
     <Description>
       There is a saying that goes, 

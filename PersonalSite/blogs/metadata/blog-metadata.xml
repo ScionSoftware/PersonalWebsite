@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
-  <Entry Published="2015-10-21" Name="cool-is-a-stupid-metric-for-tech">
+  <Entry Published="2015-12-23" Name="cool-is-a-stupid-metric-for-tech">
     <Description>
       Choosing technology by it's cool factor is a stupid thing to do.
       Whether it's choosing what technologies to build your business on or scale it out.
       Whether you're looking to score your first job or switch to new technologies.
     </Description>
   </Entry>
-    <Entry Published="2015-10-07" Name="build-your-skillset-mindfully">
+  <Entry Published="2015-10-07" Name="build-your-skillset-mindfully">
     <Description>
-      Many of us are skills drifters. 
+      Many of us are skills drifters.
       We go through our tasks at our day jobs and pick up skills as new work demands.
       We are at the mercy of the currents.
     </Description>
@@ -22,22 +22,22 @@
   </Entry>
   <Entry Published="2015-09-23" Name="attend-a-conference-outside-your-stack">
     <Description>
-      Developers tend to avoid exceptions. 
+      Developers tend to avoid exceptions.
       Usually they mean something bad has happened.
       They deserve due attention as valuable tools in debugging and logging.
     </Description>
   </Entry>
   <Entry Published="2015-09-16" Name="exceptions-are-friends-not-food">
     <Description>
-      Developers tend to avoid exceptions. 
+      Developers tend to avoid exceptions.
       Usually they mean something bad has happened.
       They deserve due attention as valuable tools in debugging and logging.
     </Description>
   </Entry>
   <Entry Published="2015-09-09" Name="interests-are-malleable-habits">
     <Description>
-      Here I talk about how budgeting your time to make the 
-      practices which are actually valuable a habit leads 
+      Here I talk about how budgeting your time to make the
+      practices which are actually valuable a habit leads
       to fulfillment and happiness.
     </Description>
   </Entry>
@@ -67,19 +67,19 @@
   </Entry>
   <Entry Published="2015-08-19" Name="turnover-is-good-for-innovation">
     <Description>
-      A controversial post about how healthy engineering organizations can ignore turnover 
+      A controversial post about how healthy engineering organizations can ignore turnover
       being inevitable or choose to embrace it and gain some competitive advantage.
     </Description>
   </Entry>
   <Entry Published="2015-08-12" Name="husband-dad-programmer">
     <Description>
-      I talk about balancing the three major roles I play in my life. 
+      I talk about balancing the three major roles I play in my life.
       I strive to be great in all three and it takes constant learning.
     </Description>
   </Entry>
   <Entry Published="2015-08-05" Name="scion-software-llc">
     <Description>
-      I am announcing that I have started my own company with 
+      I am announcing that I have started my own company with
       the purpose of working with NServiceBus, known as Particular Software.
     </Description>
   </Entry>
@@ -93,7 +93,7 @@
   <Entry Published="2015-07-22" Name="write-tests-by-playing-chess">
     <Description>
       Stateful snapshot testing.
-      Taking JSON snapshots of a chess board allows me to replay certain moves 
+      Taking JSON snapshots of a chess board allows me to replay certain moves
       as automated tests to verify that my validation works.
     </Description>
   </Entry>
@@ -112,8 +112,8 @@
   </Entry>
   <Entry Published="2015-07-01" Name="take-in-what-makes-you-stronger">
     <Description>
-      Learn to be incredibly open to criticism and new ideas. 
-      Choose what you practice according to your goals. 
+      Learn to be incredibly open to criticism and new ideas.
+      Choose what you practice according to your goals.
       Find like minded and passionate people. Find people you want to be like.
       Give your career and personal life a spring forward by actively working on yourself.
     </Description>
@@ -160,7 +160,7 @@
   </Entry>
   <Entry Published="2012-09-09" Name="sql-performance-tips">
     <Description>
-      Best practices and safe practices that I use to ensure I don't 
+      Best practices and safe practices that I use to ensure I don't
       have performance or maintenance issues in the SQL realm.
     </Description>
   </Entry>
