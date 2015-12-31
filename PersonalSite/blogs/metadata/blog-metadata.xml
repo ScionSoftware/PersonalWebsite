@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2015-12-31" Name="ambition-for-2016">
+    <Description>
+      In order to try to skirt the cliche new years resolutions, 
+      I am going to talk about what my ambitions will be for 2016.
+    </Description>
+  </Entry>
   <Entry Published="2015-12-23" Name="cool-is-a-stupid-metric-for-tech">
     <Description>
       Choosing technology by it's cool factor is a stupid thing to do.

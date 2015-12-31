@@ -156,6 +156,7 @@
     <Content Include="blogs\2015\cool-is-a-stupid-metric-for-tech.html" />
     <Content Include="blogs\2015\be-the-dumbest-person-in-the-room.html" />
     <Content Include="blogs\2015\build-your-skillset-mindfully.html" />
+    <Content Include="blogs\2015\ambition-for-2016.html" />
     <Content Include="blogs\2015\on-shaming-microsoft-developers.html" />
     <Content Include="blogs\2015\exceptions-are-friends-not-food.html" />
     <Content Include="blogs\2015\interests-are-malleable-habits.html" />
@@ -267,6 +268,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="img\backgrounds\iceland_flowers.jpg" />
     <Content Include="img\blogs\iceland_beach.jpg" />
+    <Content Include="img\blogs\my_acoustic_guitar.jpg" />
     <Content Include="img\books\mythical-man-month.jpg" />
     <Content Include="img\books\quiet-the-power-of-introverts.jpg" />
     <Content Include="img\books\the-software-craftsman.jpg" />
