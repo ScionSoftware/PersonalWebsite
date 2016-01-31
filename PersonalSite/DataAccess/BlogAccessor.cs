@@ -32,14 +32,35 @@ namespace PersonalSite.DataAccess
 
             var blogDirectory = FilePath("~/blogs/" + metadata.Published.Year + "/");
 
-            var potentialEntry = blogDirectory + "\\" + name + ".html";
+            var potentialEntry = blogDirectory + "\\" + name;
 
-            if (!File.Exists(potentialEntry))
-                return null;
-
-            var content = File.ReadAllText(potentialEntry);
+            var content = 
+                GetHtmlContent(potentialEntry) 
+                ?? GetMarkdownContent(potentialEntry);
 
             return content;
+        }
+
+        private static string GetHtmlContent(string pathWithoutExtension)
+        {
+            var filePath = pathWithoutExtension + ".html";
+            if (File.Exists(filePath))
+                return File.ReadAllText(filePath);
+
+            return null;
+        }
+
+        private static string GetMarkdownContent(string pathWithoutExtension)
+        {
+            var filePath = pathWithoutExtension + ".md";
+            if (File.Exists(filePath))
+            {
+                var markdown = File.ReadAllText(filePath);
+                var html = CommonMark.CommonMarkConverter.Convert(markdown);
+                return html;
+            }
+
+            return null;
         }
 
         public List<BlogViewModel> GetContentForBlogNames(IEnumerable<BlogMetadataViewModel> entries, int amount)
