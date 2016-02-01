@@ -305,6 +305,9 @@
     <Content Include="README.md" />
     <Content Include="js\angular-touch.min.js.map" />
     <Content Include="blogs\2015\work-for-a-remote-culture.html" />
+    <Content Include="blogs\2016\aversion-to-part-time-engineers.md" />
+    <Content Include="blogs\2016\giving-away-caffeine.md" />
+    <Content Include="blogs\2016\including-markdown-rendering.md" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />
