@@ -13,7 +13,7 @@
 ### The NuGet Package
 
 <p>
-  I installed the [CommonMark.NET nuget package](https://www.nuget.org/packages/CommonMark.NET/) into my project.
+  I installed the <a href="https://www.nuget.org/packages/CommonMark.NET">CommonMark.NET nuget package</a> into my project.
 </p>
 
 <p>
@@ -64,7 +64,7 @@
 
 ### Check it out
 <p>
-  This is the [github repository for the CommonMark.NET project](https://github.com/Knagis/CommonMark.NET).
+  This is the <a href="https://github.com/Knagis/CommonMark.NET">github repository for the CommonMark.NET project</a>.
 </p>
 
 <p>
