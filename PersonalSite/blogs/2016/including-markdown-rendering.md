@@ -1,24 +1,14 @@
-<p>
-	I finally decided that I would like to have markdown rendering for my stinky little custom blog engine.
-</p>
+I finally decided that I would like to have markdown rendering for my stinky little custom blog engine.
 
-<p>
-	This article is my first one in markdown. The first guinea pig is an article about supporting markdown!
-</p>
+This article is my first one in markdown. The first guinea pig is an article about supporting markdown!
 
-<p>
-	Anyways, it was incredibly easy to do.
-</p>
+Anyways, it was incredibly easy to do.
 
 ### The NuGet Package
 
-<p>
-  I installed the <a href="https://www.nuget.org/packages/CommonMark.NET">CommonMark.NET nuget package</a> into my project.
-</p>
+I installed the [CommonMark.NET nuget package](https://www.nuget.org/packages/CommonMark.NET/) into my project.
 
-<p>
-  Then I put in a coalesce operator to grab the content and process the markdown if the html content doesn't already exist.
-</p>
+Then I put in a coalesce operator to grab the content and process the markdown if the html content doesn't already exist.
 
 ### The Code
 ```C#
@@ -63,10 +53,6 @@
 ```
 
 ### Check it out
-<p>
-  This is the <a href="https://github.com/Knagis/CommonMark.NET">github repository for the CommonMark.NET project</a>.
-</p>
+This is the [github repository for the CommonMark.NET project](https://github.com/Knagis/CommonMark.NET).
 
-<p>
-  See? Easy stuff! Until next time, be well!
-</p>
+See? Easy stuff! Until next time, be well!
