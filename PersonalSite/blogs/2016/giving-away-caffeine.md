@@ -1,4 +1,4 @@
-An interesting thing happened today. (Saturday: 2015-01-23) 
+An interesting thing happened today. (Saturday: 2016-01-23) 
 
 I am on my way home from a company meeting in Bangkok. I've been feeling friendly and generally cheerful as of late.
 
