@@ -308,6 +308,8 @@
     <Content Include="blogs\2016\aversion-to-part-time-engineers.md" />
     <Content Include="blogs\2016\giving-away-caffeine.md" />
     <Content Include="blogs\2016\including-markdown-rendering.md" />
+    <Content Include="blogs\2016\creating-a-custom-html-helper.md" />
+    <Content Include="blogs\2016\understanding-transaction-scope.md" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />
