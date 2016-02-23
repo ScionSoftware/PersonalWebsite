@@ -122,9 +122,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="CustomFilters\MasterUrlRedirect.cs" />
+    <Compile Include="DataAccess\AbstractFileLoader.cs" />
     <Compile Include="DataAccess\BookAccessor.cs" />
     <Compile Include="DataAccess\BlogAccessor.cs" />
     <Compile Include="DataAccess\AccessorBase.cs" />
+    <Compile Include="DataAccess\GithubFileLoader.cs" />
+    <Compile Include="DataAccess\LocalFileLoader.cs" />
     <Compile Include="DataAccess\RssAccessor.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Globals.cs" />

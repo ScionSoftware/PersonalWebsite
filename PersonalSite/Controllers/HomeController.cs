@@ -2,14 +2,8 @@
 using PersonalSite.DataAccess;
 using PersonalSite.Models;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace PersonalSite.Controllers
 {
@@ -23,7 +17,7 @@ namespace PersonalSite.Controllers
 
         public HomeController()
         {
-            FileLoader fileLoader = null;
+            AbstractFileLoader fileLoader = null;
 
             fileLoader = new LocalFileLoader();
 
