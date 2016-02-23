@@ -5,23 +5,45 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using System.IO;
 
 namespace PersonalSite.DataAccess
 {
+    public abstract class AbstractFileLoader
+    {
+        public abstract XElement LoadXmlContent(string relativePathWithoutExtension);
+        public abstract string LoadHtmlContent(string relativePathWithoutExtension);
+
+        protected string ConvertContent(string content, ContentType contentType)
+        {
+            if (contentType == ContentType.Markdown)
+            {
+                var html = CommonMark.CommonMarkConverter.Convert(content);
+                return html;
+            }
+
+            return content;
+        }
+    }
+
+    public enum ContentType
+    {
+        Html,
+        Markdown
+    }
+
     public class BlogAccessor : AccessorBase
     {
         private List<BlogMetadataViewModel> _cachedMetadata = null;
+        private readonly AbstractFileLoader _fileLoader;
+
+        public BlogAccessor(AbstractFileLoader fileLoader)
+        {
+            _fileLoader = fileLoader;
+        }
 
         public string GetBlog404()
         {
-            var blogDirectory = FilePath("~/blogs/");
-
-            var potentialEntry = blogDirectory + "\\_404_blog.html";
-
-            var content = File.ReadAllText(potentialEntry);
-
-            return content;
+            return _fileLoader.LoadHtmlContent("blogs\\_404_blog");
         }
 
         public string GetBlogContent(string name)
@@ -30,39 +52,11 @@ namespace PersonalSite.DataAccess
 
             var metadata = metadatum.Single(i => i.Name == name);
 
-            var blogDirectory = FilePath("~/blogs/" + metadata.Published.Year + "/");
+            var blogPath = $"blogs/{metadata.Published.Year}/{name}";
 
-            var potentialEntry = blogDirectory + "\\" + name;
-
-            var content = 
-                GetHtmlContent(potentialEntry) 
-                ?? GetMarkdownContent(potentialEntry);
-
-            return content;
+            return _fileLoader.LoadHtmlContent(blogPath);
         }
-
-        private static string GetHtmlContent(string pathWithoutExtension)
-        {
-            var filePath = pathWithoutExtension + ".html";
-            if (File.Exists(filePath))
-                return File.ReadAllText(filePath);
-
-            return null;
-        }
-
-        private static string GetMarkdownContent(string pathWithoutExtension)
-        {
-            var filePath = pathWithoutExtension + ".md";
-            if (File.Exists(filePath))
-            {
-                var markdown = File.ReadAllText(filePath);
-                var html = CommonMark.CommonMarkConverter.Convert(markdown);
-                return html;
-            }
-
-            return null;
-        }
-
+        
         public List<BlogViewModel> GetContentForBlogNames(IEnumerable<BlogMetadataViewModel> entries, int amount)
         {
             var previews = new List<BlogViewModel>();
@@ -95,11 +89,9 @@ namespace PersonalSite.DataAccess
                 return _cachedMetadata;
             }
 
-            var metadataDirectory = FilePath("~/blogs/metadata");
+            var metadataPath = "metadata\\blog-metadata.xml";
 
-            var metadataPath = metadataDirectory + "\\blog-metadata.xml";
-
-            var blogMetaData = XElement.Load(metadataPath);
+            var blogMetaData = _fileLoader.LoadXmlContent(metadataPath);
 
             var entries =
                 blogMetaData.Elements("Entry").Select(n =>

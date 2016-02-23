@@ -23,8 +23,12 @@ namespace PersonalSite.Controllers
 
         public HomeController()
         {
+            FileLoader fileLoader = null;
+
+            fileLoader = new LocalFileLoader();
+
+            _blogAccessor = new BlogAccessor(fileLoader);
             _bookAccessor = new BookAccessor();
-            _blogAccessor = new BlogAccessor();
             _rssAccessor = new RssAccessor(_blogAccessor);
         }
 
