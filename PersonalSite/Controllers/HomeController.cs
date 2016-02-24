@@ -19,7 +19,7 @@ namespace PersonalSite.Controllers
         {
             AbstractFileLoader fileLoader = null;
 
-            fileLoader = new LocalFileLoader();
+            fileLoader = new GithubFileLoader();
 
             _blogAccessor = new BlogAccessor(fileLoader);
             _bookAccessor = new BookAccessor();

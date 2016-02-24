@@ -71,7 +71,7 @@ namespace PersonalSite.DataAccess
                 return _cachedMetadata;
             }
 
-            var metadataPath = "metadata\\blog-metadata.xml";
+            var metadataPath = "blogs/metadata/blog-metadata.xml";
 
             var blogMetaData = _fileLoader.LoadXmlContent(metadataPath);
 

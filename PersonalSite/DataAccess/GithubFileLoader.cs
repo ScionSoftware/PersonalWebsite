@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Xml.Linq;
 
 namespace PersonalSite.DataAccess
@@ -7,8 +8,10 @@ namespace PersonalSite.DataAccess
     {
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
-            var xmlPath = FilePath($"/{relativePathWithoutExtension}.xml");
-            return XElement.Load(xmlPath);
+            var xmlUrl = FilePath($"/{relativePathWithoutExtension}");
+            var xml = GetFileContentFromWeb(xmlUrl);
+            xml = xml.Replace(@"\n", "");
+            return XElement.Parse(xml);
         }
 
         public override string LoadHtmlContent(string relativePathWithoutExtension)
@@ -16,32 +19,32 @@ namespace PersonalSite.DataAccess
             var htmlPath = FilePath($"/{relativePathWithoutExtension}.html");
             var markdownPath = FilePath($"/{relativePathWithoutExtension}.md");
 
-            if (Exists(htmlPath))
-            {
-                return ConvertContent(GetFileContentFromWeb(htmlPath), ContentType.Html);
-            }
+            var content = GetFileContentFromWeb(htmlPath) ?? GetFileContentFromWeb(markdownPath);
 
-            if (Exists(markdownPath))
-            {
-                return ConvertContent(GetFileContentFromWeb(markdownPath), ContentType.Html);
-            }
-
-            return null;
-        }
-
-        protected bool Exists(string url)
-        {
-            throw new NotImplementedException();
+            return ConvertContent(content, ContentType.Markdown);
         }
 
         protected string GetFileContentFromWeb(string url)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var content = client.DownloadString(url);
+                    return content;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
         }
 
         protected string FilePath(string webPath)
         {
-            var basePath = "https://github.com/colin-higgins/PersonalWebsite/tree/master/PersonalSite";
+            webPath = webPath.Replace("\\", "/");
+            var basePath = "https://raw.githubusercontent.com/colin-higgins/PersonalWebsite/master/PersonalSite";
             return $"{basePath}{webPath}";
         }
     }

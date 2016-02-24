@@ -8,7 +8,7 @@ namespace PersonalSite.DataAccess
     {
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
-            var xmlPath = FilePath($"~/{relativePathWithoutExtension}.xml");
+            var xmlPath = FilePath($"~/{relativePathWithoutExtension}");
             return XElement.Load(xmlPath);
         }
 
