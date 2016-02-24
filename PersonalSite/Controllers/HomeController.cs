@@ -22,7 +22,7 @@ namespace PersonalSite.Controllers
             fileLoader = new GithubFileLoader();
 
             _blogAccessor = new BlogAccessor(fileLoader);
-            _bookAccessor = new BookAccessor();
+            _bookAccessor = new BookAccessor(fileLoader);
             _rssAccessor = new RssAccessor(_blogAccessor);
         }
 
