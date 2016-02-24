@@ -10,7 +10,6 @@ namespace PersonalSite.DataAccess
         {
             var xmlUrl = FilePath($"/{relativePathWithoutExtension}");
             var xml = GetFileContentFromWeb(xmlUrl);
-            xml = xml.Replace(@"\n", "");
             return XElement.Parse(xml);
         }
 
