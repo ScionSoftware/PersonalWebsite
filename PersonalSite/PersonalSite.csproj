@@ -126,6 +126,7 @@
     <Compile Include="DataAccess\BookAccessor.cs" />
     <Compile Include="DataAccess\BlogAccessor.cs" />
     <Compile Include="DataAccess\AccessorBase.cs" />
+    <Compile Include="DataAccess\ContentType.cs" />
     <Compile Include="DataAccess\GithubFileLoader.cs" />
     <Compile Include="DataAccess\LocalFileLoader.cs" />
     <Compile Include="DataAccess\RssAccessor.cs" />

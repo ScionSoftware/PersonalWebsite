@@ -7,12 +7,6 @@ using System.Text.RegularExpressions;
 
 namespace PersonalSite.DataAccess
 {
-    public enum ContentType
-    {
-        Html,
-        Markdown
-    }
-
     public class BlogAccessor : AccessorBase
     {
         private List<BlogMetadataViewModel> _cachedMetadata = null;
