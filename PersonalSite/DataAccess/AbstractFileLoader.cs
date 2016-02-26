@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Web;
+using System.Xml.Linq;
 
 namespace PersonalSite.DataAccess
 {
@@ -16,6 +17,11 @@ namespace PersonalSite.DataAccess
             }
 
             return content;
+        }
+
+        protected string LocalFilePath(string webPath)
+        {
+            return HttpContext.Current.Server.MapPath(webPath);
         }
     }
 }

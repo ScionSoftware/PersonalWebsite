@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Xml.Linq;
 
@@ -23,15 +24,75 @@ namespace PersonalSite.DataAccess
             return ConvertContent(content, ContentType.Markdown);
         }
 
+        private string TryGetFromCache(string url)
+        {
+            var cachePath = GetCachePath(url);
+
+            if (!File.Exists(cachePath))
+            {
+                return null;
+            }
+
+            if (CacheHasExpired(cachePath))
+            {
+                return null;
+            }
+
+            var content = File.ReadAllText(cachePath);
+
+            return content;
+        }
+
+        private static bool CacheHasExpired(string cachePath)
+        {
+            var cacheAgeLimit = TimeSpan.FromHours(3);
+
+            var creationTime = File.GetCreationTimeUtc(cachePath);
+            var fileAge = DateTime.Now.ToUniversalTime() - creationTime;
+            if (fileAge > cacheAgeLimit)
+            {
+                File.Delete(cachePath);
+                return true;
+            }
+            return false;
+        }
+
+        private void Cache(string url, string content)
+        {
+            var cachePath = GetCachePath(url);
+
+            File.WriteAllText(cachePath, content);
+        }
+
+        private string GetCachePath(string content)
+        {
+            var safeFileName =
+                content
+                    .Replace("/", "_")
+                    .Replace(".", "_")
+                    .Replace(":", "_");
+
+            var cachePath = LocalFilePath($"~/file-cache/{safeFileName}");
+            return cachePath;
+        }
+
         protected string GetFileContentFromWeb(string url)
         {
             try
             {
-                using (var client = new WebClient())
+                var content = TryGetFromCache(url);
+
+                if (content == null)
                 {
-                    var content = client.DownloadString(url);
-                    return content;
+                    using (var client = new WebClient())
+                    {
+                        content = client.DownloadString(url);
+                    }
+
+                    Cache(url, content);
                 }
+
+                return content;
             }
             catch (Exception ex)
             {
