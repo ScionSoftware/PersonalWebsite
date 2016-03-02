@@ -279,6 +279,7 @@
     <Content Include="img\books\the-software-craftsman.jpg" />
     <Content Include="img\chess-test-case-files.png" />
     <Content Include="img\learning-pyramid.jpg" />
+    <Content Include="img\profiles\angry_face.jpg" />
     <Content Include="img\profiles\douche_face.jpg" />
     <Content Include="img\profiles\monkey_face.jpg" />
     <Content Include="img\social\facebook.png" />
