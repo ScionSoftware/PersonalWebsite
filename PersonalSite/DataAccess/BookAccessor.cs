@@ -8,29 +8,27 @@ namespace PersonalSite.DataAccess
 {
     public class BookAccessor : AccessorBase
     {
+        private readonly AbstractFileLoader _fileLoader;
+
+        public BookAccessor(AbstractFileLoader fileLoader)
+        {
+            _fileLoader = fileLoader;
+        }
+
         public string GetBookContent(string name)
         {
-            var blogDirectory = FilePath("~/readings");
+            var contentPath = $"readings/{name}";
 
-            var potentialEntry = blogDirectory + "\\" + name + ".html";
-
-            if (!System.IO.File.Exists(potentialEntry))
-                return null;
-
-            var content = System.IO.File.ReadAllText(potentialEntry);
-
-            return content;
+            return _fileLoader.LoadHtmlContent(contentPath);
         }
 
         public List<BookViewModel> GetOrderedBooks()
         {
-            var metadataDirectory = FilePath("~/readings/metadata");
+            var metadataPath = "readings/metadata/book-metadata.xml";
 
-            var metadataPath = metadataDirectory + "/book-metadata.xml";
+            var metadata = _fileLoader.LoadXmlContent(metadataPath);
 
-            var blogMetaData = XElement.Load(metadataPath);
-
-            var entries = blogMetaData.Elements("Entry").Select(n =>
+            var entries = metadata.Elements("Entry").Select(n =>
                 new BookViewModel()
                 {
                     Name = n.Attribute("Name").Value,

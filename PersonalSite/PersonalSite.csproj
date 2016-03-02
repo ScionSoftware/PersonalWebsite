@@ -122,9 +122,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="CustomFilters\MasterUrlRedirect.cs" />
+    <Compile Include="DataAccess\AbstractFileLoader.cs" />
     <Compile Include="DataAccess\BookAccessor.cs" />
     <Compile Include="DataAccess\BlogAccessor.cs" />
     <Compile Include="DataAccess\AccessorBase.cs" />
+    <Compile Include="DataAccess\ContentType.cs" />
+    <Compile Include="DataAccess\GithubFileLoader.cs" />
+    <Compile Include="DataAccess\LocalFileLoader.cs" />
     <Compile Include="DataAccess\RssAccessor.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Globals.cs" />
@@ -260,6 +264,7 @@
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="favicon.ico" />
+    <None Include="file-cache\README.md" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -309,6 +314,8 @@
     <Content Include="blogs\2016\aversion-to-part-time-engineers.md" />
     <Content Include="blogs\2016\giving-away-caffeine.md" />
     <Content Include="blogs\2016\including-markdown-rendering.md" />
+    <Content Include="blogs\2016\creating-a-custom-html-helper.md" />
+    <Content Include="blogs\2016\understanding-transaction-scope.md" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />

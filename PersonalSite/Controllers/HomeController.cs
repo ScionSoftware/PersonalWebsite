@@ -2,14 +2,8 @@
 using PersonalSite.DataAccess;
 using PersonalSite.Models;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace PersonalSite.Controllers
 {
@@ -23,8 +17,12 @@ namespace PersonalSite.Controllers
 
         public HomeController()
         {
-            _bookAccessor = new BookAccessor();
-            _blogAccessor = new BlogAccessor();
+            AbstractFileLoader fileLoader = null;
+
+            fileLoader = new GithubFileLoader();
+
+            _blogAccessor = new BlogAccessor(fileLoader);
+            _bookAccessor = new BookAccessor(fileLoader);
             _rssAccessor = new RssAccessor(_blogAccessor);
         }
 
