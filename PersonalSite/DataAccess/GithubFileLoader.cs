@@ -9,15 +9,15 @@ namespace PersonalSite.DataAccess
     {
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
-            var xmlUrl = FilePath($"/{relativePathWithoutExtension}");
+            var xmlUrl = FilePath("/" + relativePathWithoutExtension + "");
             var xml = GetFileContentFromWeb(xmlUrl);
             return XElement.Parse(xml);
         }
 
         public override string LoadHtmlContent(string relativePathWithoutExtension)
         {
-            var htmlPath = FilePath($"/{relativePathWithoutExtension}.html");
-            var markdownPath = FilePath($"/{relativePathWithoutExtension}.md");
+            var htmlPath = FilePath("/" + relativePathWithoutExtension + ".html");
+            var markdownPath = FilePath("/" + relativePathWithoutExtension + ".md");
 
             var content = GetFileContentFromWeb(htmlPath) ?? GetFileContentFromWeb(markdownPath);
 
@@ -72,7 +72,7 @@ namespace PersonalSite.DataAccess
                     .Replace(".", "_")
                     .Replace(":", "_");
 
-            var cachePath = LocalFilePath($"~/file-cache/{safeFileName}");
+            var cachePath = LocalFilePath("~/file-cache/" + safeFileName);
             return cachePath;
         }
 
@@ -105,7 +105,7 @@ namespace PersonalSite.DataAccess
         {
             webPath = webPath.Replace("\\", "/");
             var basePath = "https://raw.githubusercontent.com/colin-higgins/PersonalWebsite/master/PersonalSite";
-            return $"{basePath}{webPath}";
+            return basePath + webPath;
         }
     }
 }

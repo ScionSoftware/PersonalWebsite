@@ -7,14 +7,14 @@ namespace PersonalSite.DataAccess
     {
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
-            var xmlPath = LocalFilePath($"~/{relativePathWithoutExtension}");
+            var xmlPath = LocalFilePath("~/" + relativePathWithoutExtension + "");
             return XElement.Load(xmlPath);
         }
 
         public override string LoadHtmlContent(string relativePathWithoutExtension)
         {
-            var htmlPath = LocalFilePath($"~/{relativePathWithoutExtension}.html");
-            var markdownPath = LocalFilePath($"~/{relativePathWithoutExtension}.md");
+            var htmlPath = LocalFilePath("~/" + relativePathWithoutExtension + ".html");
+            var markdownPath = LocalFilePath("~/" + relativePathWithoutExtension + ".md");
 
             if (File.Exists(htmlPath))
             {

@@ -17,7 +17,7 @@ namespace PersonalSite.DataAccess
 
         public string GetBookContent(string name)
         {
-            var contentPath = $"readings/{name}";
+            var contentPath = "readings/" + name;
 
             return _fileLoader.LoadHtmlContent(contentPath);
         }

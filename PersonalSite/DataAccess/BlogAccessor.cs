@@ -28,7 +28,7 @@ namespace PersonalSite.DataAccess
 
             var metadata = metadatum.Single(i => i.Name == name);
 
-            var blogPath = $"blogs/{metadata.Published.Year}/{name}";
+            var blogPath = "blogs/" + metadata.Published.Year + "/" + name;
 
             return _fileLoader.LoadHtmlContent(blogPath);
         }
