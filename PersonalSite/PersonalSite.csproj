@@ -264,7 +264,9 @@
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="favicon.ico" />
-    <None Include="file-cache\README.md" />
+    <None Include="file-cache\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
