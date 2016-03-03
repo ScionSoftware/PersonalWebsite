@@ -6,6 +6,10 @@ That I could augment their abilities and offer up good work for less overhead.
 
 Nearly everytime I've been told thanks, but no thanks.
 
+<div class="center-content">
+    <img src="/img/blogs/coffee_keyboard.jpg" alt="Yummy coffee and programming" />
+</div>
+
 Many companies could benefit from augmenting their abilities with part-time workers.
 The ones that tend to support part-time contract work are boutique shops and consulting proxies.
 
