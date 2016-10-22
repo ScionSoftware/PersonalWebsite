@@ -2,6 +2,7 @@
 using PersonalSite.DataAccess;
 using PersonalSite.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,11 +20,30 @@ namespace PersonalSite.Controllers
         {
             AbstractFileLoader fileLoader = null;
 
-            fileLoader = new GithubFileLoader();
+            if (ShouldUseLocal())
+            {
+                fileLoader = new LocalFileLoader();
+            }
+            else
+            {
+                fileLoader = new GithubFileLoader();
+            }
 
             _blogAccessor = new BlogAccessor(fileLoader);
             _bookAccessor = new BookAccessor(fileLoader);
             _rssAccessor = new RssAccessor(_blogAccessor);
+        }
+
+        private bool ShouldUseLocal()
+        {
+            var machineNames = new HashSet<string>()
+            {
+                "SCION-BUS"
+            };
+
+            var currentMachine = System.Environment.MachineName;
+
+            return machineNames.Contains(currentMachine);
         }
 
         [HttpGet]
