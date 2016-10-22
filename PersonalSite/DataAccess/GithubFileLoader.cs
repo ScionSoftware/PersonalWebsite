@@ -7,6 +7,14 @@ namespace PersonalSite.DataAccess
 {
     public class GithubFileLoader : AbstractFileLoader
     {
+        public override string SiteRoot
+        {
+            get
+            {
+                return "https://raw.githubusercontent.com/colin-higgins/PersonalWebsite/master/PersonalSite";
+            }
+        }
+
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
             var xmlUrl = FilePath($"/{relativePathWithoutExtension}");
@@ -119,11 +127,11 @@ namespace PersonalSite.DataAccess
 //            }
 //        }
 
+
         protected string FilePath(string webPath)
         {
             webPath = webPath.Replace("\\", "/");
-            var basePath = "https://raw.githubusercontent.com/colin-higgins/PersonalWebsite/master/PersonalSite";
-            return $"{basePath}{webPath}";
+            return $"{SiteRoot}{webPath}";
         }
     }
 }

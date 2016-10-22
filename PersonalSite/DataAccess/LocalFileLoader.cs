@@ -5,6 +5,14 @@ namespace PersonalSite.DataAccess
 {
     public class LocalFileLoader : AbstractFileLoader
     {
+        public override string SiteRoot
+        {
+            get
+            {
+                return "";
+            }
+        }
+
         public override XElement LoadXmlContent(string relativePathWithoutExtension)
         {
             var xmlPath = LocalFilePath($"~/{relativePathWithoutExtension}");
