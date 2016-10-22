@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Text.RegularExpressions;
+using System.Web;
 using System.Xml.Linq;
 
 namespace PersonalSite.DataAccess
@@ -12,9 +13,20 @@ namespace PersonalSite.DataAccess
         {
             if (contentType == ContentType.Markdown)
             {
-                var html = CommonMark.CommonMarkConverter.Convert(content);
+                var groomedMarkdown = ApplyCustomMarkdown(content);
+                var html = CommonMark.CommonMarkConverter.Convert(groomedMarkdown);
                 return html;
             }
+
+            return content;
+        }
+
+        private string ApplyCustomMarkdown(string content)
+        {
+            var linkPattern = @"\[([^\]]+)]\(([^\)]+)\)";
+            var linkReplacement = @"<a href=""$2"" target=""_blank"">$1</a>";
+
+            content = Regex.Replace(content, linkPattern, linkReplacement);
 
             return content;
         }
