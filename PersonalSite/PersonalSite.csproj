@@ -269,6 +269,9 @@
     <Content Include="blogs\2016\progress-bars-arent-all-liars.md" />
     <Content Include="blogs\scratchpad\javascript-framework-fatigue.md" />
     <None Include="file-cache\README.md" />
+    <None Include="file-cache\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -291,6 +294,7 @@
     <Content Include="img\books\the-software-craftsman.jpg" />
     <Content Include="img\chess-test-case-files.png" />
     <Content Include="img\learning-pyramid.jpg" />
+    <Content Include="img\profiles\angry_face.jpg" />
     <Content Include="img\profiles\douche_face.jpg" />
     <Content Include="img\profiles\monkey_face.jpg" />
     <Content Include="img\social\facebook.png" />
