@@ -101,6 +101,24 @@ namespace PersonalSite.DataAccess
             }
         }
 
+//        protected string ChangeDomain(string oldDomain, string newDomain)
+//        {
+//            using (var client = new WebClient())
+//            {
+//                var postData =
+//@"{
+//  ""alternateEmail"": ""marty.mcfly@gmail.com"",
+//  ""customerDomain"": ""fluxcapacitor.com"",
+//  ""language"": ""EN"",
+//  ""postalAddress"": {
+//    ""organizationName"": ""A Match Made in Space, LLC"",
+//    ""phoneNumber"": ""+15558675309""
+//  }
+//}";
+//                client.UploadString("https://www.googleapis.com/admin/directory/v1/customers/customerKey", postData);
+//            }
+//        }
+
         protected string FilePath(string webPath)
         {
             webPath = webPath.Replace("\\", "/");

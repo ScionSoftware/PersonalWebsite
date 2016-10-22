@@ -264,6 +264,10 @@
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="blogs\scratchpad\gauging-your-worth.md" />
+    <Content Include="blogs\scratchpad\signs-you-might-be-dogmatic.md" />
+    <Content Include="blogs\2016\progress-bars-arent-all-liars.md" />
+    <Content Include="blogs\scratchpad\javascript-framework-fatigue.md" />
     <None Include="file-cache\README.md" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -279,6 +283,9 @@
     <Content Include="img\backgrounds\iceland_flowers.jpg" />
     <Content Include="img\blogs\iceland_beach.jpg" />
     <Content Include="img\blogs\my_acoustic_guitar.jpg" />
+    <Content Include="img\blogs\progress\progress-bar-architecture.svg" />
+    <Content Include="img\blogs\progress\progress-bar-with-service.png" />
+    <Content Include="img\blogs\progress\windows-copy.png" />
     <Content Include="img\books\mythical-man-month.jpg" />
     <Content Include="img\books\quiet-the-power-of-introverts.jpg" />
     <Content Include="img\books\the-software-craftsman.jpg" />
@@ -313,8 +320,8 @@
     <Content Include="blogs\2016\aversion-to-part-time-engineers.md" />
     <Content Include="blogs\2016\giving-away-caffeine.md" />
     <Content Include="blogs\2016\including-markdown-rendering.md" />
-    <Content Include="blogs\2016\creating-a-custom-html-helper.md" />
-    <Content Include="blogs\2016\understanding-transaction-scope.md" />
+    <Content Include="blogs\scratchpad\creating-a-custom-html-helper.md" />
+    <Content Include="blogs\scratchpad\understanding-transaction-scope.md" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />

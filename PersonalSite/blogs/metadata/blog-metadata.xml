@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Blog>
+  <Entry Published="2016-10-24" Name="progress-bars-arent-all-liars">
+    <Description>
+      Lies, damned lies, and progress bars. 
+      Not all progress bars are liars. 
+      Let's get away from spinning gifs and venture into the world of accurate thermometers.
+    </Description>
+  </Entry>
   <Entry Published="2016-02-22" Name="aversion-to-part-time-engineers">
     <Description>
       Why are so many companies averse to employing part time engineers?
