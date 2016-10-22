@@ -23,7 +23,7 @@ namespace PersonalSite.DataAccess
 
             if (File.Exists(markdownPath))
             {
-                return ConvertContent(File.ReadAllText(markdownPath), ContentType.Html);
+                return ConvertContent(File.ReadAllText(markdownPath), ContentType.Markdown);
             }
 
             return null;
