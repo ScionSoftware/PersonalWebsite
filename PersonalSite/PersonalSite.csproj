@@ -284,9 +284,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="img\backgrounds\iceland_flowers.jpg" />
+    <Content Include="img\blogs\coffee_keyboard.jpg" />
     <Content Include="img\blogs\iceland_beach.jpg" />
     <Content Include="img\blogs\my_acoustic_guitar.jpg" />
-    <Content Include="img\blogs\progress\progress-bar-architecture.svg" />
+    <Content Include="img\blogs\progress\progress-architecture.png" />
     <Content Include="img\blogs\progress\progress-bar-with-service.png" />
     <Content Include="img\blogs\progress\windows-copy.png" />
     <Content Include="img\books\mythical-man-month.jpg" />
@@ -327,7 +328,6 @@
     <Content Include="blogs\scratchpad\creating-a-custom-html-helper.md" />
     <Content Include="blogs\scratchpad\understanding-transaction-scope.md" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\Ninja Deploy.pubxml" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />

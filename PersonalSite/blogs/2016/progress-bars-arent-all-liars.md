@@ -65,7 +65,7 @@ There are four conceptual pieces:
  4. The **Status Store** that tracks the progress
 
 <div class="center-content">
-	<img src="/img/blogs/progress/progress-bar-architecture.svg" alt="Polling architecture" />
+	<img src="/img/blogs/progress/progress-architecture.png" alt="Polling architecture" />
 </div>
 
 ### A look at the HTML
