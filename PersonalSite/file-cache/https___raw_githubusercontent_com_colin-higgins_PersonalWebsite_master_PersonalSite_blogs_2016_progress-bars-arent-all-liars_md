@@ -65,7 +65,7 @@ There are four conceptual pieces:
  4. The **Status Store** that tracks the progress
 
 <div class="center-content">
-	<img src="/img/blogs/progress/progress-architecture.png" alt="Polling architecture" />
+	<img src="/img/blogs/progress/progress-bar-architecture.svg" alt="Polling architecture" />
 </div>
 
 ### A look at the HTML
@@ -110,12 +110,13 @@ angular.module('progressDemo')
        .controller('progressCtrl', function ($scope, $http, $q, $timeout) {
 
     $scope.batches = [];
-    $scope.numberOfThingsToDo = 1000; // default value
+
 ...
 
     var startBigStuff = function () {
         var deferred = $q.defer();
-        $http.post('/Home/StartBigStuff?howMuchStuff=' + $scope.numberOfThingsToDo)
+        $http
+		    .post('/Home/StartBigStuff?howMuchStuff=' + $scope.numberOfThingsToDo)
             .then(function (batchModel) {
                 deferred.resolve(batchModel);
             });
@@ -224,20 +225,21 @@ Every time the endpoint is called, we take the result of the request and update 
 ...
 
     $scope.batches = [];
-    $scope.numberOfThingsToDo = 1000; // default value
 
     var howLongBetweenPolls = function (batchModel) {
+
         var milliseconds = batchModel.NumberOfThingsToDo / 500;
 
-        // Ensure we don't poll too frequently or infrequently
+		// Ensure we don't poll too frequently or infrequently
 
-        if (milliseconds < 350)
-            milliseconds = 350;
-        if (milliseconds > 4000)
-            milliseconds = 4000;
+        if (milliseconds < 250)
+            milliseconds = 250;
+        if (milliseconds > 3000)
+            milliseconds = 3000;
 
         return milliseconds;
     };
+
 ...
 
     var getStatus = function (batchId) {
@@ -301,7 +303,7 @@ public class HomeController : Controller
 
         var completedCommandCount =
             batchStatus == null ? 0
-                : batchStatus.NumberOfItemsCompleted;
+                : batchStatus.ItemsCompleted.Count;
 
         var model = new BatchStatusModel()
         {
