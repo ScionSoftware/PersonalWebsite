@@ -342,5 +342,5 @@ Feel free to [check out the code](https://github.com/colin-higgins/ProgressBar.N
 Enjoy!
 
 ## Additional Reading
- * [Message Handlers](http://docs.particular.net/nservicebus/handlers/")
- * [Dependency Injecting the Bus](http://docs.particular.net/samples/web/asp-mvc-injecting-bus/")
+ * [Message Handlers](http://docs.particular.net/nservicebus/handlers/)
+ * [Dependency Injecting the Bus](http://docs.particular.net/samples/web/asp-mvc-injecting-bus/)
