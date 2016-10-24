@@ -337,10 +337,10 @@ I have avoided the more difficult problem of actually telling the user how much 
 
 With all of that said, I am sure your users would love to know how quickly your code runs. Now get out there and let your users know if their imports or reports are moving along!
 
-Feel free to (check out the code)[https://github.com/colin-higgins/ProgressBar.NServiceBus].
+Feel free to [check out the code](https://github.com/colin-higgins/ProgressBar.NServiceBus).
 
 Enjoy!
 
 ## Additional Reading
- * (Message Handlers)[http://docs.particular.net/nservicebus/handlers/"]
- * (Dependency Injecting the Bus)[http://docs.particular.net/samples/web/asp-mvc-injecting-bus/"]
+ * [Message Handlers](http://docs.particular.net/nservicebus/handlers/")
+ * [Dependency Injecting the Bus](http://docs.particular.net/samples/web/asp-mvc-injecting-bus/")
