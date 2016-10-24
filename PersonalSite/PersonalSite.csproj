@@ -186,7 +186,7 @@
     <Content Include="blogs\2015\scrum-is-not-our-saviour.html" />
     <Content Include="blogs\2015\turnover-is-good-for-innovation.html" />
     <Content Include="blogs\_404_blog.html" />
-    <Content Include="blogs\2013\generate-entity-sql.html" />
+    <None Include="blogs\2013\generate-entity-sql.md" />
     <Content Include="blogs\2012\hello-world.html" />
     <Content Include="blogs\2015\automate-or-you-are-not-professional.html" />
     <Content Include="blogs\2015\take-in-what-makes-you-stronger.html" />
