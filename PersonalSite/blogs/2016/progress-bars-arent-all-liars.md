@@ -19,7 +19,12 @@ tweets:
 ---
 -->
 
-I love tracking progress. Running, cycling, watching my baby grow, reading a book. It's nice to know how far I've gone and how far I have left to go. So I love progress bars. Except most progress bars lie, which is why I also hate them. I'm having flashbacks to old installs...and updates...and windows services...and...
+I love tracking progress. 
+Running, cycling, watching my baby grow, and reading books are a few examples. 
+It's nice to know how far I've gone and how far I have left to go. 
+Naturally I love progress bars, but I also hate them because they often lie. 
+I'm having flashbacks to old installs...and updates...and windows services...and...
+
 
 Sorry, I was back there waiting for the progress bars to finish.
 
@@ -39,8 +44,8 @@ Well, you're in luck!
 
 Not only can you create meaningful progress bars, but they can be responsive and accurate too. 
 I'm going to show you how to do all of these things by implementing a progress bar using 
-<a href="https://angularjs.org/" target="_blank">AngularJS</a> and <a href="http://particular.net/nservicebus" target="_blank">NServiceBus</a>. 
-For simplicity's sake, I'll be doing relatively trivial polling from the front-end but in practice it may be better to use something like <a href="http://signalr.net/" target="_blank">SignalR</a>.
+[AngularJS](https://angularjs.org/) and [NServiceBus](http://particular.net/nservicebus). 
+For simplicity's sake, I'll be doing relatively trivial polling from the front-end but in practice it may be better to use something like [SignalR](http://signalr.net/).
 
 ### What does the result look like?
 
@@ -50,7 +55,7 @@ The second UI component is the progress bar which represents the status of the l
 As a result, the progress bar will be slightly behind the actual process as shown here:
 
 <div class="center-content">
-	<img src="/img/blogs/progress/progress-bar-with-service.png" alt="Are we there yet?" />
+	<img src="/img/blogs/progress/progress-bar-with-service.png" alt="Honesty is refreshing" />
 </div>
 
 With this progress bar we can accurately show the user how much of the task is finished. 
@@ -332,10 +337,10 @@ I have avoided the more difficult problem of actually telling the user how much 
 
 With all of that said, I am sure your users would love to know how quickly your code runs. Now get out there and let your users know if their imports or reports are moving along!
 
-Feel free to <a href="https://github.com/colin-higgins/ProgressBar.NServiceBus" target="_blank">check out the code</a>.
+Feel free to (check out the code)[https://github.com/colin-higgins/ProgressBar.NServiceBus].
 
 Enjoy!
 
 ## Additional Reading
- * <a href="http://docs.particular.net/nservicebus/handlers/" target="_blank">Message Handlers</a>
- * <a href="http://docs.particular.net/samples/web/asp-mvc-injecting-bus/" target="_blank">Dependency Injecting the Bus</a>
+ * (Message Handlers)[http://docs.particular.net/nservicebus/handlers/"]
+ * (Dependency Injecting the Bus)[http://docs.particular.net/samples/web/asp-mvc-injecting-bus/"]
