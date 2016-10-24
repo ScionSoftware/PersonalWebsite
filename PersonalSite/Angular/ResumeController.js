@@ -59,56 +59,66 @@
             return { company: company, title: title, startDate: startDate, endDate: endDate };
         };
 
-        var particular = setupJob('Particular Software', 'Software Engineer', "September '15", 'Present');
+        
+        var paylocity2 = setupJob('Paylocity', 'Software Engineer', "May '16", "Present");
+
+        paylocity2.duties = [
+            'Write tools for migrating & testing large amounts of sensitive data',
+            'Use Rebus in a messaging architecture',
+            'Utilize messaging patterns & deferral'
+        ];
+
+        var particular = setupJob('Particular Software', 'Software Engineer', "September '15", "May '16");
 
         particular.duties = [
             'Work in open source software',
             'Work on the NServiceBus core',
+            'Maintain RavenDb implementation',
             'Provide support for users of the Particular platform',
-            'Write tests and automation',
-            'Generate content'
+            'Write tests & automation',
+            'Write blogs & marketing material'
         ];
 
-        var paylocity = setupJob('Paylocity', 'Software Engineer', "January '15", "September '15");
+        var paylocity1 = setupJob('Paylocity', 'Software Engineer', "January '15", "September '15");
 
-        paylocity.duties = [
+        paylocity1.duties = [
             'Implement new import features with proprietary framework',
-            'Utilize MVC, Web API, jQuery, and Entity Framework',
-            'Architect web services, web service clients, and nuget packages',
-            'Write unit tests, integration tests, and dynamic codebase tests',
-            'Use AngularJS to create detailed and configurable automation to setup companies',
-            'Refactor code for decoupling, cohesion and testability'
+            'Utilize MVC, Web API, jQuery, & Entity Framework',
+            'Architect web services, web service clients, & nuget packages',
+            'Write unit tests, integration tests, static analysis & dynamic codebase tests',
+            'Use AngularJS to create detailed & configurable automation to setup companies',
+            'Refactor code for decoupling, cohesion & testability'
         ];
 
         var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", "August '15");
 
         layerframe.duties = [
-            'Utilize angular, node, mongodb, express, parse and mixpanel',
-            'Write, maintain, and enhance sales tools for large clients',
+            'Utilize angular, node, mongodb, express, parse & mixpanel',
+            'Write, maintain, & enhance sales tools for large clients',
             'Write tools to limit or remove manual work for project managers'
         ];
 
         var liazon = setupJob('Liazon', 'Software Engineer', "February '14", "January '15");
 
         liazon.duties = [
-            'Part of the architecture and scalability team',
-            'Utilize WebAPI and NServiceBus to implement Service Oriented Architecture',
-            'Architect APIs and Single Page Applications with AngularJS',
-            'Write a central configuration service for shared data and service discovery',
-            'Train others on client side architecture and clean code',
-            'Requirements analysis and architecture for large scale initiatives',
-            'Presentations and classes on various technologies and paradigms',
-            'Setup and configure NuGet and Extensions repository'
+            'Part of the architecture & scalability team',
+            'Utilize WebAPI & NServiceBus to implement Service Oriented Architecture',
+            'Architect APIs & Single Page Applications with AngularJS',
+            'Write a central configuration service for shared data & service discovery',
+            'Train others on client side architecture & clean code',
+            'Requirements analysis & architecture for large scale initiatives',
+            'Presentations & classes on various technologies & paradigms',
+            'Setup & configure NuGet & Extensions repository'
         ];
 
         var localEdge = setupJob('LocalEdge', 'Programmer I', "December '12", "March '14");
 
         localEdge.duties = [
-            'Clean and optimize existing C#, JavaScript, and TSQL code base',
+            'Clean & optimize existing C#, JavaScript, & TSQL code base',
             'Concurrent programming with features from .NET 3.5 to 4.5',
             'Sped up download service by factor of 4, reduced error / manual work',
             'Implement new user interfaces in AngularJS',
-            'Architect and implement design patterns for clean code',
+            'Architect & implement design patterns for clean code',
             'Convert Web Forms to MVC4 sub applications',
             'Write unit tests for all application rewrites',
             'Interface with services provided by search engines'
@@ -118,20 +128,20 @@
 
         algonquin.duties = [
             'Develop on multiple simultaneous projects with strict deadlines',
-            'Execute detailed testing procedures and maintain technical documents',
-            'Streamline and assist in company training program',
-            'Maintain and enhance company software and services',
-            'Deploy projects and patches to production and staging environments',
-            'Optimize new and existing SQL queries and procedures to reduce overhead'
+            'Execute detailed testing procedures & maintain technical documents',
+            'Streamline & assist in company training program',
+            'Maintain & enhance company software & services',
+            'Deploy projects & patches to production & staging environments',
+            'Optimize new & existing SQL queries & procedures to reduce overhead'
         ];
 
         var laptopTechnican = setupJob('Technology Services, Alfred State', 'Laptop Technician', "August '10", "May '11");
 
         laptopTechnican.duties = [
-            'Configured and deployed client and student laptops',
-            'Analyzed and resolved hardware/software problems',
-            'Researched and developed more efficient work practices',
-            'Created and updated pre-boot environment disks'
+            'Configured & deployed client & student laptops',
+            'Analyzed & resolved hardware/software problems',
+            'Researched & developed more efficient work practices',
+            'Created & updated pre-boot environment disks'
         ];
 
         var residentAssistant = setupJob('Residence Life, Alfred State', 'Resident Assistant', "August '08", "May '09");
@@ -140,12 +150,13 @@
             'Provided paraprofessional advising to undergraduate students',
             'Operated within a close-quarters living environment',
             'Trained new staff members',
-            'Organized and facilitated educational and social programs',
-            'Developed and refined mediation and conflict resolution skills'
+            'Organized & facilitated educational & social programs',
+            'Developed & refined mediation & conflict resolution skills'
         ];
 
+        resume.jobs.push(paylocity2);
         resume.jobs.push(particular);
-        resume.jobs.push(paylocity);
+        resume.jobs.push(paylocity1);
         resume.jobs.push(layerframe);
         resume.jobs.push(liazon);
         resume.jobs.push(localEdge);
