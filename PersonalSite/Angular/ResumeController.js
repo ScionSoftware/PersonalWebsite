@@ -28,6 +28,7 @@
             'MVC',
             'WebAPI',
             'NServiceBus',
+            'Rebus',
             'Entity Framework',
             'Dapper',
             'ADO.NET',
@@ -64,8 +65,8 @@
 
         paylocity2.duties = [
             'Write tools for migrating & testing large amounts of sensitive data',
-            'Use Rebus in a messaging architecture',
-            'Utilize messaging patterns & deferral'
+            'Implement & improve messaging architecture with Rebus',
+            'Pair with and mentor other developers'
         ];
 
         var particular = setupJob('Particular Software', 'Software Engineer', "September '15", "May '16");
