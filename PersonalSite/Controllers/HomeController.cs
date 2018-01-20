@@ -38,7 +38,7 @@ namespace PersonalSite.Controllers
         {
             var machineNames = new HashSet<string>()
             {
-                "SCION-BUS"
+                //"SCION-BUS"
             };
 
             var currentMachine = System.Environment.MachineName;

@@ -5,6 +5,7 @@
     .resume #skills {
         padding-left: 4px;
         border-bottom: thin dotted #000000;
+        text-align: center;
     }
 
 .boxed-list-items li {
@@ -16,6 +17,7 @@
     border-left: thin dotted #000000;
     border-bottom: thin dotted #000000;
     padding: 6px;
+    padding-top: 0px;
 }
 
 #jobs .job {

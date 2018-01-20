@@ -39,7 +39,6 @@
             'Ninject',
             'Castle Windsor',
             'TSQL',
-            'SSMS',
             'Visual Studio',
             'Sql Server',
             'MongoDb',
@@ -57,16 +56,24 @@
         ];
 
         var setupJob = function (company, title, startDate, endDate) {
-            return { company: company, title: title, startDate: startDate, endDate: endDate };
+            return {
+                company: company,
+                title: title,
+                startDate: startDate,
+                endDate: endDate
+            };
         };
 
-        
-        var paylocity2 = setupJob('Paylocity', 'Software Engineer', "May '16", "Present");
+        var paylocity2 = setupJob('Paylocity', 'Software Engineer', " Jan '15 to Sep '15 & May '16", "Present");
 
         paylocity2.duties = [
+            'Lead a stabilization task force for reliability engineering',
             'Write tools for migrating & testing large amounts of sensitive data',
-            'Implement & improve messaging architecture with Rebus',
-            'Pair with and mentor other developers'
+            'Acting messaging architecture expert with Rebus',
+            'Create import tools and interfaces',
+            'Utilize MVC, Web API, jQuery, Angular, React & Entity Framework',
+            'Create web services, web service clients, messaging architectures & nuget packages',
+            'Write unit tests, integration tests, static analysis & codebase health tests'
         ];
 
         var particular = setupJob('Particular Software', 'Software Engineer', "September '15", "May '16");
@@ -74,27 +81,17 @@
         particular.duties = [
             'Work in open source software',
             'Work on the NServiceBus core',
-            'Maintain RavenDb implementation',
+            'Maintain ServicePulse with Angular and SignalR',
+            'Maintain NServiceBus.RavenDb implementation',
             'Provide support for users of the Particular platform',
             'Write tests & automation',
             'Write blogs & marketing material'
         ];
 
-        var paylocity1 = setupJob('Paylocity', 'Software Engineer', "January '15", "September '15");
-
-        paylocity1.duties = [
-            'Implement new import features with proprietary framework',
-            'Utilize MVC, Web API, jQuery, & Entity Framework',
-            'Architect web services, web service clients, & nuget packages',
-            'Write unit tests, integration tests, static analysis & dynamic codebase tests',
-            'Use AngularJS to create detailed & configurable automation to setup companies',
-            'Refactor code for decoupling, cohesion & testability'
-        ];
-
         var layerframe = setupJob('Layerframe', 'Freelance Developer', "January '15", "August '15");
 
         layerframe.duties = [
-            'Utilize angular, node, mongodb, express, parse & mixpanel',
+            'Use angular, node, mongodb, express, parse & mixpanel',
             'Write, maintain, & enhance sales tools for large clients',
             'Write tools to limit or remove manual work for project managers'
         ];
@@ -103,7 +100,7 @@
 
         liazon.duties = [
             'Part of the architecture & scalability team',
-            'Utilize WebAPI & NServiceBus to implement Service Oriented Architecture',
+            'Use WebAPI & NServiceBus to implement Service Oriented Architecture',
             'Architect APIs & Single Page Applications with AngularJS',
             'Write a central configuration service for shared data & service discovery',
             'Train others on client side architecture & clean code',
@@ -119,10 +116,10 @@
             'Concurrent programming with features from .NET 3.5 to 4.5',
             'Sped up download service by factor of 4, reduced error / manual work',
             'Implement new user interfaces in AngularJS',
-            'Architect & implement design patterns for clean code',
             'Convert Web Forms to MVC4 sub applications',
-            'Write unit tests for all application rewrites',
-            'Interface with services provided by search engines'
+            'Write unit tests for new code',
+            'Maintain proxy application',
+            'Interface with services provided by Google/Bing/Sendori'
         ];
 
         var algonquin = setupJob('Algonquin Studios, Inc.', 'Developer I', "August '11", "December '12");
@@ -145,6 +142,8 @@
             'Created & updated pre-boot environment disks'
         ];
 
+        laptopTechnican.hideForPrint = true;
+
         var residentAssistant = setupJob('Residence Life, Alfred State', 'Resident Assistant', "August '08", "May '09");
 
         residentAssistant.duties = [
@@ -155,15 +154,24 @@
             'Developed & refined mediation & conflict resolution skills'
         ];
 
+        residentAssistant.hideForPrint = true;
+
         resume.jobs.push(paylocity2);
         resume.jobs.push(particular);
-        resume.jobs.push(paylocity1);
         resume.jobs.push(layerframe);
         resume.jobs.push(liazon);
         resume.jobs.push(localEdge);
         resume.jobs.push(algonquin);
         resume.jobs.push(laptopTechnican);
         resume.jobs.push(residentAssistant);
+
+        resume.contactMe = [];
+
+        resume.contactMe.push('colin@scionsoftware.com');
+        resume.contactMe.push('' + (598 + 118) + '-' + (718 + 238) + '-' + (2786 + 658));
+        resume.contactMe.push('github.com/colin-higgins');
+        resume.contactMe.push('linkedin.com/in/cphiggins');
+        resume.contactMe.push('twitter.com/SpykeBytes');
     };
 
     ng.module('SpikeBytes').controller('ResumeCtrl', ['$scope', resumeCtrl]);

@@ -1,0 +1,187 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Yoga with Allison</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+    <!--<div id="header">
+      <nav>
+        <li class="fork"><a href="https://github.com/akhigginsyoga">View On GitHub</a></li>
+      </nav>
+    </div>-->
+    <!-- end header -->
+    <div class="wrapper">
+        <section>
+            <div id="title">
+                <h1>Yoga &amp; Wellness with Allison</h1>
+                <p><b>WARNING:</b> Yoga has been known to cause health and happiness</p>
+                <hr>
+                <span class="credits left">
+                    Join me on <a href="https://www.facebook.com/AKHigginsYoga/?fref=akhigginsyogagithub" target="_blank">
+                        Facebook
+                    </a>
+                </span>
+                <span class="credits right">Maintained by <a href="https://twitter.com/spykebytes" target="_blank">Colin Higgins</a></span>
+            </div>
+            <h2>
+                <a id="welcome-to-yoga-with-allison" class="anchor" href="#welcome-to-yoga-with-allison" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to Yoga with Allison
+            </h2>
+
+            <p>I studied at the Himalayan Institutue of Buffalo. I am a 200 hour Registered Yoga Teacher.</p>
+
+            <h2>
+                <a id="places-i-have-taught" class="anchor" href="#schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Schedule of classes
+            </h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Sunday</td>
+                        <td>Monday</td>
+                        <td>Tuesday</td>
+                        <td>Wednesday</td>
+                        <td>Thursday</td>
+                        <td>Friday</td>
+                        <td>Saturday</td>
+                    </tr>
+                </thead>
+                <tbody id="yoga-schedule"></tbody>
+            </table>
+
+            <h2>
+                <a id="places-i-have-taught" class="anchor" href="#places-i-have-taught" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Places I have taught
+            </h2>
+
+            <ul>
+                <li>Southtowns YMCA in West Seneca</li>
+                <li>Southtowns Fitness Center in Hamburg</li>
+                <li>Shine Yoga in Hamburg <a href="https://www.facebook.com/shineyogawny/?fref=akhigginsyogagithub" target="_blank">(Facebook)</a></li>
+                <li>Soulspace Salon &amp; Yoga Studio in Orchard Park</li>
+                <li>Personal Studio in Lackawanna</li>
+            </ul>
+        </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+
+    <script>
+
+        var scheduler = (function () {
+
+            var yogaClass = function (time, day, title) {
+                return {
+                    day: day,
+                    time: time,
+                    title: title,
+                };
+            };
+
+            var schedule = [
+                yogaClass("9:00", "saturday", "Children's Yoga at Southtowns YMCA"),
+                yogaClass("9:15", "friday", "All Levels at Hamburg Southtowns Fitness"),
+                yogaClass("10:45", "monday", "Toddler and me Yoga at Southtowns YMCA"),
+                yogaClass("2:00", "tuesday", "Beginners/gentle/low mobility yoga at Shine Yoga WNY in Hamburg"),
+                yogaClass("2:00", "thursday", "Beginners/gentle/low mobility yoga at Shine Yoga WNY in Hamburg"),
+                yogaClass("2:00", "sunday", "All Levels at Shine Yoga WNY in Hamburg"),
+            ];
+
+            var timeOfDayGroups = {};
+
+            for (var i = 0; i < schedule.length; i++) {
+
+                if (!timeOfDayGroups.hasOwnProperty(schedule[i].time)) {
+                    timeOfDayGroups[schedule[i].time] = [];
+                }
+
+                timeOfDayGroups[schedule[i].time].push(schedule[i]);
+            }
+
+            var scheduleRowsHtml = '';
+
+            for (var timeKey in timeOfDayGroups) {
+
+                if (!timeOfDayGroups.hasOwnProperty(timeKey)) {
+                    continue;
+                }
+
+                var templateSetter = {
+                    time: timeKey,
+                    sunday: '',
+                    monday: '',
+                    tuesday: '',
+                    wednesday: '',
+                    thursday: '',
+                    friday: '',
+                    saturday: '',
+                };
+
+                var timeRowHtml = `
+                    <tr>
+                        <td class="time">
+                            {time}
+                        </td>
+                        <td class ="sunday">
+                            {sunday}
+                        </td>
+                        <td class ="monday">
+                            {monday}
+                        </td>
+                        <td class ="tuesday">
+                            {tuesday}
+                        </td>
+                        <td class ="wednesday">
+                            {wednesday}
+                        </td>
+                        <td class ="thursday">
+                            {thursday}
+                        </td>
+                        <td class ="friday">
+                            {friday}
+                        </td>
+                        <td class="saturday">
+                            {saturday}
+                        </td>
+                    </tr>`;
+
+                for (var index = 0; index < timeOfDayGroups[timeKey].length; index++) {
+
+                    var yogaClassInstance = timeOfDayGroups[timeKey][index];
+
+                    templateSetter[yogaClassInstance.day] = yogaClassInstance.title;
+                }
+
+                for (var templateKey in templateSetter) {
+
+                    if (!templateSetter.hasOwnProperty(templateKey)) {
+                        continue;
+                    }
+
+                    timeRowHtml = timeRowHtml.replace('{' + templateKey + '}', templateSetter[templateKey]);
+                }
+
+                scheduleRowsHtml = scheduleRowsHtml + timeRowHtml;
+            }
+
+            var scheduleTableBody = document.getElementById('yoga-schedule');
+            scheduleTableBody.innerHTML = scheduleRowsHtml;
+        })();
+
+    </script>
+
+</body>
+</html>
