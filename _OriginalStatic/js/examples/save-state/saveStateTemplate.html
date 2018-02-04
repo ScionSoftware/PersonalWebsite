@@ -1,0 +1,26 @@
+<div ng-controller="saveStateController" class="mini-demo">
+
+    <span class="fields">
+        <div>
+            <label>Name: </label>
+            <input type="text" ng-model="model.name" ng-change="saveState()"/>
+        </div>
+
+        <div>
+            <label>Number: </label>
+            <input type="numeric" ng-model="model.number" ng-change="saveState()"/>
+        </div>
+
+        <div>
+            <label>Biography: </label>
+            <textarea ng-model="model.biography" ng-change="saveState()"></textarea>
+        </div>
+    </span>
+
+    <span class="narrative">
+        <p>
+            If you modify these fields they will be saved for you upon refresh.
+        </p>
+    </span>
+
+</div>

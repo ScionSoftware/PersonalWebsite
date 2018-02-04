@@ -1,0 +1,21 @@
+﻿<p>I consistently find that developers don't utilize exceptions as they should.</p>
+
+<p>I'm guilty of this too.</p>
+
+<p>I feel as though when we all start out we get negative reinforcement from our code not working. Oh crap my code bombed out and I got hit with this big ugly Exception and stack trace.</p>
+
+<p>So before we understand these useful parts of our tool set, we learn to fear them and see them as inconvenience. We learn that when we see exceptions, we have failed.</p>
+
+<p>The truth is that exceptions are incredibly helpful. A well named and well placed custom exception can bring clarity and traceability to problems that inevitably arise.</p>
+
+<p>Throwing an exception can halt execution of a program operating in an invalid and potentially dangerous state. This stops unnecessary code from running which could also mean your invalid state didn't cause a whole pile of other problems that you'd have to trace down.</p>
+
+<p>Don't stop at just throwing a plain old Exception with a message though. Make sure you have exception types that are indicative of the problem that exists. You might even want extra properties to store contextual data like the program state and parameters.</p>
+
+<p>On the other side of this, I often see people doing things like SingleOrDefault and when an item not existing is an invalid state. If there should definitely be in item there, use Single. You're only making it more painful when some crappy NullReference error crops up later on. A much more friendly error is the item not found error at the true source of the problem.</p>
+
+<p>Worse yet. You may now and then see empty catch blocks that swallow exceptions into the abyss, never to be seen again. It is so cheap to just log these exceptions and there really isn't an excuse not to.</p>
+
+<p>Exceptions are friends, not food.</p>
+
+<p>Don't fear exceptions, they are a useful tool and help us solve problems. Nobody likes the messenger of bad news but don't pretend the bad news isn't there.</p>

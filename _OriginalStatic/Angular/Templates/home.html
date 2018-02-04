@@ -1,0 +1,66 @@
+﻿
+<style>
+    .post {
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    .post-header h2 {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .post-share {
+        margin-bottom: 25px;
+    }
+
+    .preview-interstitial-ad {
+        margin-bottom: 25px;
+    }
+
+</style>
+
+<div>
+
+    <div ng-repeat-start="blog in displayed track by blog.name"
+        ng-if="$index % 2 === 1"
+        class="preview-interstitial-ad">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Blog Preview Interstitial -->
+        <ins class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-9074449405350285"
+            data-ad-slot="5088821253"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+    </div>
+
+    <article class="post" ng-repeat-end>
+        <div class="post-header">
+            <h2>
+                <span>
+                    <a ng-href="/blog/{{blog.name}}">{{blog.name}}</a>
+                </span>
+            </h2>
+            <span class="date">{{blog.published}}</span>
+        </div>
+
+        <div style="display: block;">
+            <div ng-include="blog.url"></div>
+        </div>
+
+        <div ss-social-share
+             ss-url="www.scionsoftware.com/blog/{{blog.name}}"
+             ss-title="{{blog.name}}">
+        </div>
+    </article>
+
+
+    <div ng-hide="displayed.length === archiveNames.length" style="margin-bottom: 20px;">
+        <button class="btn btn-block btn-info" ng-click="showMoreBlogs()">More</button>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿.resume {
+    padding: 10px;
+}
+
+    .resume #skills {
+        padding-left: 4px;
+        border-bottom: thin dotted #000000;
+        text-align: center;
+    }
+
+.boxed-list-items li {
+    border: .08em solid #dddddd;
+    margin: 1px;
+}
+
+.resume #jobs {
+    border-left: thin dotted #000000;
+    border-bottom: thin dotted #000000;
+    padding: 6px;
+    padding-top: 0px;
+}
+
+#jobs .job {
+    margin-bottom: 8px;
+}
+
+    #jobs .job div label {
+        display: inline-block;
+    }
+
+    #jobs .job div span {
+        float: right;
+    }
+
+@media (min-width: 34em) {
+
+    .resume #skills {
+        display: inline-block;
+        float: left;
+        width: 20%;
+        border-bottom: none;
+    }
+
+    .resume #jobs {
+        display: inline-block;
+        float: left;
+        width: 75%;
+    }
+}
