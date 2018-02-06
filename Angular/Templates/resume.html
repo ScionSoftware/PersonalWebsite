@@ -1,0 +1,42 @@
+﻿<link href="/css/resume-styles.css" rel="stylesheet" />
+
+<div class="show-on-print" style="margin-top:-40px; padding-top:0; z-index: 999;">
+    <h1 style="margin-top:0; padding: 0; padding-top:5px; font-family: monospace; color: #1ec503; line-height: 40px;">
+        >> cd \\scionsoftware\c$\users\
+        <br />
+        >> cd "Colin Higgins"
+        <br />
+        >> touch Resume
+    </h1>
+</div>
+
+<div class="resume row print-hundred-percent-width">
+    <div id="skills">
+        <h3>Skills</h3>
+        <ul class="list-inline boxed-list-items">
+            <li ng-repeat="skill in resume.skills | orderBy: 'toString()'">
+                {{skill}}
+            </li>
+        </ul>
+
+        <h3>Get in touch</h3>
+        <ul class="list-inline boxed-list-items" style="font-size: 11px;">
+            <li ng-repeat="info in resume.contactMe">
+                {{info}}
+            </li>
+        </ul>
+    </div>
+
+    <div id="jobs">
+        <h3>Experience</h3>
+        <ul class="list-unstyled">
+            <li class="job" ng-repeat="job in resume.jobs" ng-class="{ 'hide-on-print': job.hideForPrint }">
+                <div>
+                    <label>{{job.title + ' - ' + job.company}}</label>
+                    <span>{{job.startDate}} to {{job.endDate}}</span>
+                </div>
+                <span ng-repeat="duty in job.duties">{{duty + '; '}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
