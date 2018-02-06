@@ -3,17 +3,24 @@ var siteVer = '?v=1.2.1';
 (function (ng) {
     'use strict';
 
+    var blogPage = {
+        templateUrl: '/js/angular/templates/blog.html' + siteVer,
+        controller: 'BlogCtrl',
+        caseInsensitiveMatch: true,
+    };
+
     var spikeBytes = ng.module('SpikeBytes', ['ngRoute', 'LocalStorageModule'])
 	spikeBytes.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	    $routeProvider
-		.when('/blog/:title', {
-		    templateUrl: '/js/angular/templates/blog.html' + siteVer,
-		    controller: 'BlogCtrl',
-        })
+		.when('/blog/:title', blogPage)
+		.when('/Blog/:title', blogPage)
+		.when('/BLOG/:title', blogPage)
+		.when('/BLog/:title', blogPage)
         .when('/about', {
             templateUrl: '/js/angular/templates/about.html' + siteVer,
             controller: 'AboutCtrl',
             title: 'About',
+            caseInsensitiveMatch: true,
         })
         .when('/resume', {
             templateUrl: '/js/angular/templates/resume.html' + siteVer,
