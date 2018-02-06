@@ -46,7 +46,7 @@ var siteVer = '?v=1.2.1';
     function ($rootScope, $location, $window, $route) {
 
         var title = function () {
-            if ($route.current) {
+            if ($route.current && $route.current.$$route) {
                 return $route.current.$$route.title;
             }
             return null;
