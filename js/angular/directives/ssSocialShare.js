@@ -3,7 +3,7 @@
 
     var ssSocialShare = function () {
         return {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/angular/directives/templates/ssSocialShare.html',
+            templateUrl: '/js/angular/directives/templates/ssSocialShare.html',
             scope: {
                 ssUrl: '@',
                 ssTitle: '@'
