@@ -39,7 +39,7 @@ var siteVer = '?v=1.2.1';
             templateUrl: '/js/angular/templates/404.html' + siteVer,
         });
 		
-		//$locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(true);
 		
 	}]).run(['$rootScope', '$location', '$window', '$route',
     function ($rootScope, $location, $window, $route) {
