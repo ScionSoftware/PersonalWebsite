@@ -4,7 +4,7 @@
     var ssBlogArchive = function (blogApi) {
 
         return {
-            templateUrl: '/Angular/Directives/Templates/ssBlogArchive.html',
+            templateUrl: '/angular/directives/templates/ssBlogArchive.html',
             replace: true,
             scope: {
                 keepExpanded: '=?attrExpand'

@@ -3,7 +3,7 @@
 
     var ssSocialShare = function () {
         return {
-            templateUrl: '/Angular/Directives/Templates/ssSocialShare.html',
+            templateUrl: '/angular/directives/templates/ssSocialShare.html',
             scope: {
                 ssUrl: '@',
                 ssTitle: '@'
