@@ -23,7 +23,7 @@
 <div>
 
     <div ng-repeat-start="blog in displayed track by blog.name"
-        ng-if="$index % 2 === 1"
+        ng-if="$index % 2 === 0"
         class="preview-interstitial-ad">
 
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -54,7 +54,7 @@
         </div>
 
         <div ss-social-share
-             ss-url="www.scionsoftware.com/blog/{{blog.name}}"
+             ss-url="www.scionsoftware.com/#/blog/{{blog.name}}"
              ss-title="{{blog.name}}">
         </div>
     </article>
