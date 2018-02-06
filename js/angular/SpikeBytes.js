@@ -5,36 +5,36 @@
 	spikeBytes.config([ '$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	    $routeProvider
 		.when('/blog/:title', {
-		    templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/blog.html',
+		    templateUrl: '/js/angular/templates/blog.html',
             controller: 'BlogCtrl',
         })
         .when('/about', {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/about.html',
+            templateUrl: '/js/angular/templates/about.html',
             controller: 'AboutCtrl',
             title: 'About',
         })
         .when('/resume', {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/resume.html',
+            templateUrl: '/js/angular/templates/resume.html',
             controller: 'ResumeCtrl',
             title: 'Resume',
         })
         .when('/reading', {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/reading.html',
+            templateUrl: '/js/angular/templates/reading.html',
             controller: 'ReadingCtrl',
             title: 'Reading',
         })
         .when('/archive', {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/archive.html',
+            templateUrl: '/js/angular/templates/archive.html',
             controller: 'BlogArchiveCtrl',
             title: 'Archive',
         })
         .when('/', {
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/home.html',
+            templateUrl: '/js/angular/templates/home.html',
             controller: 'HomeCtrl',
             title: 'Home',
         })
         .otherwise({
-            templateUrl: 'https://github.com/colin-higgins/colin-higgins.github.io/blob/master/templates/404.html',
+            templateUrl: '/js/angular/templates/404.html',
         });
 		
 		//$locationProvider.html5Mode(true);
