@@ -5,36 +5,36 @@
 	spikeBytes.config([ '$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	    $routeProvider
 		.when('/blog/:title', {
-            templateUrl: '/angular/directives/templates/blog.html',
+            templateUrl: '/templates/blog.html',
             controller: 'BlogCtrl',
         })
         .when('/about', {
-            templateUrl: '/angular/templates/about.html',
+            templateUrl: '/templates/about.html',
             controller: 'AboutCtrl',
             title: 'About',
         })
         .when('/resume', {
-            templateUrl: '/angular/templates/resume.html',
+            templateUrl: '/templates/resume.html',
             controller: 'ResumeCtrl',
             title: 'Resume',
         })
         .when('/reading', {
-            templateUrl: '/angular/templates/reading.html',
+            templateUrl: '/templates/reading.html',
             controller: 'ReadingCtrl',
             title: 'Reading',
         })
         .when('/archive', {
-            templateUrl: '/angular/templates/Archive.html',
+            templateUrl: '/templates/archive.html',
             controller: 'BlogArchiveCtrl',
             title: 'Archive',
         })
         .when('/', {
-            templateUrl: '/angular/templates/home.html',
+            templateUrl: '/templates/home.html',
             controller: 'HomeCtrl',
             title: 'Home',
         })
         .otherwise({
-            templateUrl: '/angular/templates/404.html',
+            templateUrl: '/templates/404.html',
         });
 		
 		//$locationProvider.html5Mode(true);
