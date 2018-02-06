@@ -19,21 +19,25 @@ var siteVer = '?v=1.2.1';
             templateUrl: '/js/angular/templates/resume.html' + siteVer,
             controller: 'ResumeCtrl',
             title: 'Resume',
+            caseInsensitiveMatch: true,
         })
         .when('/reading', {
             templateUrl: '/js/angular/templates/reading.html' + siteVer,
             controller: 'ReadingCtrl',
             title: 'Reading',
+            caseInsensitiveMatch: true,
         })
         .when('/archive', {
             templateUrl: '/js/angular/templates/archive.html' + siteVer,
             controller: 'BlogArchiveCtrl',
             title: 'Archive',
+            caseInsensitiveMatch: true,
         })
         .when('/', {
             templateUrl: '/js/angular/templates/home.html' + siteVer,
             controller: 'HomeCtrl',
             title: 'Home',
+            caseInsensitiveMatch: true,
         })
         .otherwise({
             templateUrl: '/js/angular/templates/404.html' + siteVer,

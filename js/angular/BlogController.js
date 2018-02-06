@@ -2,7 +2,7 @@
     'use strict';
 
     var blogCtrl = function ($scope, $routeParams, blogApi) {
-        $scope.title = $routeParams.title;
+        $scope.title = $routeParams.title.toString().toLowerCase();
         $scope.blog = blogApi.getByName($scope.title);
     };
 

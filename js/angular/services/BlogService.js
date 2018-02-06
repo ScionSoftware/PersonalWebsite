@@ -30,11 +30,11 @@
             var year = blogs[i].published.substr(0, 4);
             var month = blogs[i].published.substr(5, 2);
 
+            blogs[i].name = blogs[i].name.toString().toLowerCase();
             blogs[i].year = year;
             blogs[i].month = month;
             blogs[i].monthText = monthMap[month];
             blogs[i].url = "/blogs/" + year + "/" + blogs[i].name + ".html";
-            blogs[i].template = "'" + blogs[i].url + "'";
         }
 
         var metadataPromise = null;
