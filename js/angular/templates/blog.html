@@ -2,21 +2,21 @@
 <div class="post-header">
     <h2>
         <span>
-            <a href="/Blog/@(Model.Name)">@Model.Name</a>
+            <a ng-href="/#/blog/{{blog.name}}">{{blog.name}}</a>
         </span>
     </h2>
-    <span class="date">@Model.PublishedDisplay</span>
+    <span class="date">{{blog.published}}</span>
 </div>
 
 <article class="post">
 
     <div style="display: block;">
-        @Html.Raw(Model.Content)
+        <div ng-include="blog.url"></div>
     </div>
 
     <div ss-social-share
-         ss-url="@(Request.Url.AbsoluteUri)"
-         ss-title="@(Model.Title)">
+         ss-url="www.scionsoftware.com/#/blog/{{blog.name}}"
+         ss-title="{{blog.name}}">
     </div>
 
 </article>

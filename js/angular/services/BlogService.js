@@ -90,6 +90,16 @@
                 deferred.resolve(archiveYears);
                 return deferred.promise;
             },
+            getByName: function (name) {
+
+                for (var i = 0; i < blogs.length; i++) {
+                    if (blogs[i].name === name) {
+                        return blogs[i];
+                    }
+                }
+
+                throw new Error('Dat is not de way.');
+            },
             getPreviews: function (blogNames) {
 
                 var nameParameter = blogNames.join(',');

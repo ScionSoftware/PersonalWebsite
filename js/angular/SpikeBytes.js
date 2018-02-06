@@ -1,14 +1,14 @@
-var siteVer = '?v=1.0.0';
+var siteVer = '?v=1.2.1';
 
 (function (ng) {
     'use strict';
 
     var spikeBytes = ng.module('SpikeBytes', ['ngRoute', 'LocalStorageModule'])
-	spikeBytes.config([ '$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	spikeBytes.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	    $routeProvider
 		.when('/blog/:title', {
 		    templateUrl: '/js/angular/templates/blog.html' + siteVer,
-            controller: 'BlogCtrl',
+		    controller: 'BlogCtrl',
         })
         .when('/about', {
             templateUrl: '/js/angular/templates/about.html' + siteVer,

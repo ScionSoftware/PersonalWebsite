@@ -1,10 +1,11 @@
+(function (ng) {
+    'use strict';
 
+    var blogCtrl = function ($scope, $routeParams, blogApi) {
+        $scope.title = $routeParams.title;
+        $scope.blog = blogApi.getByName($scope.title);
+    };
 
-var blogCtrl = function ($scope, $routeParams) {
-    $scope.title = $routeParams.title;
-    //$scope.title = ' - ' + $scope.title;
-    $scope.template = '/blogs/' + $scope.title + '.html';
-};
+    ng.module('SpikeBytes').controller('BlogCtrl', ['$scope', '$routeParams', 'blogApi', blogCtrl]);
 
-spykeBytes.controller('BlogCtrl', ['$scope', '$routeParams', blogCtrl]);
-
+}(angular));
