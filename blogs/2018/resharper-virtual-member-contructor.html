@@ -1,0 +1,93 @@
+<p>You might be familiar with this resharper warning.</p>
+
+<div class="center-content">
+    <img src="/img/blogs/virtual_member_constructor.jpg" alt="Virtual member call in constructor">
+</div>
+
+<p>
+    In C#, if you had three classes Grandma, Mom, and Daughter.
+    Every Grandma is a Mom, every Mom is a Daughter.
+</p>
+
+<pre><code class="language-C#">    
+class Grandma : Mom
+{
+}         
+class Mom : Daughter
+{
+}         
+class Daughter
+{
+}
+</code></pre>
+
+<p>
+    Constructors run in this order: Daughter > Mom > Grandma
+</p>
+
+<p>
+    Initializers run in this order: Grandma > Mom > Daughter
+</p>
+
+<p>
+    So when you are calling a virtual method, for example, in Daughter's constructor, 
+    you are calling something which will not have Mom's or Grandma's types constructed yet.
+</p>
+
+<pre><code class="language-C#">    
+class Daughter
+{
+    public Daughter()
+    {
+        DoHobby();
+    }
+    protected virtual void DoHobby() 
+    {
+    }
+}
+
+class Mom : Daughter
+{
+}
+
+class Grandma : Mom
+{
+    private string foo;
+    public Child() { foo = "KNITTING"; }
+    protected override void DoHobby()
+    {
+        Console.WriteLine(foo.ToLower());
+    }
+}
+</code></pre>
+
+<p>
+    In this example, when you get a `new Grandma()`, 
+    you also get a `NullReferenceException` when you might have expected a new wool sweater.
+</p>
+
+<p>
+    While this specific problem is fairly unique to C#, it's a good reminder to follow the Liskov Substitution Principle.
+</p>
+
+<p>
+    This principle was introduced by Barbara Liskov in a 1987 conference keynote and later published in a paper. The original definition:
+</p>
+
+<blockquote>
+    Let q(x) be a property provable about objects x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.
+</blockquote>
+
+<p>
+    Which ultimately simplifies to Uncle Bob's definition:
+</p>
+
+<blockquote>
+    Subtypes must be substitutable for their base types.
+</blockquote>
+
+<p>
+    From which you can infer that child types should not blow up the parent.
+    By calling a method which is intended to be overridden in children BEFORE those children are constructed,
+    we are opening ourselves up to violating that principle.
+</p>

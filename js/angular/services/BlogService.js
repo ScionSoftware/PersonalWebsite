@@ -10,6 +10,7 @@
     var blogApiInstance = function ($q) {
 
         var blogs = blogMetadata;
+        var availableBlogs = [];
 
         var monthMap = {
             "01": "January",
@@ -26,15 +27,24 @@
             "12": "December",
         }
 
+        var now = Date.now();
+
         for (var i = 0; i < blogs.length; i++) {
             var year = blogs[i].published.substr(0, 4);
             var month = blogs[i].published.substr(5, 2);
+            var day = blogs[i].published.substr(8, 2);
 
             blogs[i].name = blogs[i].name.toString().toLowerCase();
             blogs[i].year = year;
             blogs[i].month = month;
+            blogs[i].day = day;
+            blogs[i].date = new Date(year,month,day);
             blogs[i].monthText = monthMap[month];
             blogs[i].url = "/blogs/" + year + "/" + blogs[i].name + ".html";
+
+            if (blogs[i].date.getTime() < now) {
+                availableBlogs.push(blogs[i]);
+            }
         }
 
         var metadataPromise = null;
@@ -108,8 +118,8 @@
                 var previews = [];
                 for (var i = 0; i < blogs.length; i++) {
                     for (var n = 0; n < blogNames.length; n++) {
-                        if (blogs[i].name === blogNames[n]) {
-                            previews.push(blogs[i]);
+                        if (availableBlogs[i].name === blogNames[n]) {
+                            previews.push(availableBlogs[i]);
                         }
                     }
                 }
@@ -125,14 +135,14 @@
                 var batchSize = 1;
                 var startIndex = groupIndex * batchSize;
                 var max = startIndex + batchSize;
-                if (max > blogs.length) {
-                    max = blogs.length;
+                if (max > availableBlogs.length) {
+                    max = availableBlogs.length;
                 }
 
                 var previews = [];
 
                 for (var i = startIndex; i < max; i++) {
-                    previews.push(blogs[i]);
+                    previews.push(availableBlogs[i]);
                 }
 
                 deferred.resolve(previews);

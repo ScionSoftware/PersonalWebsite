@@ -64,7 +64,8 @@ var siteVer = '?v=1.2.1';
         };
 
         $rootScope.$watch(title, function (newTitle, oldTitle) {
-            $rootScope.activeTitle = newTitle || 'Scion';
+            $rootScope.activeTitle = newTitle || 'Scion Software';
+            $window.document.title = $rootScope.activeTitle;
         });
 
         var path = function () { return $location.path(); };
