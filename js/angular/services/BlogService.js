@@ -27,7 +27,8 @@
             "12": "December",
         }
 
-        var now = Date.now();
+        var today = new Date();
+        today.setUTCHours(0);
 
         for (var i = 0; i < blogs.length; i++) {
             var year = blogs[i].published.substr(0, 4);
@@ -38,11 +39,15 @@
             blogs[i].year = year;
             blogs[i].month = month;
             blogs[i].day = day;
-            blogs[i].date = new Date(year,month,day);
+            blogs[i].date = new Date(year, parseInt(month) - 1, day);
+            blogs[i].date.setUTCHours(0);
             blogs[i].monthText = monthMap[month];
             blogs[i].url = "/blogs/" + year + "/" + blogs[i].name + ".html";
 
-            if (blogs[i].date.getTime() < now) {
+            blogs[i].available = false;
+
+            if (blogs[i].date.getTime() < today.getTime()) {
+                blogs[i].available = true;
                 availableBlogs.push(blogs[i]);
             }
         }
@@ -50,6 +55,9 @@
         var metadataPromise = null;
 
         return {
+            getAll: function () {
+                return blogs;
+            },
             getMetaData: function () {
                 var deferred = $q.defer();
                 var yearsObject = {};

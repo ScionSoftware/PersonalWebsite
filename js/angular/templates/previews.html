@@ -1,0 +1,9 @@
+﻿
+<h2>Previews</h2>
+
+<div ng-repeat="preview in previews">
+    <h3>
+        <a ng-href="/blog/{{preview.name}}">{{preview.name}}</a>
+    </h3>
+    <label> ----- Available {{preview.published}}</label>
+</div>

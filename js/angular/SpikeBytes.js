@@ -40,6 +40,12 @@ var siteVer = '?v=1.2.1';
             title: 'Archive',
             caseInsensitiveMatch: true,
         })
+        .when('/previews', {
+            templateUrl: '/js/angular/templates/previews.html' + siteVer,
+            controller: 'BlogArchiveCtrl',
+            title: 'Previews',
+            caseInsensitiveMatch: true,
+        })
         .when('/', {
             templateUrl: '/js/angular/templates/home.html' + siteVer,
             controller: 'HomeCtrl',
