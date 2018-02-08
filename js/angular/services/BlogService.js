@@ -84,7 +84,9 @@
                 };
 
                 for (var i = 0; i < blogs.length; i++) {
-                    add(blogs[i]);
+                    if (blogs[i].available) {
+                        add(blogs[i]);
+                    }
                 }
 
                 var archiveYears = [];
