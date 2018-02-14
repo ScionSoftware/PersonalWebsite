@@ -97,7 +97,7 @@ class Grandma : Mom
 </p>
 
 <pre><code class="language-C#"> 
-/// <summary> The "wrong" way </summary>
+// The "wrong" way
 class Mom : Daughter
 {
     public Mom()
@@ -107,8 +107,7 @@ class Mom : Daughter
     public virtual List<Child> Children { get; set; }
 }
 
-
-/// <summary> The "right" way </summary>
+// The "right" way
 class Mom : Daughter
 {
     public virtual List<Child> Children { get; set; } = new List<Child>();
