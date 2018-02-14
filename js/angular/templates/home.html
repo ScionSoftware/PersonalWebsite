@@ -22,24 +22,7 @@
 
 <div>
 
-    <div ng-repeat-start="blog in displayed track by blog.name"
-        ng-if="$index % 2 === 0"
-        class="preview-interstitial-ad">
-
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Blog Preview Interstitial -->
-        <ins class="adsbygoogle"
-            style="display: block"
-            data-ad-client="ca-pub-9074449405350285"
-            data-ad-slot="5088821253"
-            data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
-    </div>
-
-    <article class="post" ng-repeat-end>
+    <article ng-repeat-start="blog in displayed track by blog.name" class="post">
         <div class="post-header">
             <h2>
                 <span>
@@ -59,6 +42,17 @@
         </div>
     </article>
 
+    <div ng-repeat-end class="preview-interstitial-ad">
+        <!-- Blog Preview Interstitial -->
+        <ins class="adsbygoogle"
+             style="display: block"
+             data-ad-client="ca-pub-9074449405350285"
+             data-ad-slot="5088821253"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
     <div ng-hide="displayed.length === archiveNames.length" style="margin-bottom: 20px;">
         <button class="btn btn-block btn-info" ng-click="showMoreBlogs()">More</button>
