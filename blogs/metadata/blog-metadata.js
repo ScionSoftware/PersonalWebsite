@@ -1,7 +1,7 @@
 ﻿var blogMetadata = [
     {
         published: "2018-02-12",
-        name: "resharper-virtual-member-contructor",
+        name: "resharper-virtual-member-constructor",
         description:
         "Why does resharper show those squiggles for any reference to a virtual member in the constructor?"
     },
