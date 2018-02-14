@@ -41,19 +41,17 @@ class Daughter
     {
         DoHobby();
     }
-    protected virtual void DoHobby() 
+    protected virtual void DoHobby()
     {
     }
 }
-
 class Mom : Daughter
 {
 }
-
 class Grandma : Mom
 {
     private string foo;
-    public Child() { foo = "KNITTING"; }
+    public Grandma() { foo = "KNITTING"; }
     protected override void DoHobby()
     {
         Console.WriteLine(foo.ToLower());
@@ -91,3 +89,27 @@ class Grandma : Mom
     By calling a method which is intended to be overridden in children BEFORE those children are constructed,
     we are opening ourselves up to violating that principle.
 </p>
+
+<p>
+    The most common situation I see this, is in Entity Framework entities, 
+    particularly for instantiating collections so as to avoid any null references.
+    While this probably won't be harmful, another way is to use property initializers.
+</p>
+
+<pre><code class="language-C#"> 
+// The "wrong" way
+class Mom : Daughter
+{
+    public Mom()
+    {
+        Children = new List<Child>();
+    }
+    public virtual List<Child> Children { get; set; }
+}
+
+// The "right" way
+class Mom : Daughter
+{
+    public virtual List<Child> Children { get; set; } = new List<Child>();
+}
+</code></pre>
