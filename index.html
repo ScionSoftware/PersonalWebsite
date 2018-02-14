@@ -34,6 +34,7 @@
     <script src="/js/angular/directives/hnTap.js"></script>
     <script src="/js/angular/directives/ssSocialShare.js"></script>
     <script src="/js/angular/directives/ssBlogArchive.js"></script>
+    <script src="/js/angular/directives/ssGoogleAd.js"></script>
     <script src="/js/examples/save-state/saveStateController.js"></script>
     
     <link href="/css/scion-theme.css" rel="stylesheet" />
@@ -141,17 +142,9 @@
             
 			<div ng-view></div>
 
-            <div class="banner-bottom-ad hide-on-print">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Banner - Bottom -->
-                <ins class="adsbygoogle"
-                    style="display: block"
-                    data-ad-client="ca-pub-9074449405350285"
-                    data-ad-slot="2042687254"
-                    data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+            <div ss-google-ad
+                 attr-class="banner-bottom-ad hide-on-print"
+                 attr-ad-slot="2042687254">
             </div>
         </div>
 
@@ -241,6 +234,14 @@
         };
 
 		
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3749205289521356",
+    enable_page_level_ads: true
+  });
     </script>
 
 </body>
