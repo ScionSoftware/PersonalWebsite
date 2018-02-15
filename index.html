@@ -34,6 +34,7 @@
     <script src="/js/angular/directives/hnTap.js"></script>
     <script src="/js/angular/directives/ssSocialShare.js"></script>
     <script src="/js/angular/directives/ssBlogArchive.js"></script>
+    <script src="/js/angular/directives/ssBlogSearch.js"></script>
     <script src="/js/angular/directives/ssGoogleAd.js"></script>
     <script src="/js/examples/save-state/saveStateController.js"></script>
     
@@ -174,14 +175,23 @@
 
         </div>
 
-            <div class="section desktop-max sidebar hide-on-print">
-                <div class="widget Text">
-                    <h2 class="title"><span>Archives</span></h2>
-                    <div class="widget-content">
-                        <div ss-blog-archive></div>
-                    </div>
+        <div class="section desktop-max sidebar hide-on-print">
+            <div class="widget Text">
+                <h2 class="title"><span>Search</span></h2>
+                <div class="widget-content">
+                    <div ss-blog-search></div>
                 </div>
             </div>
+        </div>
+
+        <div class="section desktop-max sidebar hide-on-print">
+            <div class="widget Text">
+                <h2 class="title"><span>Archives</span></h2>
+                <div class="widget-content">
+                    <div ss-blog-archive></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer id="footer-copyright" class="hide-on-print">
