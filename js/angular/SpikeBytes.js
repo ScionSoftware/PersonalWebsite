@@ -1,4 +1,4 @@
-var siteVer = '?v=1.2.1';
+var siteVer = '?v=2.0.1';
 
 (function (ng) {
     'use strict';
