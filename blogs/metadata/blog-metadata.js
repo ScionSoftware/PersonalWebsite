@@ -1,5 +1,12 @@
 ﻿var blogMetadata = [
     {
+        published: "2018-02-20",
+        name: "altruistic-workplace-politics",
+        tags: "career,corporate,reputation",
+        description:
+        "Being political can be a force for good. Don't get left behind as a quiet doormat."
+    },
+    {
         published: "2018-02-12",
         name: "resharper-virtual-member-constructor",
         tags: "c#,liskov,oop",
