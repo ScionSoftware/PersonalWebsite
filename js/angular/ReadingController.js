@@ -3,6 +3,7 @@
 
     var readingCtrl = function ($scope, readingApi) {
 
+        _scrollToTop();
         var populateReadings = function () {
             $scope.readings = readingApi.getReadings();
         };

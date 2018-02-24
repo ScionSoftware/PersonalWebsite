@@ -138,14 +138,15 @@
         <div class="section" id="main">
 
             <div class="banner">
-                
-            </div>
-            
-			<div ng-view></div>
 
+            </div>
+
+            <div ng-view></div>
+
+            <!-- Banner Bottom -->
             <div ss-google-ad
                  attr-class="banner-bottom-ad hide-on-print"
-                 attr-ad-slot="2042687254">
+                 attr-ad-slot="1605538364">
             </div>
         </div>
 
@@ -202,7 +203,8 @@
 
     <script type="text/javascript">
         //<![CDATA[
-        jQuery(document).ready(function ($) { 'use strict'; $('#top-search a').on('click', function (e) { e.preventDefault(); $('.show-search').slideToggle('fast'); }); $('.to-top').click(function () { $('html, body').animate({ scrollTop: 0 }, 800); return false; }); });
+        _scrollToTop = function () { $('html, body').animate({ scrollTop: 0 }, 800); return false; };
+        jQuery(document).ready(function ($) { 'use strict'; $('#top-search a').on('click', function (e) { e.preventDefault(); $('.show-search').slideToggle('fast'); }); $('.to-top').click(_scrollToTop); });
         //]]>
     </script>
 
@@ -244,14 +246,6 @@
         };
 
 		
-    </script>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-3749205289521356",
-    enable_page_level_ads: true
-  });
     </script>
 
 </body>

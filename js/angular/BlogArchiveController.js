@@ -3,6 +3,7 @@
 
     var blogArchiveController = function ($scope, blogApi) {
 
+        _scrollToTop();
         var blogs = blogApi.getAll();
         var previews = [];
         for (var i = 0; i < blogs.length; i++) {

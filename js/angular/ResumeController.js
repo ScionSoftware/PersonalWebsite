@@ -1,6 +1,7 @@
 (function (ng) {
     var resumeCtrl = function ($scope) {
 
+        _scrollToTop();
         $scope.title = ' - Resume';
         $scope.resume = { skills: [], jobs: [], projects: [], groups: [] };
 

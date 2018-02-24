@@ -3,6 +3,8 @@
 
     var homeCtrl = function ($scope, blogApi) {
 
+        _scrollToTop();
+
         $scope.displayed = $scope.displayed || [];
         $scope.previewGroup = 1;
         $scope.previewGroupMaximum = null;
