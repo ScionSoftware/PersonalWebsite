@@ -1,0 +1,38 @@
+<h3> Fail loudly, Fail visibly </h3>
+
+<p>Failing silently might not embarrass you today, but it could cost you your livelihood.</p>
+<p>I'm not sure how intentional it is, but I know that many developers would rather something seem to work, than have it ever blow up.</p>
+
+<div class="center-content">
+    <img width="300" height="450" src="/img/blogs/ecuador-volcano.jpg" />
+</div>
+
+<p>The simplest example that I can think of in C# is using the First() method even though Single() is more suitable.</p>
+<p>First() will take whatever element in a collection happens to come first.</p>
+<p>Single() is an assertion that you expect one and only one element to be in a collection. You are saying that it is invalid for there to be any more or any less than ONE match.</p>
+
+<h3> Assert assumptions </h3>
+
+<p>By asserting that you expect only one match, an exception will be thrown if there is ever more than one match.</p>
+<p>We program based on assumptions, and our code is no good if we can't rely on those assumptions. </p>
+<p>Single() says that you have an assumption that there should be only one match, and that the rest of the executing code is built around that assumption.</p>
+<p>First() says that you only care that there is at least one element.</p>
+<p>If your code is built around operating on a single correct match, it is unsafe to allow it to continue if your assumption is violated.</p>
+
+<h3> Embarassment driven development </h3>
+
+<p>It can be embarrassing to admit that you had a wrong assumption and that your code was incorrect. Sometimes we developers combat this by using a first call when we really should be using a single call. </p>
+<p>This means that even though we find more than one match, we continue operating as if everything was okay.</p>
+<p>This saves us from needing to answer to people asking why our Single() call was bombing out.</p>
+
+<p>What it does not save us from is far more sinister. Every single time that code runs there is the chance to put the data in a worse state. We are introducing very subtle and hard to find bugs.</p>
+<p>Perhaps many months down the line some user will notice that data is not quite as they expect it to be. They will open up a production issue and ask a developer to look into it.</p>
+
+<h3> Sinister outcomes </h3>
+
+<p>These bugs also stack. Often, we are programming by coincidence, in that we assume that the data that comes in is already in a valid state. We validate at the outskirts of the system where the users can mess up the data. Once the data successfully makes it to our database we assume that all is well. It would be incredibly taxing to validate the whole set of data in every single part of our system, and arguably too late.</p>
+<p>This bad data cascades and forces other parts of the system that would have normally had no bugs to make decisions based on bad assumptions.</p>
+<p>It is much safer and more cost effective to throw that exception and properly handle exceptions than it is to pretend that everything is going as you expect it to.</p>
+
+<p>In my opinion, ignoring the importance of assertions is one of the more sinister forms of technical debt.</p>
+<p>Don't let this creep into your system.</p>
