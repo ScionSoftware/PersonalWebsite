@@ -1,5 +1,12 @@
 ﻿var blogMetadata = [
     {
+        published: "2019-01-25",
+        name: "first-is-harmful-use-single.html",
+        tags: "programming,c#,practices,.net",
+        description:
+        "Using First on Collections where you expect Single is a huge no, no."
+    },
+    {
         published: "2018-02-20",
         name: "altruistic-workplace-politics",
         tags: "career,corporate,reputation",
