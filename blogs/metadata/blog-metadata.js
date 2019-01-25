@@ -1,7 +1,7 @@
 ﻿var blogMetadata = [
     {
         published: "2019-01-25",
-        name: "first-is-harmful-use-single.html",
+        name: "first-is-harmful-use-single",
         tags: "programming,c#,practices,.net",
         description:
         "Using First on Collections where you expect Single is a huge no, no."
